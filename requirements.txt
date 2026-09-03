@@ -1,0 +1,30 @@
+# Helmet Lattice — Python dependencies
+# Verified against the actual imports in scripts/ (Python 3.13).
+#
+#   pip install -r requirements.txt
+#
+# Note: this supersedes the pip line in SETUP.md, which listed pymoo (unused)
+# and omitted shapely, scikit-learn, xgboost, shap and pandas.
+
+# ── Geometry generation (scripts/generate_tiles.py, make_*.py) ────────────────
+numpy
+scipy
+scikit-image        # marching cubes
+trimesh             # mesh repair, watertightness, volume/area measurement
+shapely             # 2D field construction for the wall lattices
+
+# ── Data handling & plotting ──────────────────────────────────────────────────
+pandas
+matplotlib
+
+# ── Feature importance (scripts/ml/importance.py) ─────────────────────────────
+scikit-learn
+xgboost
+shap
+
+# ── GP surrogate + multi-objective Bayesian optimization (scripts/ml/) ────────
+# Install torch first if you want a specific CUDA/CPU build:
+#   https://pytorch.org/get-started/locally/
+torch
+gpytorch
+botorch

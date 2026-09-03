@@ -1,0 +1,83 @@
+D3 AUXETIC RE-ENTRANT TILE — Fusion 360 Guide
+==============================================
+
+Since you're already in Fusion 360, use it instead of FreeCAD for D3.
+This is faster and more reliable for this geometry type.
+
+TARGET SPECS
+------------
+Tile size:       80 × 80 × 20 mm
+Topology:        Re-entrant hexagonal (auxetic)
+Rel. density:    ~0.25
+Wall thickness:  ~1.5 mm
+Expected mass:   ~22–28 g (auxetic cells fill space less efficiently than TPMS)
+
+STEP-BY-STEP
+------------
+
+1. CREATE BOUNDING BOX
+   - New component → Create → Box
+   - 80mm × 80mm × 20mm
+   - This is just a reference, delete it after step 5
+
+2. SKETCH THE UNIT CELL (top view, XY plane)
+   - Create sketch on XY plane
+   - Draw one re-entrant hexagon unit cell using these dimensions:
+       Horizontal strut (h):   6 mm
+       Diagonal strut (l):     5 mm
+       Re-entrant angle:       -30° from horizontal (pointing INWARD/downward)
+       Wall thickness:         1.5 mm
+
+   - The unit cell looks like this (top view):
+          ___
+         /   \
+        /     \
+   ____/       \____
+   ____\       /____
+        \     /
+         \___/
+
+   - To draw it: use Line tool, draw the centerlines first,
+     then use Offset Curve (1.5mm each side) to give wall thickness
+   - Close all wall outlines into filled regions
+
+3. EXTRUDE
+   - Select all closed wall profiles → Extrude → 20mm
+   - Direction: symmetric or one-direction (either works)
+
+4. RECTANGULAR PATTERN
+   - Modify → Pattern → Rectangular Pattern
+   - Object type: Features (select the extrude)
+   - Direction 1 (X): spacing = cell width (≈ 2×l×cos30° + h ≈ 14.7mm)
+                       quantity = 6
+   - Direction 2 (Y): spacing = 2×l×sin30° = 5mm
+                       quantity = 16
+   - Adjust quantity until the pattern fills ~80×80mm
+
+5. CLIP TO BOUNDING BOX
+   - Create a solid box 80×80×20mm
+   - Modify → Combine → Tool = auxetic body, Target = box, Operation = Intersect
+   - This trims any cells that stick outside the tile boundary
+
+6. EXPORT
+   - Right-click body → Save as Mesh → STL
+   - Refinement: Medium (fine is overkill for printing)
+   - Save to: C:\Users\Kyrio\helmet-lattice\stl_output\D3_auxetic_025_8mm.stl
+
+TROUBLESHOOTING
+---------------
+- If the pattern looks wrong: the re-entrant angle must point INWARD
+  (toward the center of the hexagon), not outward like a normal honeycomb
+- If wall thickness looks too thin in Creality Print: increase offset to 2.0mm
+  and re-export (this raises relative density slightly, which is fine)
+- If Fusion crashes on the pattern: reduce quantity first, check one row works,
+  then increase
+
+PRINT SETTINGS FOR D3
+----------------------
+Nozzle temp:   235°C
+Bed temp:      40°C
+Print speed:   25 mm/s  (slower than others — re-entrant angles cause stringing)
+Supports:      Tree supports, 5% density  (needed for inward-pointing angles)
+Fan:           50%
+Retraction:    0.5mm, 20 mm/s (slightly more than other tiles due to overhangs)

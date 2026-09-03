@@ -1,0 +1,12 @@
+{
+    "autodeskProduct": "Fusion360",
+    "type": "addin",
+    "author": "helmet-lattice",
+    "description": {
+        "": "Generate TPU helmet-liner lattice tiles (gyroid / schwartz / graded / auxetic) as mesh bodies."
+    },
+    "version": "1.0.0",
+    "runOnStartup": true,
+    "supportedOS": "windows|mac",
+    "editEnabled": true
+}

@@ -1,0 +1,43 @@
+RE-ENTRANT AUXETIC — NOW SCRIPTED (FreeCAD no longer needed)
+============================================================
+
+This file used to route the re-entrant auxetic tile through FreeCAD/Lattice2,
+on the assumption that re-entrant geometry "is not easily expressed as an
+implicit function." That turned out to be wrong for a PRISMATIC re-entrant cell:
+extrude a 2D re-entrant wall field straight up Z and every wall is vertical, so
+it meshes through the same marching-cubes path as the TPMS tiles AND prints
+without supports. It is now built in generate_tiles.py.
+
+HOW TO GENERATE
+---------------
+    python scripts/generate_tiles.py          # builds the full D1..D12 set
+
+or from Python for a one-off:
+
+    import generate_tiles as g
+    mesh, mass = g.build_tile("re_entrant", cell_size=11.3, relative_density=0.35)
+    #   theta_deg=-30 (default) shallow bowtie; theta_deg=-45 deeper/stronger auxetic
+    g.save_tile(mesh, "my_re_entrant")
+
+The two re-entrant tiles in the default set:
+    D6  re_entrant   theta=-30  cell 11.3 mm  rho 0.35  ->  4 cells, wall 1.24 mm
+    D7  re_entrant   theta=-45  cell 17.0 mm  rho 0.35  ->  3 cells, wall 1.36 mm
+
+WHY rho = 0.35 (not 0.25 like the TPMS tiles)
+---------------------------------------------
+A wall lattice this open cannot have BOTH printable walls (>=1.2 mm on a 0.4 mm
+nozzle) AND enough cells across a 50.8 mm tile at rho 0.25 -- at 0.25 it needs a
+~20 mm cell, i.e. only 2 cells across, which barely expresses the negative-
+Poisson effect. At 0.35 the walls thicken, so a smaller cell prints and you get
+3-4 cells across. Density is a knob the ML optimizes, so one family sitting
+higher is fine. Use generate_tiles.suggest_cell_size(topo, rho) to re-derive the
+smallest printable cell if you change the density.
+
+NOTE: the rotating-squares auxetic (D3) is a SEPARATE auxetic family and is also
+scripted (generate_rotating_squares). Re-entrant and rotating-squares are the two
+standard auxetic mechanisms; you now have both.
+
+PRINT NOTES (unchanged)
+-----------------------
+- Orientation: flat (XY); walls are vertical so no supports are needed.
+- TPU 95A: slow perimeters to ~25 mm/s to limit stringing at the rib junctions.
