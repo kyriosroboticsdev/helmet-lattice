@@ -120,8 +120,18 @@ def _layers_from_encoding(encoding, rho: float, cell: float, total_z: float):
         return fallback
 
 
-def realize_proposal(p: dict, out_dir: Path, res: int | None = None) -> dict:
-    """Generate an STL for one proposal dict. Returns an info dict (path or reason)."""
+def realize_proposal(p: dict, out_dir: Path, res: int | None = None,
+                     fea_res: int | None = None) -> dict:
+    """Generate an STL for one proposal dict. Returns an info dict (path or reason).
+
+    fea_res: build a COARSE simulation mesh instead of the print mesh. It overrides
+    every resolution choice (including the fine sampling wall families normally
+    force) and writes into out_dir rather than stl_output/. Marching cubes at ~60
+    samples gives a self-intersection-free ~160k-face surface gmsh tet-meshes in
+    ~20 s; decimating the ~1M-face print mesh instead creates self-intersections
+    gmsh rejects. The printability gate below still runs, as a cheap screen --
+    re-check at print resolution before actually printing.
+    """
     if not _HAS_GEN:
         return {"design": p.get("topology"), "stl_path": None,
                 "status": f"STL toolchain unavailable: {_IMPORT_ERR}"}
@@ -134,7 +144,7 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None) -> dict:
     az = float(p.get("cell_aspect_z", 1.0) or 1.0)
     cellv = (cell, cell * ay, cell * az)            # per-axis (anisotropic) cell
     grad = float(p.get("gradient_param", 0.0) or 0.0)
-    res = res or gen.RESOLUTION
+    res = fea_res or res or gen.RESOLUTION
 
     name = f"PROP_{topo}_rho{rho:.2f}_cell{cell:.1f}mm"
     try:
@@ -160,7 +170,8 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None) -> dict:
             field_kw = gen.periodic_field_kw(
                 weights, extra={f: {"seed": seed} for f in weights if f in _SEEDED})
             # Any wall family in the mix means ~1.2-2 mm features -> fine sampling.
-            res_b = gen.RESOLUTION_FINE if any(f in gen._FINE for f in weights) else res
+            res_b = res if fea_res else \
+                gen.RESOLUTION_FINE if any(f in gen._FINE for f in weights) else res
             mesh, mass = gen.generate_blended_tile(weights, build_cellv, rho,
                                                    res=res_b, field_kw=field_kw)
             tag = "-".join(f"{k[:3]}{int(round(v*100))}" for k, v in
@@ -219,7 +230,12 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None) -> dict:
                     "status": f"'{topo}' needs FreeCAD/nTop — not scriptable here; "
                               f"build it manually (see scripts/auxetic_instructions.txt)"}
 
-        path = gen.save_tile(mesh, name)
+        if fea_res:
+            name = f"{name}_fea{fea_res}"
+            path = str(out_dir / f"{name}.stl")
+            mesh.export(path)
+        else:
+            path = gen.save_tile(mesh, name)
         info = {"design": name, "topology": topo, "stl_path": path,
                 "est_mass_g": round(float(mass), 1),
                 "watertight": bool(mesh.is_watertight),

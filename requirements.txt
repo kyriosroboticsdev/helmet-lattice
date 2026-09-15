@@ -28,3 +28,10 @@ shap
 torch
 gpytorch
 botorch
+
+# ── FEA loop (scripts/fea/, scripts/loop/) ────────────────────────────────────
+# Also needs the CalculiX solver `ccx` (ships with FreeCAD / PrePoMax). Put its
+# folder at the END of PATH, or set CCX to the full path of ccx.exe.
+gmsh                # tet meshing of the coarse FEA surface
+# pymeshlab         # optional: only used if you ask mesh_for_fea to decimate
+# rtree             # optional: only for the (off by default) wall-thickness check
