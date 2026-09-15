@@ -11,6 +11,7 @@ Run `python scripts/ml/schema.py` to write a blank CSV template with all columns
 """
 
 from __future__ import annotations
+import warnings
 from pathlib import Path
 import pandas as pd
 
@@ -103,6 +104,49 @@ CONTINUOUS_GEOM = [
 ]
 CATEGORICAL_INPUTS = ["topology", "impact_zone"]
 NUMERIC_CONDITIONS = ["impact_speed_mps"]
+
+
+# ── SEA depth safety ───────────────────────────────────────────────────────────
+# SEA is an INTEGRAL up to some strain, so "SEA" is only meaningful together with
+# the depth it was integrated to: SEA-to-20% and SEA-to-densification are different
+# quantities and must never be compared or ranked against each other. FEA rows carry
+# that depth in `fea_max_strain` (simulations stop wherever they stop); physical
+# quasi-static rows carry NaN there and are measured to their own protocol depth.
+SEA_DEPTH_COL = "fea_max_strain"
+
+
+def sea_depths(df: pd.DataFrame, sea_col: str = "SEA_J_per_kg") -> set:
+    """Distinct strain depths behind the non-null SEA values in `df`.
+
+    NaN depth means "not an FEA row" (physical test); it is reported as None so a
+    caller can see that physical and simulated SEA are being mixed too.
+    """
+    if sea_col not in df.columns:
+        return set()
+    have = df[pd.to_numeric(df[sea_col], errors="coerce").notna()]
+    if SEA_DEPTH_COL not in have.columns:
+        return {None} if len(have) else set()
+    d = pd.to_numeric(have[SEA_DEPTH_COL], errors="coerce")
+    return {None if pd.isna(v) else round(float(v), 6) for v in d}
+
+
+def check_sea_depths(df: pd.DataFrame, sea_col: str = "SEA_J_per_kg",
+                     strict: bool = True) -> set:
+    """Raise (or warn) if `df` mixes SEA values measured to different depths.
+
+    Call this before any ranking, regression or plot that treats an SEA column as a
+    single quantity.
+    """
+    depths = sea_depths(df, sea_col)
+    if len(depths) > 1:
+        msg = (f"{sea_col} mixes {len(depths)} strain depths: {sorted(depths, key=str)}. "
+               f"SEA is an integral to a depth -- comparing across depths is invalid. "
+               f"Filter on {SEA_DEPTH_COL}, or recompute every row to one depth from "
+               f"its stress-strain curve (see fea_optimize.curve_objectives).")
+        if strict:
+            raise ValueError(msg)
+        warnings.warn(msg)
+    return depths
 
 
 def empty_frame() -> pd.DataFrame:

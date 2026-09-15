@@ -14,8 +14,12 @@ design; reaches the plateau onset). Confirm model: the full 50.8x50.8x38.1 mm
 coupon crushed 10% (~30 min), which the static solve can reliably finish. The
 confirm report gives the piece-vs-tile offset at 10% crush for those designs.
 
-Objectives (scripts/loop/fea_optimize.py), both at a fixed 10% strain: maximize
-SEA, minimize PEAK stress. Stops when ANY of the stopping.py criteria fires: no hypervolume
+Objectives (scripts/loop/fea_optimize.py), both evaluated at ONE screening strain
+(default 20%, the depth the piece is crushed to): maximize SEA, minimize plateau
+stress. --eval-strain and --stress-metric change that definition; changing it needs
+--rebuild-hv-reference, because hypervolumes under two definitions are different
+quantities. SEA values are only ever compared at equal depth (see
+schema.check_sea_depths). Stops when ANY stopping.py criterion fires: no hypervolume
 improvement for `patience` iterations, expected improvement below a fraction of the
 first iteration's, or the hard cap.
 
@@ -61,7 +65,7 @@ MODELS = {   # fea_model -> realize/evaluate settings
 def evaluate_design(params, design_id, out, gate_cfg, master_csv, log, realize, schema, it,
                     fea_res=60, fea_model="piece"):
     """realize (coarse FEA mesh) -> printability screen -> FEA-readiness gate (meshes
-    once) -> FEA on that same mesh -> master row. Every outcome is logged and (except
+    once) -> FEA on that same mesh -> master row. Every outcome is logged and appended.
     Returns the outcome: "ok", "failed", "print_rejected", "gate_rejected" or
     "realize_rejected"."""
     import features as F
@@ -128,7 +132,8 @@ def evaluate_design(params, design_id, out, gate_cfg, master_csv, log, realize, 
              SEA=row.get("SEA_J_per_kg"), stress=row.get("stress_at_max_strain_kPa"),
              reached=row.get("fea_max_strain"), sec_prep=row["sec_prep"], sec_fea=row["sec_fea"]))
     print(f"  [{design_id}] FEA({fea_model}) {row.get('fea_status')}  "
-          f"SEA={row.get('SEA_J_per_kg')} J/kg  stress={row.get('stress_at_max_strain_kPa')} kPa  "
+          f"SEA={row.get('SEA_J_per_kg')} J/kg to {row.get('fea_max_strain')} strain  "
+          f"stress={row.get('stress_at_max_strain_kPa')} kPa  "
           f"(prep {row['sec_prep']}s, FEA {row['sec_fea']}s)", flush=True)
     return row.get("fea_status", "failed")
 
@@ -185,7 +190,9 @@ def confirm_front(out, master_csv, gate_cfg, log, realize, schema, fea_res, top_
 
 def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
         seed_n: int = 30, seed_only: bool = False, fea_res: int = 60, shortlist: int = 3,
-        confirm_top: int = 5, confirm_only: bool = False, n_candidates: int = 300):
+        confirm_top: int = 5, confirm_only: bool = False, n_candidates: int = 300,
+        eval_strain: float | None = None, stress_metric: str | None = None,
+        energy_metric: str | None = None, rebuild_hv_reference: bool = False):
     import realize, schema
     import fea_optimize as FO
     out = Path(out_dir); out.mkdir(parents=True, exist_ok=True)
@@ -195,6 +202,15 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
     log_path   = out / "loop_log.jsonl"
     crush = MODELS["piece"]["crush"]
     FO.CURVES_DIR = out / "curves"    # objectives are computed from the saved curves
+    if eval_strain:
+        FO.E_EVAL = eval_strain
+    if stress_metric:
+        FO.STRESS_METRIC = stress_metric
+    if energy_metric:
+        FO.ENERGY_METRIC = energy_metric
+    FO.OBJECTIVES = FO.objectives()
+    print(f"[run_loop] objectives: maximize {FO.ENERGY_METRIC}, minimize {FO.STRESS_METRIC} stress, "
+          f"both at {FO.E_EVAL:.0%} strain (screening model crushes {crush:.0%})")
 
     cfg = StopConfig(max_iterations=max_iters)
     if resume and state_json.exists():
@@ -257,6 +273,13 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
               f"Re-run with a larger --seed-n in a new --out directory.")
         log(dict(event="stopped", reason="too_few_seed_results", n=len(rows)))
         return
+    if rebuild_hv_reference and ref_json.exists():
+        ref_json.rename(ref_json.with_suffix(".json.superseded"))
+        ctrl.state.best_metric = -float("inf"); ctrl.state.stale_rounds = 0
+        ctrl.state.history.append(dict(event="hv_reference_rebuilt", eval_strain=FO.E_EVAL,
+                                       stress_metric=FO.STRESS_METRIC))
+        print("[run_loop] hypervolume reference rebuilt for the new objectives; "
+              "no-improvement history reset")
     ref = FO.reference_point(rows, ref_json)
 
     # ---- 1) optimize until diminishing returns ---------------------------------
@@ -341,6 +364,17 @@ if __name__ == "__main__":
                     help="candidate pool scored per iteration (~0.4 s each: sa_to_v is measured)")
     ap.add_argument("--confirm-top", type=int, default=5, help="Pareto designs re-run on the full tile (0 = skip)")
     ap.add_argument("--confirm-only", action="store_true", help="only run/refresh the confirm phase")
+    ap.add_argument("--eval-strain", type=float, default=None,
+                    help="screening strain both objectives are evaluated at (default 0.20)")
+    ap.add_argument("--stress-metric", choices=["plateau", "peak"], default=None,
+                    help="stress objective: mean over the upper half of the crush, or the peak")
+    ap.add_argument("--energy-metric", choices=["SEA", "efficiency"], default=None,
+                    help="energy objective: SEA per mass (default), or cushioning efficiency "
+                         "(energy / peak stress x strain), which is far less redundant with stress")
+    ap.add_argument("--rebuild-hv-reference", action="store_true",
+                    help="objectives changed: re-fix the hypervolume reference and reset the "
+                         "no-improvement history (old and new hypervolumes are not comparable)")
     a = ap.parse_args()
     run(a.out, a.max_iters, a.batch, a.resume, a.extra, a.seed_n, a.seed_only, a.fea_res,
-        a.shortlist, a.confirm_top, a.confirm_only, a.candidates)
+        a.shortlist, a.confirm_top, a.confirm_only, a.candidates,
+        a.eval_strain, a.stress_metric, a.energy_metric, a.rebuild_hv_reference)

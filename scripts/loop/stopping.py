@@ -135,9 +135,21 @@ class StoppingController:
 
 # ---- helper: Pareto hypervolume as the 'best_metric' for the 2-objective case ----
 def pareto_hypervolume(df, objectives, ref_point=None) -> float:
-    """Hypervolume dominated by the observed Pareto front (bigger = better front).
-    objectives are MINIMIZED injury metrics; we negate to a maximization HV.
-    ref_point defaults to 1.05x the worst observed point."""
+    """DEPRECATED -- do not use for the FEA loop. Use fea_optimize.hypervolume.
+
+    Two reasons: (1) it assumes EVERY objective is minimized, which silently treats
+    higher SEA as worse (SEA is maximized); (2) its reference point defaults to the
+    worst observed point, so it moves as data arrives and successive values are not
+    comparable -- exactly what a no-improvement stopping rule must compare.
+    fea_optimize.hypervolume takes per-objective signs and a reference fixed once per
+    run."""
+    raise NotImplementedError(
+        "pareto_hypervolume assumes all-minimized objectives and a moving reference; "
+        "use fea_optimize.hypervolume(rows, ref) instead.")
+
+
+def _pareto_hypervolume_legacy(df, objectives, ref_point=None) -> float:
+    """Original all-minimized implementation, kept only for reference."""
     import numpy as np
     Y = df[objectives].to_numpy(dtype=float)
     Y = Y[~np.isnan(Y).any(axis=1)]

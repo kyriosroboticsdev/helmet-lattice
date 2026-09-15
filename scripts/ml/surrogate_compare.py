@@ -65,8 +65,15 @@ def _try_add_deep_kernel(models):
     # kept minimal & optional; documented for the student to enable if they have torch
     return models, True   # (implementation stub left to enable locally)
 
-def _load(data, features, targets, group_col):
+def _load(data, features, targets, group_col, allow_mixed_sea_depth=False):
     df = pd.read_csv(data)
+    # SEA is an integral to a strain depth. FEA rows stop at whatever strain the solve
+    # reached, so a master table can hold SEA-to-4% and SEA-to-20% in one column;
+    # regressing on them together compares different quantities.
+    for t in targets:
+        if t.startswith("SEA"):
+            import schema as S
+            S.check_sea_depths(df, sea_col=t, strict=not allow_mixed_sea_depth)
     if "fea_status" in df:
         df = df[df["fea_status"].astype(str).isin(["ok", "nan", ""] ) | df["fea_status"].isna()]
     feats = [f for f in features if f in df.columns]
@@ -134,10 +141,13 @@ def main():
     ap.add_argument("--features", nargs="+", default=DEFAULT_FEATURES)
     ap.add_argument("--group-col", default="design_id")
     ap.add_argument("--out", default="runs/surrogate_compare")
+    ap.add_argument("--allow-mixed-sea-depth", action="store_true",
+                    help="permit SEA values measured to different strains in one fit (unsafe)")
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
 
-    X, Ys, groups, feats = _load(a.data, a.features, a.targets, a.group_col)
+    X, Ys, groups, feats = _load(a.data, a.features, a.targets, a.group_col,
+                                 a.allow_mixed_sea_depth)
     print(f"loaded {len(X)} rows, {len(feats)} features: {feats}")
     if len(X) < 8:
         print("NOTE: <8 usable rows -- results are indicative only. Re-run after "

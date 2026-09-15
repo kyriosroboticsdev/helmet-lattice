@@ -1,20 +1,25 @@
 """
 fea_optimize.py  --  Multi-objective BO on FEA results (no impact data needed).
 ============================================================================
-Objectives, both from the quasi-static compression FEA of the 2x2x2-cell piece,
-evaluated at a FIXED strain E_EVAL (10%) from the saved stress-strain curve:
-  * SEA_to_eval         energy absorbed up to E_EVAL per mass       -> MAXIMIZE
-  * peak_stress_to_eval highest stress reached up to E_EVAL (the
-                        force a liner would transmit)               -> MINIMIZE
+Objectives, both from the quasi-static compression FEA of the 2x2x2-cell piece and
+both evaluated at ONE fixed screening strain E_EVAL (20%, what the piece is crushed
+to), read off the saved stress-strain curve:
+  * SEA_to_eval             energy absorbed up to E_EVAL per mass  -> MAXIMIZE
+  * plateau_stress_to_eval  mean stress over the upper half of the
+                            crush -- the load passed to the head   -> MINIMIZE
 They trade off (stiffer lattices absorb more energy but transmit more force), so
 the result is a Pareto front, searched with log-qEHVI over one GP per objective.
+Set STRESS_METRIC = "peak" to minimize the highest stress instead.
 
-Why a fixed strain and PEAK stress: the piece is crushed 20%, but lattices peak and
-then soften as walls buckle, and the static solve often ends a little short (the
-first real seed stopped at 18.6%, with stress at 10% above stress at 18.6%). SEA to
-"wherever the solve stopped" is not comparable between designs, and the stress at
-the last point understates the force after a peak. Evaluating at 10% keeps nearly
-every finished solve usable; designs that do not reach 10% are left out.
+DEPTH IS PART OF THE NUMBER. SEA is an integral to a strain, so SEA-to-20% (this
+screening depth) and SEA measured deeper on finalists are different quantities and
+must never be ranked against each other. Everything here is computed at E_EVAL from
+the curve, every row carries eval_strain, and a solve that stalls short of E_EVAL is
+dropped rather than compared. schema.check_sea_depths guards the master table.
+
+Why read the curve instead of the row's SEA_J_per_kg: a solve stops wherever it
+stops (the first real run holds depths from 3.7% to 20%), so that column mixes
+depths by construction and is only meaningful next to fea_max_strain.
 
 Reuses the existing pipeline pieces rather than re-implementing them:
   optimize.sample_candidates   generative blend candidates (cap, family count, periodic)
@@ -40,33 +45,75 @@ import surrogate_gp as G
 
 torch.set_default_dtype(torch.float64)
 
-# Strain both objectives are evaluated at. Was 0.15; lowered after the first real
-# seeds: of 5 finished piece solves, 3 stalled below 15% (at 12.7%, 14.4% and 3.8% --
-# the denser designs stall earliest), leaving 2 usable rows. 4 of the 5 reach 10%.
-# The price is that the objectives no longer see plateau onset.
-E_EVAL = 0.10
+# Strain BOTH objectives are evaluated at -- the screening depth. 0.20 is what the
+# 2x2x2 piece is crushed to; SEA and plateau stress are therefore "to 20%", and are
+# NOT comparable to values measured deeper on finalists (see schema.check_sea_depths).
+# Measured cost of this depth on the first real run: 11 of 29 finished piece solves
+# reach 20%, 23 reach 10% -- designs either make 20% or buckle well before it.
+E_EVAL = 0.20
+# Stress objective: "plateau" = mean stress over the upper half of the crush
+# (PLATEAU_BAND x E_EVAL), the load a liner would transmit while crushing;
+# "peak" = the highest stress up to E_EVAL.
+STRESS_METRIC = "plateau"
+PLATEAU_BAND = (0.5, 1.0)
+# Energy objective. "SEA" = energy absorbed per mass (the decided default).
+# "efficiency" = energy absorbed / (peak stress x E_EVAL): 1.0 is a perfectly flat
+# plateau, and it is the metric that actually trades off against stress. MEASURED on
+# the first run's 11 designs at 20%: corr(SEA, plateau) = +0.96 with 7 of 11 designs
+# "Pareto-optimal" -- SEA is the same stress integral divided by density, so that pair
+# is nearly one objective and the search drifts to low density. corr(efficiency,
+# plateau) = -0.52 with 2 of 11 on the front: a real trade-off.
+ENERGY_METRIC = "SEA"
 TPU_DENSITY_G_PER_MM3 = 1.22e-3    # must match fea_evaluator
 
-# (column, sign): sign +1 maximizes, -1 minimizes. BoTorch maximizes sign*value.
-OBJECTIVES = [("SEA_to_eval", +1.0), ("peak_stress_to_eval", -1.0)]
 MIN_TRAIN = 5          # fewer finished designs than this -> no GP fit, keep seeding
 CURVES_DIR: Path | None = None     # set by run_loop to <out>/curves
 
 
-def curve_objectives(curve: pd.DataFrame, rho: float, e: float = E_EVAL):
-    """(SEA to strain e in J/kg, peak stress up to e in kPa) from one saved curve.
+def objectives() -> list[tuple[str, float]]:
+    """(column, sign) pairs; sign +1 maximizes, -1 minimizes (BoTorch maximizes sign*value).
 
-    SEA = absorbed energy density / solid mass density; the tile volume cancels.
-    Returns (nan, nan) if the solve did not reach e.
+    SEA is MAXIMIZED (more energy absorbed per gram is better) and the stress
+    objective is MINIMIZED (less force transmitted to the head is better).
     """
+    energy = "SEA_to_eval" if ENERGY_METRIC == "SEA" else "efficiency_to_eval"
+    return [(energy, +1.0), (f"{STRESS_METRIC}_stress_to_eval", -1.0)]
+
+
+# Back-compat for callers that read the module constant.
+OBJECTIVES = objectives()
+
+
+def curve_objectives(curve: pd.DataFrame, rho: float, e: float | None = None) -> dict:
+    """Metrics from one saved stress-strain curve, all evaluated AT STRAIN e.
+
+    Returns SEA_to_eval (J/kg), peak_stress_to_eval and plateau_stress_to_eval (kPa),
+    plus eval_strain so the depth travels with the numbers. All NaN if the solve did
+    not reach e -- a shallower curve gives a different quantity, never a comparable one.
+    """
+    e = E_EVAL if e is None else e
     s = curve["strain"].to_numpy(float); p = curve["stress_kPa"].to_numpy(float)
+    nan = dict(SEA_to_eval=float("nan"), peak_stress_to_eval=float("nan"),
+               plateau_stress_to_eval=float("nan"), efficiency_to_eval=float("nan"),
+               eval_strain=e)
     if len(s) < 2 or s.max() < e - 1e-9 or not rho or rho <= 0:
-        return float("nan"), float("nan")
+        return nan
     keep = s <= e + 1e-12
     se = np.r_[s[keep], e]; pe = np.r_[p[keep], np.interp(e, s, p)]
     W_mJ_per_mm3 = float(np.trapezoid(pe, se)) / 1000.0          # kPa -> MPa = mJ/mm^3
-    sea = W_mJ_per_mm3 / (rho * TPU_DENSITY_G_PER_MM3)            # mJ/g == J/kg
-    return sea, float(pe.max())
+    lo, hi = PLATEAU_BAND[0] * e, PLATEAU_BAND[1] * e
+    band = (se >= lo - 1e-12) & (se <= hi + 1e-12)
+    if band.sum() >= 2:
+        plateau = float(np.trapezoid(pe[band], se[band]) / (se[band].max() - se[band].min()))
+    else:
+        plateau = float(np.interp((lo + hi) / 2, se, pe))
+    peak = float(pe.max())
+    return dict(SEA_to_eval=W_mJ_per_mm3 / (rho * TPU_DENSITY_G_PER_MM3),   # mJ/g == J/kg
+                peak_stress_to_eval=peak,
+                plateau_stress_to_eval=plateau,
+                # cushioning efficiency: 1.0 would be a perfectly flat plateau
+                efficiency_to_eval=float(np.trapezoid(pe, se) / (peak * e)) if peak > 0 else float("nan"),
+                eval_strain=e)
 
 
 def training_rows(df: pd.DataFrame, crush: float = None, fea_model: str = "piece",
@@ -81,23 +128,22 @@ def training_rows(df: pd.DataFrame, crush: float = None, fea_model: str = "piece
     if df.empty or "fea_status" not in df or curves_dir is None:
         return df.iloc[0:0]
     rows = df[(df["fea_status"] == "ok") & (df.get("fea_model") == fea_model)].copy()
-    sea, peak = [], []
+    metrics = []
     for _, r in rows.iterrows():
         f = Path(curves_dir) / f"{r['design_id']}.csv"
-        if f.exists():
-            a, b = curve_objectives(pd.read_csv(f), float(r["rel_density_measured"]))
-        else:
-            a = b = float("nan")
-        sea.append(a); peak.append(b)
-    rows["SEA_to_eval"] = sea
-    rows["peak_stress_to_eval"] = peak
-    return rows[rows["SEA_to_eval"].notna() & rows["peak_stress_to_eval"].notna()].reset_index(drop=True)
+        metrics.append(curve_objectives(pd.read_csv(f), float(r["rel_density_measured"]))
+                       if f.exists() else curve_objectives(pd.DataFrame({"strain": [], "stress_kPa": []}), 0))
+    for k in ("SEA_to_eval", "peak_stress_to_eval", "plateau_stress_to_eval",
+              "efficiency_to_eval", "eval_strain"):
+        rows[k] = [m[k] for m in metrics]
+    cols = [c for c, _ in objectives()]
+    return rows[rows[cols].notna().all(axis=1)].reset_index(drop=True)
 
 
 def objective_matrix(rows: pd.DataFrame) -> np.ndarray:
     """Objectives in MAXIMIZATION form, one column per objective."""
-    return np.column_stack([s * pd.to_numeric(rows[c], errors="coerce").values
-                            for c, s in OBJECTIVES])
+    return np.column_stack([sign * pd.to_numeric(rows[c], errors="coerce").values
+                            for c, sign in objectives()])
 
 
 def reference_point(rows: pd.DataFrame, path: Path) -> np.ndarray:
@@ -105,13 +151,27 @@ def reference_point(rows: pd.DataFrame, path: Path) -> np.ndarray:
 
     10% worse than the worst seed on each objective (in maximization space).
     """
+    spec = dict(objectives=objectives(), eval_strain=E_EVAL, stress_metric=STRESS_METRIC,
+                energy_metric=ENERGY_METRIC)
     if path.exists():
-        return np.array(json.loads(path.read_text())["ref_max_space"])
+        saved = json.loads(path.read_text())
+        # The reference anchors every hypervolume in the run. If the objective
+        # DEFINITION changed (depth or stress metric), old and new hypervolumes are
+        # different quantities and must not be compared.
+        if (saved.get("eval_strain") != E_EVAL or saved.get("stress_metric") != STRESS_METRIC
+                or saved.get("energy_metric", "SEA") != ENERGY_METRIC):
+            raise ValueError(
+                f"{path.name} was fixed for eval_strain={saved.get('eval_strain')} / "
+                f"{saved.get('stress_metric')} stress, but this run uses {E_EVAL} / "
+                f"{STRESS_METRIC}. Hypervolumes across the two are not comparable: "
+                f"re-run with --rebuild-hv-reference (restarts the stopping history) "
+                f"or use a fresh --out directory.")
+        return np.array(saved["ref_max_space"])
     Y = objective_matrix(rows)
     span = np.maximum(Y.max(0) - Y.min(0), 1e-9)
     ref = Y.min(0) - 0.1 * np.maximum(np.abs(Y.min(0)), span)
     path.write_text(json.dumps({"ref_max_space": ref.tolist(),
-                                "objectives": OBJECTIVES,
+                                **spec,
                                 "n_rows_when_fixed": int(len(rows))}, indent=2))
     return ref
 
@@ -150,10 +210,14 @@ def feasibility_model(df: pd.DataFrame, names: list[str], fea_model: str = "piec
     from sklearn.linear_model import LogisticRegression
     from sklearn.pipeline import make_pipeline
     from sklearn.preprocessing import StandardScaler
-    att = df[(df.get("fea_model") == fea_model) & df["fea_status"].isin(ATTEMPTED)]
+    att = df[(df.get("fea_model") == fea_model) & df["fea_status"].isin(ATTEMPTED)].copy()
     if att.empty:
         return None, {}
-    y = att["fea_status"].isin(REACHED_FEA).astype(int).values
+    # Usable = produced objectives at E_EVAL. A solve that stalls short of the
+    # screening depth is as useless to the search as a design that cannot be built,
+    # so the model learns to avoid both.
+    usable = set(training_rows(df, fea_model=fea_model)["design_id"])
+    y = att["design_id"].isin(usable).astype(int).values
     if y.min() == y.max():
         return None, dict(n_labels=int(len(y)), feasible_rate=float(y.mean()))
     X, _ = F.build_features(att, include_conditions=False, drop_sparse_topology=True)
