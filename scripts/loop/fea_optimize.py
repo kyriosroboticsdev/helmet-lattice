@@ -2,7 +2,7 @@
 fea_optimize.py  --  Multi-objective BO on FEA results (no impact data needed).
 ============================================================================
 Objectives, both from the quasi-static compression FEA of the 2x2x2-cell piece,
-evaluated at a FIXED strain E_EVAL (15%) from the saved stress-strain curve:
+evaluated at a FIXED strain E_EVAL (10%) from the saved stress-strain curve:
   * SEA_to_eval         energy absorbed up to E_EVAL per mass       -> MAXIMIZE
   * peak_stress_to_eval highest stress reached up to E_EVAL (the
                         force a liner would transmit)               -> MINIMIZE
@@ -13,8 +13,8 @@ Why a fixed strain and PEAK stress: the piece is crushed 20%, but lattices peak 
 then soften as walls buckle, and the static solve often ends a little short (the
 first real seed stopped at 18.6%, with stress at 10% above stress at 18.6%). SEA to
 "wherever the solve stopped" is not comparable between designs, and the stress at
-the last point understates the force after a peak. Evaluating at 15% keeps nearly
-every finished solve usable; designs that do not reach 15% are left out.
+the last point understates the force after a peak. Evaluating at 10% keeps nearly
+every finished solve usable; designs that do not reach 10% are left out.
 
 Reuses the existing pipeline pieces rather than re-implementing them:
   optimize.sample_candidates   generative blend candidates (cap, family count, periodic)
@@ -40,7 +40,11 @@ import surrogate_gp as G
 
 torch.set_default_dtype(torch.float64)
 
-E_EVAL = 0.15                      # strain both objectives are evaluated at
+# Strain both objectives are evaluated at. Was 0.15; lowered after the first real
+# seeds: of 5 finished piece solves, 3 stalled below 15% (at 12.7%, 14.4% and 3.8% --
+# the denser designs stall earliest), leaving 2 usable rows. 4 of the 5 reach 10%.
+# The price is that the objectives no longer see plateau onset.
+E_EVAL = 0.10
 TPU_DENSITY_G_PER_MM3 = 1.22e-3    # must match fea_evaluator
 
 # (column, sign): sign +1 maximizes, -1 minimizes. BoTorch maximizes sign*value.

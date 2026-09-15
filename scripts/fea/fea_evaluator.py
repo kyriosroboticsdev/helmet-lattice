@@ -220,20 +220,33 @@ def _write_inp(path, coords, nid, tets, disp, material=None):
     return zmax - zmin
 
 def _run_ccx(inp_stem, workdir, timeout=1800):
-    """Run CalculiX; stdout is saved to ccx_stdout.txt so a failure has a reason."""
-    r = subprocess.run([CCX, inp_stem], cwd=workdir, capture_output=True, text=True, timeout=timeout)
-    Path(workdir, "ccx_stdout.txt").write_text(r.stdout + r.stderr)
+    """Run CalculiX; stdout is saved to ccx_stdout.txt so a failure has a reason.
+
+    On a timeout the solver is killed but the curve up to its last converged increment
+    is still returned (the .dat is written increment by increment). A stalled solve
+    crawls on ever-smaller cutbacks, so the cap usually lands long after the useful
+    part of the curve -- throwing that away cost a real 1-hour result.
+    """
+    try:
+        r = subprocess.run([CCX, inp_stem], cwd=workdir, capture_output=True, text=True,
+                           timeout=timeout)
+        stdout = r.stdout + r.stderr
+    except subprocess.TimeoutExpired as e:
+        out = e.stdout.decode(errors="ignore") if isinstance(e.stdout, bytes) else (e.stdout or "")
+        stdout = out + f"\n[fea_evaluator] killed after {timeout}s timeout\n"
+    Path(workdir, "ccx_stdout.txt").write_text(stdout)
     dat = Path(workdir) / f"{inp_stem}.dat"
     if not dat.exists(): raise RuntimeError("CalculiX produced no .dat (solve failed)")
     txt = dat.read_text()
     times = [float(t) for t in re.findall(r"for set TOP and time\s+([\d.E+-]+)", txt)]
     fz = [float(re.findall(r"[-\d.E+]+", b)[2])
           for b in re.findall(r"for set TOP and time[^\n]*\n\n\s*([^\n]+)", txt)]
-    if len(times) < 2:
-        errs = sorted(set(re.findall(r"\*ERROR[^\n]*", r.stdout)))[:3]
+    n = min(len(times), len(fz))          # a kill can leave the last block half-written
+    if n < 2:
+        errs = sorted(set(re.findall(r"\*ERROR[^\n]*", stdout)))[:3]
         raise RuntimeError("solve did not converge past first increment"
                            + (f"; ccx: {errs}" if errs else ""))
-    return np.r_[0, times], np.r_[0, [-x for x in fz]]
+    return np.r_[0, times[:n]], np.r_[0, [-x for x in fz[:n]]]
 
 # ----------------------------------------------------------------------------
 def evaluate_stl(stl_path: str, *, footprint_area_mm2: float | None = None,

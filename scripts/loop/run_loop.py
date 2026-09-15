@@ -14,7 +14,7 @@ design; reaches the plateau onset). Confirm model: the full 50.8x50.8x38.1 mm
 coupon crushed 10% (~30 min), which the static solve can reliably finish. The
 confirm report gives the piece-vs-tile offset at 10% crush for those designs.
 
-Objectives (scripts/loop/fea_optimize.py), both at a fixed 15% strain: maximize
+Objectives (scripts/loop/fea_optimize.py), both at a fixed 10% strain: maximize
 SEA, minimize PEAK stress. Stops when ANY of the stopping.py criteria fires: no hypervolume
 improvement for `patience` iterations, expected improvement below a fraction of the
 first iteration's, or the hard cap.
@@ -53,7 +53,7 @@ PARAM_KEYS = ["rel_density_measured", "cell_size_mm", "cell_aspect_y", "cell_asp
               "topology", "blend", "blend_seed"]
 
 MODELS = {   # fea_model -> realize/evaluate settings
-    "piece": dict(piece_cells=2, crush=0.20, timeout=3600),
+    "piece": dict(piece_cells=2, crush=0.20, timeout=900),    # healthy solves take 2-5 min
     "full":  dict(piece_cells=None, crush=0.10, timeout=5400),
 }
 
