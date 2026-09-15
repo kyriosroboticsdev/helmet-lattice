@@ -43,6 +43,33 @@ SCRIPTABLE = {"gyroid", "schwartz", "diamond", "graded", "auxetic", "alternating
 # (default 0) into the filename so the exact tile that was tested can be regenerated.
 _SEEDED = {"voronoi", "spinodoid"}
 
+# gen.suggest_cell_size bisects ~11 full tile builds per call (~65 s per wall family),
+# which was 99% of realize time for a blend. It depends only on (family, density), so
+# cache it on disk, with density rounded to the nearest 0.01. Note the underlying answer
+# is NOISY, not monotonic: it bisects on a wall thickness measured at res=56 (~0.9 mm
+# voxels vs a 1.2 mm limit), e.g. honeycomb gave 11.3 mm at rho 0.30 but ~14.6 mm at
+# 0.309. Caching makes it at least reproducible; the printability gate still checks
+# every built mesh.
+_CELL_CACHE_PATH = Path(__file__).resolve().parents[2] / "data" / "cache" / "suggest_cell_size.json"
+
+
+def _suggest_cell(fam: str, rho: float) -> float:
+    import json
+    key = f"{fam}@{round(rho, 2):.2f}"
+    try:
+        cache = json.loads(_CELL_CACHE_PATH.read_text())
+    except Exception:
+        cache = {}
+    if key not in cache:
+        cache[key] = float(gen.suggest_cell_size(fam, float(key.split("@")[1]))[0])
+        _CELL_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        try:                                   # re-read so concurrent runs don't clobber
+            cache = {**json.loads(_CELL_CACHE_PATH.read_text()), key: cache[key]}
+        except Exception:
+            pass
+        _CELL_CACHE_PATH.write_text(json.dumps(cache, indent=1, sort_keys=True))
+    return cache[key]
+
 # Printability gate for generated tiles: the fraction of surface area that faces
 # downward steeply enough to need support. TPU 95A support interfaces tear the lattice
 # on removal, so anything past this is rejected rather than printed. Blends drawn only
@@ -121,7 +148,7 @@ def _layers_from_encoding(encoding, rho: float, cell: float, total_z: float):
 
 
 def realize_proposal(p: dict, out_dir: Path, res: int | None = None,
-                     fea_res: int | None = None) -> dict:
+                     fea_res: int | None = None, piece_cells: int | None = None) -> dict:
     """Generate an STL for one proposal dict. Returns an info dict (path or reason).
 
     fea_res: build a COARSE simulation mesh instead of the print mesh. It overrides
@@ -131,6 +158,11 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None,
     ~20 s; decimating the ~1M-face print mesh instead creates self-intersections
     gmsh rejects. The printability gate below still runs, as a cheap screen --
     re-check at print resolution before actually printing.
+
+    piece_cells (blends only, with fea_res): build just `piece_cells` whole cells per
+    axis of the tile's own snapped lattice, at the same sampling pitch fea_res gives
+    the full tile. A 2x2x2 piece of seed 11 solves to 20% crush in ~3 min and reads
+    2-4% stiffer than the full tile over 1-12% (runs/fea_debug_2026-09-14).
     """
     if not _HAS_GEN:
         return {"design": p.get("topology"), "stl_path": None,
@@ -147,6 +179,12 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None,
     res = fea_res or res or gen.RESOLUTION
 
     name = f"PROP_{topo}_rho{rho:.2f}_cell{cell:.1f}mm"
+    if piece_cells and not (fea_res and (topo == "blend" or p.get("blend"))):
+        return {"design": name, "stl_path": None,
+                "status": "piece_cells needs fea_res and a blend proposal"}
+    # The generator reads the tile extent from module globals at call time, so a piece
+    # is built by shrinking them for this call only (restored in `finally`).
+    tile_saved = (gen.TILE_X, gen.TILE_Y, gen.TILE_Z)
     try:
         if topo == "blend" or p.get("blend"):
             # GENERATIVE: a new in-between geometry blended across families, with the
@@ -159,7 +197,7 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None,
             build_cell = cell
             for fam in weights:
                 if gen.FIELD_TOPOLOGIES[fam]["distance"]:
-                    need, _ = gen.suggest_cell_size(fam, rho)
+                    need = _suggest_cell(fam, rho)
                     build_cell = max(build_cell, need)
             scale = build_cell / cell if cell > 0 else 1.0
             build_cellv = tuple(c * scale for c in cellv)
@@ -172,11 +210,20 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None,
             # Any wall family in the mix means ~1.2-2 mm features -> fine sampling.
             res_b = res if fea_res else \
                 gen.RESOLUTION_FINE if any(f in gen._FINE for f in weights) else res
-            mesh, mass = gen.generate_blended_tile(weights, build_cellv, rho,
+            tz = gen.TILE_Z
+            if piece_cells:
+                snapped, _ = gen.snap_cell_sizes(build_cellv, gen.TILE_X, gen.TILE_Y, gen.TILE_Z)
+                pitch = gen.TILE_X / fea_res
+                gen.TILE_X, gen.TILE_Y, gen.TILE_Z = (piece_cells * c for c in snapped)
+                build_cellv, tz = snapped, gen.TILE_Z
+                res_b = max(16, round(gen.TILE_X / pitch))
+            mesh, mass = gen.generate_blended_tile(weights, build_cellv, rho, tz=tz,
                                                    res=res_b, field_kw=field_kw)
             tag = "-".join(f"{k[:3]}{int(round(v*100))}" for k, v in
                            sorted(weights.items(), key=lambda kv: -kv[1]))
             name = f"PROP_blend_{tag}_rho{rho:.2f}_cell{build_cell:.1f}mm"
+            if piece_cells:
+                name += f"_piece{piece_cells}"
 
         elif topo in ("gyroid", "schwartz", "diamond"):
             fn = gen.TOPOLOGY_FN[topo]
@@ -239,6 +286,9 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None,
         info = {"design": name, "topology": topo, "stl_path": path,
                 "est_mass_g": round(float(mass), 1),
                 "watertight": bool(mesh.is_watertight),
+                "piece_cells": piece_cells,
+                "cell_size_built_mm": round(float(locals().get("build_cell", cell)), 3),
+                "extent_mm": [round(gen.TILE_X, 2), round(gen.TILE_Y, 2), round(gen.TILE_Z, 2)],
                 "status": "ok"}
         # As-built density and support cost are the two facts the testing team needs
         # off the mesh (the handoff wants MEASURED density, not the requested one).
@@ -279,6 +329,8 @@ def realize_proposal(p: dict, out_dir: Path, res: int | None = None,
 
     except Exception as e:
         return {"design": name, "stl_path": None, "status": f"generation failed: {e}"}
+    finally:
+        gen.TILE_X, gen.TILE_Y, gen.TILE_Z = tile_saved
 
 
 def realize_proposals(proposals: list[dict], out_dir: Path, res: int | None = None):

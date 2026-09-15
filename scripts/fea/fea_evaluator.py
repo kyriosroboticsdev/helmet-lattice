@@ -238,7 +238,8 @@ def _run_ccx(inp_stem, workdir, timeout=1800):
 # ----------------------------------------------------------------------------
 def evaluate_stl(stl_path: str, *, footprint_area_mm2: float | None = None,
                  target_faces: int | None = None, keep_files: bool = False,
-                 mesh=None, timeout: int = FEA_TIMEOUT_S, material: str | None = None) -> dict:
+                 mesh=None, timeout: int = FEA_TIMEOUT_S, material: str | None = None,
+                 crush: float | None = None) -> dict:
     """Run validated quasi-static compression FEA on one lattice STL.
 
     Returns a dict of the schema quasi-static targets plus as-built geometry:
@@ -259,9 +260,10 @@ def evaluate_stl(stl_path: str, *, footprint_area_mm2: float | None = None,
     workdir = tempfile.mkdtemp(prefix="fea_")
     try:
         inp = os.path.join(workdir, "job.inp")
-        Hm = _write_inp(inp, coords, nid, tets, disp=-COMPRESS_FRACTION*H, material=material)
+        crush = crush or COMPRESS_FRACTION
+        Hm = _write_inp(inp, coords, nid, tets, disp=-crush*H, material=material)
         t, F = _run_ccx("job", workdir, timeout=timeout)
-        strain = COMPRESS_FRACTION * t
+        strain = crush * t
         stress = F / area                        # MPa (nominal)
         reached = float(strain[-1]); converged = bool(abs(t[-1]-1.0) < 1e-3)
 
@@ -269,6 +271,16 @@ def evaluate_stl(stl_path: str, *, footprint_area_mm2: float | None = None,
         W = float(np.trapezoid(stress, strain))          # MPa == mJ/mm^3 absorbed
         mass_g = rel_density * bbox_vol * TPU_DENSITY_G_PER_MM3
         SEA_J_per_kg = (W * bbox_vol * 1e-3) / (mass_g * 1e-3) if mass_g > 0 else float("nan")
+        # Same quantities at a FIXED 10% crush, so runs with different crush depths
+        # (2x2x2 piece to 20%, full tile to 10%) can be compared directly.
+        if reached >= 0.10 - 1e-9 and mass_g > 0:
+            m10 = strain <= 0.10 + 1e-9
+            s10 = float(np.interp(0.10, strain, stress))
+            W10 = float(np.trapezoid(np.r_[stress[m10], s10], np.r_[strain[m10], 0.10]))
+            stress_10_kPa = s10 * 1000.0
+            SEA_10 = (W10 * bbox_vol * 1e-3) / (mass_g * 1e-3)
+        else:
+            stress_10_kPa = SEA_10 = float("nan")
         # plateau stress: mean nominal stress over PLATEAU_BAND -- only if the solve
         # actually covered the band. (The old fallback reported the stress at the last
         # strain under the plateau label, which is a different quantity.)
@@ -290,6 +302,11 @@ def evaluate_stl(stl_path: str, *, footprint_area_mm2: float | None = None,
             densification_strain=round(dens_strain, 4),
             fea_reached_strain=round(reached, 3),
             stress_at_max_strain_kPa=round(float(stress[-1]) * 1000.0, 2),
+            stress_at_10pct_kPa=round(stress_10_kPa, 2),
+            SEA_to_10pct_J_per_kg=round(SEA_10, 2),
+            fea_crush=crush,
+            stress_strain=[(round(float(e), 5), round(float(s) * 1000.0, 3))
+                           for e, s in zip(strain, stress)],
             fea_converged=converged,
             fea_tets=len(tets),
             material=material or MATERIAL,
@@ -336,6 +353,10 @@ def schema_row(stl_path: str, design_id: str, *, replicate_id: int = 1,
     # (a stiffness proxy that exists even when the plateau band was not reached).
     row["fea_max_strain"] = res["fea_reached_strain"]
     row["stress_at_max_strain_kPa"] = res["stress_at_max_strain_kPa"]
+    row["stress_at_10pct_kPa"] = res["stress_at_10pct_kPa"]
+    row["SEA_to_10pct_J_per_kg"] = res["SEA_to_10pct_J_per_kg"]
+    row["fea_crush"] = res["fea_crush"]
+    row["_stress_strain"] = res["stress_strain"]   # popped by the loop into its own file
     if design_meta:
         for k, v in design_meta.items():
             if k in row and (isinstance(row[k], float) and np.isnan(row[k])):
