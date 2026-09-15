@@ -62,8 +62,8 @@ def evaluate_design(params, design_id, out, gate_cfg, master_csv, log, realize, 
                     fea_res=60, fea_model="piece"):
     """realize (coarse FEA mesh) -> printability screen -> FEA-readiness gate (meshes
     once) -> FEA on that same mesh -> master row. Every outcome is logged and (except
-    realize failures) appended. Returns the outcome: "ok", "failed", "print_rejected",
-    "gate_rejected" or "realize_failed"."""
+    Returns the outcome: "ok", "failed", "print_rejected", "gate_rejected" or
+    "realize_rejected"."""
     import features as F
     cfg = MODELS[fea_model]
     t0 = time.time()
@@ -97,9 +97,9 @@ def evaluate_design(params, design_id, out, gate_cfg, master_csv, log, realize, 
         return f"{stage}_rejected"
 
     if not stl_path:
-        log(dict(iter=it, design=design_id, stage="realize", status="failed", err=info.get("status")))
-        print(f"  [{design_id}] realize failed -> skip ({info.get('status')})", flush=True)
-        return "realize_failed"
+        # Recorded as a row: a resume must not retry it, and the feasibility model
+        # should learn to avoid it (e.g. a generator error for that blend/density).
+        return reject("realize", info.get("status"))
     if not info.get("printable", True):
         return reject("print", info.get("status"))
 
@@ -276,7 +276,10 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
             print(f"[run_loop] proposal step failed: {type(e).__name__}: {e}")
             raise
         print(f"  GP on {fit['n_train']} designs x {fit['n_features']} features; "
-              f"top expected HV improvement {top_acq:.4g}", flush=True)
+              f"top expected HV improvement {top_acq:.4g}; feasibility model on "
+              f"{fit['feas_labels']} attempts ({fit['feas_rate']:.0%} reached FEA), "
+              f"mean P(feasible) shortlist {fit['p_feasible_chosen']:.2f} vs pool "
+              f"{fit['p_feasible_pool']:.2f}", flush=True)
         log(dict(iter=it, event="proposed", n=len(props), **fit))
 
         prefix = f"it{it:03d}_"
@@ -292,8 +295,20 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
             print(f"  !! no proposal of iteration {it} reached FEA (all rejected by the screens)")
 
         hv = FO.hypervolume(FO.training_rows(load(), crush), ref)
-        stop, reason = ctrl.update(best_metric=hv, top_ei=top_acq,
-                                   note=f"designs_to_fea={reached_fea}")
+        if reached_fea:
+            stop, reason = ctrl.update(best_metric=hv, top_ei=top_acq,
+                                       note=f"designs_to_fea={reached_fea}")
+        else:
+            # Nothing was measured, so "no improvement" would be a screening artifact,
+            # not diminishing returns: count the iteration toward the hard cap only.
+            s = ctrl.state
+            s.iteration += 1
+            s.history.append(dict(iteration=s.iteration, best_metric=round(float(hv), 6),
+                                  improved=False, stale_rounds=s.stale_rounds, top_ei=top_acq,
+                                  ei_frac=None, note="no design reached FEA; not counted as stale"))
+            stop = s.iteration >= ctrl.cfg.max_iterations
+            reason = f"HARD_CAP: reached max_iterations={ctrl.cfg.max_iterations}" if stop else None
+            s.stopped, s.stop_reason = stop, reason
         ctrl.state.save(state_json)
         log(dict(iter=it, event="iteration_done", hv=hv, top_acq=top_acq, stop=stop,
                  reason=reason, sec=round(time.time() - t_it)))

@@ -134,6 +134,37 @@ def hypervolume(rows: pd.DataFrame, ref: np.ndarray) -> float:
     return float(Hypervolume(ref_point=torch.as_tensor(ref)).compute(front))
 
 
+REACHED_FEA = ("ok", "failed")
+ATTEMPTED = REACHED_FEA + ("print_rejected", "gate_rejected", "realize_rejected")
+
+
+def feasibility_model(df: pd.DataFrame, names: list[str], fea_model: str = "piece"):
+    """P(a design passes the screens and reaches FEA), from every attempt so far.
+
+    Without it, qEHVI keeps proposing designs that cannot be built: minimizing peak
+    stress pulls toward low density, where walls get too thin and the lattice falls
+    apart (iteration 1 of the first real run: 4 of 6 proposals rejected, all at
+    rho 0.175-0.199, plus one generator failure). Returns a callable X -> p, or None
+    when there are not yet both outcomes to learn from.
+    """
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.pipeline import make_pipeline
+    from sklearn.preprocessing import StandardScaler
+    att = df[(df.get("fea_model") == fea_model) & df["fea_status"].isin(ATTEMPTED)]
+    if att.empty:
+        return None, {}
+    y = att["fea_status"].isin(REACHED_FEA).astype(int).values
+    if y.min() == y.max():
+        return None, dict(n_labels=int(len(y)), feasible_rate=float(y.mean()))
+    X, _ = F.build_features(att, include_conditions=False, drop_sparse_topology=True)
+    X = X.apply(pd.to_numeric, errors="coerce").reindex(columns=names).fillna(0.0)
+    clf = make_pipeline(StandardScaler(), LogisticRegression(C=0.5, class_weight="balanced",
+                                                             max_iter=2000))
+    clf.fit(X.values, y)
+    return (lambda Xc: clf.predict_proba(np.asarray(Xc))[:, 1]), \
+        dict(n_labels=int(len(y)), feasible_rate=float(y.mean()))
+
+
 def _features(rows: pd.DataFrame):
     X, names = F.build_features(rows, include_conditions=False, drop_sparse_topology=True)
     X = X.apply(pd.to_numeric, errors="coerce")
@@ -181,9 +212,16 @@ def propose(df: pd.DataFrame, crush: float, ref: np.ndarray, n_propose: int,
                sampler=SobolQMCNormalSampler(sample_shape=torch.Size([128])))
     with torch.no_grad():
         scores = acqf(torch.as_tensor(Xc).unsqueeze(1)).numpy()
+    # Stopping still sees the raw expected improvement, so its ratio to the first
+    # iteration's value keeps one definition for the whole run.
     top = float(np.exp(scores.max())) if log_acq else float(scores.max())
 
-    order = O.select_diverse(scores, Xc, names, q=n_propose, min_distance=min_distance)
+    # Constrained BO: rank by expected improvement x P(reaches FEA).
+    feas, feas_info = feasibility_model(df, names)
+    p_feas = feas(Xc) if feas is not None else np.ones(len(Xc))
+    ranked = scores + np.log(np.clip(p_feas, 1e-3, 1.0)) if log_acq else scores * p_feas
+
+    order = O.select_diverse(ranked, Xc, names, q=n_propose, min_distance=min_distance)
     mu = np.column_stack([G.predict(m, Xc[order])[0] for m in models])
     props = []
     for rank, i in enumerate(order):
@@ -191,8 +229,13 @@ def propose(df: pd.DataFrame, crush: float, ref: np.ndarray, n_propose: int,
         d["topology"] = "blend"
         d["blend"] = {b: round(float(v), 3) for b, v in F.normalize_blend(d["blend"]).items()}
         d["acq"] = float(scores[i])
+        d["p_feasible"] = float(p_feas[i])
         for j, (col, s) in enumerate(OBJECTIVES):
             d[f"pred_{col}"] = float(s * mu[rank, j])
         props.append(d)
-    info = dict(n_train=len(rows), n_features=len(names), top_acq=top)
+    info = dict(n_train=len(rows), n_features=len(names), top_acq=top,
+                feas_labels=feas_info.get("n_labels", 0),
+                feas_rate=round(feas_info.get("feasible_rate", float("nan")), 3),
+                p_feasible_chosen=round(float(np.mean(p_feas[order])), 3),
+                p_feasible_pool=round(float(np.mean(p_feas)), 3))
     return props, top, info
