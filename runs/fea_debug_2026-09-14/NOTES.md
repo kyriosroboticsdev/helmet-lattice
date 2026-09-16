@@ -39,3 +39,17 @@ From the repo root (Git Bash):
 - Open decision: loop FEA = (a) full tile at 10% (~30 min), (b) 2x2x2 piece at 20% (~3 min), or (c) piece to screen + full tile to confirm.
 
 Note: absolute paths in this folder were replaced with <repo>, <scratchpad> and <TEMP> before commit. The test scripts here are a record of what was run; edit those paths before re-running them.
+
+## 2026-09-16: first complete self-running loop (runs/loop_2026-09-14)
+30 LHS seeds + 25 BO iterations + 5 full-tile confirms, unattended apart from
+restarts to pick up code changes. 133 design attempts, 62 solved, 9.5 h of solver
+time; stopped on NO_IMPROVEMENT (hypervolume < 1% better for 5 rounds).
+Objectives: maximize SEA, minimize plateau stress, both at 20% strain on the piece.
+27 designs usable at 20%, 12 on the Pareto front.
+Piece-vs-full-tile offset (4 designs, both at 10% crush): stress -2.0% mean
+(-2.8%..-0.6%), SEA -1.2% mean -- the piece reads slightly SOFTER here, where the
+earlier seed-11 measurement had it 2-4% stiffer. Sign is not consistent, magnitude
+stays under 3%, so piece ranking looks sound but the offset is not a fixed factor.
+Open: SEA and plateau stress correlate +0.95 (12 of 27 "optimal"); efficiency vs
+plateau correlates -0.37. --energy-metric efficiency switches, with
+--rebuild-hv-reference.
