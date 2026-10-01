@@ -1,0 +1,17 @@
+{
+  "ref_max_space": [
+    28.361481042629777,
+    -1307.0008534
+  ],
+  "objectives": [
+    [
+      "SEA_to_eval",
+      1.0
+    ],
+    [
+      "peak_stress_to_eval",
+      -1.0
+    ]
+  ],
+  "n_rows_when_fixed": 12
+}

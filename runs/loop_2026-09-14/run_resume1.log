@@ -1,0 +1,15 @@
+
+===== SEED: 24 of 30 LHS designs to run =====
+  [seed006] print rejected: rejected: 3 disconnected bodies
+  [seed007] FEA(piece) ok  SEA=144.01 J/kg  stress=1130.06 kPa  (prep 64s, FEA 202s)
+  [seed008] print rejected: rejected: 6 disconnected bodies
+  [seed009] print rejected: rejected: unsupported_frac=0.147 > 0.05; 5 disconnected bodies
+  [seed010] print rejected: rejected: 2 disconnected bodies
+  [seed011] print rejected: rejected: unsupported_frac=0.065 > 0.05
+  [seed012] print rejected: rejected: 3 disconnected bodies
+  [seed013] FEA(piece) ok  SEA=254.54 J/kg  stress=1670.05 kPa  (prep 75s, FEA 280s)
+  [seed014] FEA(piece) ok  SEA=12.61 J/kg  stress=156.12 kPa  (prep 164s, FEA 746s)
+  [seed015] FEA(piece) failed  SEA=nan J/kg  stress=None kPa  (prep 118s, FEA 3764s)
+
+[run_loop] PAUSE file found -> stopped cleanly before seed016.
+           Delete runs\loop_2026-09-14\PAUSE and re-run with --resume to continue.

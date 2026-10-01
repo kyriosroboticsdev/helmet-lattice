@@ -38,3 +38,8 @@ fusion_addin/HelmetLattice/local_config.py
 Thumbs.db
 desktop.ini
 *.swp
+
+# ── Run stderr ────────────────────────────────────────────────────────────────
+# Solver/library chatter only ("BFGS update error2", trimesh divide warnings)
+# and it carries local interpreter paths. Run stdout (*.log) is kept.
+runs/**/*.err

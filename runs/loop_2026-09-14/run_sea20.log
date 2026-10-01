@@ -1,0 +1,148 @@
+[run_loop] objectives: maximize SEA, minimize plateau stress, both at 20% strain (screening model crushes 20%)
+[run_loop] RESUMED at iter 10, cap 40
+[run_loop] hypervolume reference rebuilt for the new objectives; no-improvement history reset
+
+===== ITERATION 11 =====
+  GP on 11 designs x 24 features; top expected HV improvement 3.8e+04; feasibility model on 72 attempts (15% reached FEA), mean P(feasible) shortlist 0.81 vs pool 0.50
+  [it011_0] FEA(piece) ok  SEA=371.01 J/kg to 0.167 strain  stress=1792.26 kPa  (prep 9s, FEA 264s)
+  [it011_1] FEA(piece) ok  SEA=409.33 J/kg to 0.2 strain  stress=1183.59 kPa  (prep 18s, FEA 269s)
+  hypervolume=2.582e+05  top_acq=3.8e+04  (606s)  -> stop=False 
+
+===== ITERATION 12 =====
+  GP on 12 designs x 24 features; top expected HV improvement 3.52e+04; feasibility model on 74 attempts (16% reached FEA), mean P(feasible) shortlist 0.82 vs pool 0.43
+  [it012_0] FEA(piece) ok  SEA=316.49 J/kg to 0.2 strain  stress=896.64 kPa  (prep 32s, FEA 415s)
+  [it012_1] print rejected: rejected: unsupported_frac=0.152 > 0.05; 2 disconnected bodies
+  [it012_2] FEA(piece) ok  SEA=111.96 J/kg to 0.135 strain  stress=731.23 kPa  (prep 41s, FEA 66s)
+  hypervolume=2.752e+05  top_acq=3.52e+04  (619s)  -> stop=False 
+
+===== ITERATION 13 =====
+  GP on 13 designs x 24 features; top expected HV improvement 2.192e+04; feasibility model on 77 attempts (17% reached FEA), mean P(feasible) shortlist 0.80 vs pool 0.43
+  [it013_0] FEA(piece) ok  SEA=144.15 J/kg to 0.106 strain  stress=905.32 kPa  (prep 43s, FEA 660s)
+  [it013_1] FEA(piece) ok  SEA=438.81 J/kg to 0.2 strain  stress=1394.88 kPa  (prep 21s, FEA 37s)
+  hypervolume=2.752e+05  top_acq=2.192e+04  (798s)  -> stop=False 
+
+===== ITERATION 14 =====
+  GP on 14 designs x 24 features; top expected HV improvement 2.235e+04; feasibility model on 79 attempts (18% reached FEA), mean P(feasible) shortlist 0.83 vs pool 0.44
+  [it014_0] FEA(piece) ok  SEA=439.64 J/kg to 0.2 strain  stress=1134.65 kPa  (prep 15s, FEA 59s)
+  [it014_1] FEA(piece) ok  SEA=267.08 J/kg to 0.2 strain  stress=589.24 kPa  (prep 12s, FEA 91s)
+  hypervolume=2.883e+05  top_acq=2.235e+04  (209s)  -> stop=False 
+
+===== ITERATION 15 =====
+  GP on 16 designs x 24 features; top expected HV improvement 2.427e+04; feasibility model on 81 attempts (20% reached FEA), mean P(feasible) shortlist 0.78 vs pool 0.42
+  [it015_0] FEA(piece) ok  SEA=17.65 J/kg to 0.2 strain  stress=50.98 kPa  (prep 16s, FEA 92s)
+  [it015_1] FEA(piece) ok  SEA=378.6 J/kg to 0.2 strain  stress=958.18 kPa  (prep 15s, FEA 53s)
+  hypervolume=2.954e+05  top_acq=2.427e+04  (205s)  -> stop=False 
+
+===== ITERATION 16 =====
+  GP on 18 designs x 24 features; top expected HV improvement 3.219e+04; feasibility model on 83 attempts (22% reached FEA), mean P(feasible) shortlist 0.61 vs pool 0.41
+  [it016_0] FEA(piece) ok  SEA=199.7 J/kg to 0.2 strain  stress=406.86 kPa  (prep 60s, FEA 538s)
+  [it016_1] FEA(piece) ok  SEA=118.14 J/kg to 0.2 strain  stress=327.76 kPa  (prep 37s, FEA 107s)
+  hypervolume=3.004e+05  top_acq=3.219e+04  (784s)  -> stop=False 
+
+===== ITERATION 17 =====
+  GP on 20 designs x 24 features; top expected HV improvement 3.512e+04; feasibility model on 85 attempts (24% reached FEA), mean P(feasible) shortlist 0.52 vs pool 0.41
+  [it017_0] FEA(piece) ok  SEA=201.13 J/kg to 0.2 strain  stress=302.91 kPa  (prep 48s, FEA 627s)
+  [it017_1] print rejected: rejected: 6 disconnected bodies
+  [it017_2] print rejected: rejected: 3 disconnected bodies
+  [it017_3] print rejected: rejected: 2 disconnected bodies
+  [it017_4] print rejected: rejected: 3 disconnected bodies
+  [it017_5] print rejected: rejected: 6 disconnected bodies
+  hypervolume=3.092e+05  top_acq=3.512e+04  (740s)  -> stop=False 
+
+===== ITERATION 18 =====
+  GP on 21 designs x 24 features; top expected HV improvement 4.46e+04; feasibility model on 91 attempts (23% reached FEA), mean P(feasible) shortlist 0.54 vs pool 0.41
+  [it018_0] print rejected: rejected: 2 disconnected bodies
+  [it018_1] FEA(piece) ok  SEA=493.36 J/kg to 0.2 strain  stress=1773.2 kPa  (prep 41s, FEA 170s)
+  [it018_2] print rejected: rejected: 2 disconnected bodies
+  [it018_3] print rejected: rejected: 2 disconnected bodies
+  [it018_4] FEA(piece) ok  SEA=392.99 J/kg to 0.2 strain  stress=1282.16 kPa  (prep 12s, FEA 147s)
+  hypervolume=3.092e+05  top_acq=4.46e+04  (425s)  -> stop=False 
+
+===== ITERATION 19 =====
+  GP on 23 designs x 24 features; top expected HV improvement 4.501e+04; feasibility model on 96 attempts (24% reached FEA), mean P(feasible) shortlist 0.65 vs pool 0.38
+  [it019_0] print rejected: rejected: unsupported_frac=0.106 > 0.05; 2 disconnected bodies
+  [it019_1] print rejected: rejected: unsupported_frac=0.163 > 0.05
+  [it019_2] print rejected: rejected: 8 disconnected bodies
+  [it019_3] FEA(piece) ok  SEA=331.59 J/kg to 0.2 strain  stress=739.16 kPa  (prep 15s, FEA 235s)
+  [it019_4] print rejected: rejected: 9 disconnected bodies
+  [it019_5] print rejected: rejected: 4 disconnected bodies
+  hypervolume=3.175e+05  top_acq=4.501e+04  (333s)  -> stop=False 
+
+===== ITERATION 20 =====
+  GP on 24 designs x 24 features; top expected HV improvement 4.651e+04; feasibility model on 102 attempts (24% reached FEA), mean P(feasible) shortlist 0.72 vs pool 0.40
+  [it020_0] FEA(piece) ok  SEA=378.65 J/kg to 0.2 strain  stress=825.95 kPa  (prep 8s, FEA 53s)
+  [it020_1] FEA(piece) ok  SEA=479.27 J/kg to 0.2 strain  stress=1208.21 kPa  (prep 7s, FEA 63s)
+  hypervolume=3.306e+05  top_acq=4.651e+04  (172s)  -> stop=False 
+
+===== ITERATION 21 =====
+  GP on 26 designs x 24 features; top expected HV improvement 8.193e+04; feasibility model on 104 attempts (25% reached FEA), mean P(feasible) shortlist 0.46 vs pool 0.37
+  [it021_0] print rejected: rejected: 5 disconnected bodies
+  [it021_1] print rejected: rejected: unsupported_frac=0.172 > 0.05; 2 disconnected bodies
+  [it021_2] FEA(piece) ok  SEA=3.08 J/kg to 0.017 strain  stress=92.92 kPa  (prep 84s, FEA 903s)
+  [it021_3] print rejected: rejected: 2 disconnected bodies
+  [it021_4] FEA(piece) ok  SEA=48.02 J/kg to 0.072 strain  stress=475.56 kPa  (prep 21s, FEA 295s)
+  hypervolume=3.306e+05  top_acq=8.193e+04  (1353s)  -> stop=False 
+
+===== ITERATION 22 =====
+  GP on 26 designs x 24 features; top expected HV improvement 5.629e+04; feasibility model on 109 attempts (24% reached FEA), mean P(feasible) shortlist 0.59 vs pool 0.41
+  [it022_0] print rejected: rejected: unsupported_frac=0.058 > 0.05
+  [it022_1] print rejected: rejected: 10 disconnected bodies
+  [it022_2] print rejected: rejected: 3 disconnected bodies
+  [it022_3] FEA(piece) ok  SEA=359.67 J/kg to 0.2 strain  stress=819.38 kPa  (prep 27s, FEA 427s)
+  [it022_4] print rejected: rejected: unsupported_frac=0.136 > 0.05; 12 disconnected bodies
+  [it022_5] print rejected: rejected: 2 disconnected bodies
+  hypervolume=3.323e+05  top_acq=5.629e+04  (518s)  -> stop=False 
+
+===== ITERATION 23 =====
+  GP on 27 designs x 24 features; top expected HV improvement 7.969e+04; feasibility model on 115 attempts (24% reached FEA), mean P(feasible) shortlist 0.45 vs pool 0.39
+  [it023_0] print rejected: rejected: unsupported_frac=0.129 > 0.05; 5 disconnected bodies
+  [it023_1] realize rejected: generation failed: Surface level must be within volume data range.
+  [it023_2] FEA(piece) ok  SEA=196.0 J/kg to 0.142 strain  stress=1134.8 kPa  (prep 14s, FEA 184s)
+  [it023_3] print rejected: rejected: 20 disconnected bodies
+  [it023_4] FEA(piece) ok  SEA=397.28 J/kg to 0.179 strain  stress=1468.87 kPa  (prep 20s, FEA 434s)
+  hypervolume=3.323e+05  top_acq=7.969e+04  (720s)  -> stop=False 
+
+===== ITERATION 24 =====
+  GP on 27 designs x 24 features; top expected HV improvement 9.76e+04; feasibility model on 120 attempts (22% reached FEA), mean P(feasible) shortlist 0.45 vs pool 0.34
+  [it024_0] FEA(piece) ok  SEA=80.54 J/kg to 0.105 strain  stress=242.49 kPa  (prep 34s, FEA 603s)
+  [it024_1] print rejected: rejected: 2 disconnected bodies
+  [it024_2] print rejected: rejected: 16 disconnected bodies
+  [it024_3] print rejected: rejected: 4 disconnected bodies
+  [it024_4] FEA(piece) ok  SEA=47.3 J/kg to 0.076 strain  stress=348.61 kPa  (prep 78s, FEA 902s)
+  hypervolume=3.323e+05  top_acq=9.76e+04  (1683s)  -> stop=False 
+
+===== ITERATION 25 =====
+  GP on 27 designs x 24 features; top expected HV improvement 8.404e+04; feasibility model on 125 attempts (22% reached FEA), mean P(feasible) shortlist 0.38 vs pool 0.35
+  [it025_0] FEA(piece) ok  SEA=139.58 J/kg to 0.112 strain  stress=590.69 kPa  (prep 30s, FEA 577s)
+  [it025_1] print rejected: rejected: 10 disconnected bodies
+  [it025_2] FEA(piece) ok  SEA=141.85 J/kg to 0.13 strain  stress=899.61 kPa  (prep 10s, FEA 138s)
+  hypervolume=3.323e+05  top_acq=8.404e+04  (811s)  -> stop=True NO_IMPROVEMENT: best metric improved < 1% for 5 rounds
+
+iterations run : 25
+best metric    : 330583
+stopped        : True  (NO_IMPROVEMENT: best metric improved < 1% for 5 rounds)
+
+===== CONFIRM: 5 Pareto designs on the full tile =====
+  [it018_1_full] FEA(full) ok  SEA=122.44 J/kg to 0.1 strain  stress=1054.11 kPa  (prep 84s, FEA 1517s)
+  [it020_1_full] FEA(full) ok  SEA=125.84 J/kg to 0.1 strain  stress=842.67 kPa  (prep 94s, FEA 1658s)
+  [it014_0_full] FEA(full) ok  SEA=119.63 J/kg to 0.1 strain  stress=810.18 kPa  (prep 79s, FEA 1173s)
+  [it020_0_full] FEA(full) ok  SEA=104.05 J/kg to 0.094 strain  stress=742.42 kPa  (prep 81s, FEA 6056s)
+  [it022_3_full] FEA(full) ok  SEA=127.68 J/kg to 0.1 strain  stress=852.6 kPa  (prep 158s, FEA 3415s)
+# Confirm report: 2x2x2 piece vs full tile
+
+Both at a fixed 10% crush. Offset = (piece - full) / full.
+
+| design | piece stress@10% kPa | full stress@10% kPa | offset | piece SEA@10% | full SEA@10% | offset | full status |
+|---|---|---|---|---|---|---|---|
+| it018_1 | 1047.9 | 1054.1 | -0.6% | 122.1 | 122.4 | -0.3% | ok |
+| it020_1 | 825.5 | 842.7 | -2.0% | 122.8 | 125.8 | -2.4% | ok |
+| it014_0 | 787.3 | 810.2 | -2.8% | 118.5 | 119.6 | -1.0% | ok |
+| it020_0 | 796.9 | nan | +nan% | 121.3 | nan | +nan% | ok |
+| it022_3 | 829.8 | 852.6 | -2.7% | 126.2 | 127.7 | -1.1% | ok |
+
+Mean stress offset -2.0% (range -2.8% to -0.6%); mean SEA offset -1.2%; n=4.
+
+Final screening hypervolume (fixed reference): 3.323e+05
+
+Results: runs\loop_2026-09-14\master_table.csv
+State:   runs\loop_2026-09-14\stop_state.json  (after a HARD_CAP stop: --resume --extra N)

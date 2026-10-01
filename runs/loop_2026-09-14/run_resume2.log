@@ -1,0 +1,39 @@
+
+===== SEED: 14 of 30 LHS designs to run =====
+  [seed016] FEA(piece) ok  SEA=349.32 J/kg  stress=1376.25 kPa  (prep 43s, FEA 63s)
+  [seed017] print rejected: rejected: unsupported_frac=0.087 > 0.05
+  [seed018] FEA(piece) ok  SEA=433.22 J/kg  stress=1238.24 kPa  (prep 29s, FEA 20s)
+  [seed019] FEA(piece) ok  SEA=298.54 J/kg  stress=1409.82 kPa  (prep 17s, FEA 16s)
+  [seed020] FEA(piece) ok  SEA=226.1 J/kg  stress=734.98 kPa  (prep 10s, FEA 76s)
+  [seed021] print rejected: rejected: unsupported_frac=0.059 > 0.05
+  [seed022] FEA(piece) ok  SEA=258.34 J/kg  stress=601.08 kPa  (prep 89s, FEA 560s)
+  [seed023] FEA(piece) ok  SEA=163.68 J/kg  stress=1132.2 kPa  (prep 59s, FEA 307s)
+  [seed024] print rejected: rejected: 4 disconnected bodies
+  [seed025] realize failed -> skip (generation failed: Surface level must be within volume data range.)
+  [seed026] FEA(piece) ok  SEA=93.63 J/kg  stress=460.57 kPa  (prep 15s, FEA 113s)
+  [seed027] FEA(piece) ok  SEA=79.14 J/kg  stress=597.49 kPa  (prep 44s, FEA 234s)
+  [seed028] print rejected: rejected: 7 disconnected bodies
+  [seed029] FEA(piece) ok  SEA=30.05 J/kg  stress=165.14 kPa  (prep 34s, FEA 240s)
+
+===== ITERATION 1 =====
+  GP on 12 designs x 24 features; top expected HV improvement 1.839e+04
+  [it001_0] realize failed -> skip (generation failed: Surface level must be within volume data range.)
+  [it001_1] print rejected: rejected: 2 disconnected bodies
+  [it001_2] print rejected: rejected: 3 disconnected bodies
+  [it001_3] print rejected: rejected: 17 disconnected bodies
+  [it001_4] print rejected: rejected: 12 disconnected bodies
+  [it001_5] FEA(piece) ok  SEA=89.45 J/kg  stress=220.29 kPa  (prep 4s, FEA 11s)
+  hypervolume=7.669e+04  top_acq=1.839e+04  (113s)  -> stop=False 
+
+===== ITERATION 2 =====
+  GP on 13 designs x 24 features; top expected HV improvement 1.152e+04
+  [it002_0] print rejected: rejected: 10 disconnected bodies
+  [it002_1] print rejected: rejected: 18 disconnected bodies
+  [it002_2] print rejected: rejected: 13 disconnected bodies
+  [it002_3] print rejected: rejected: unsupported_frac=0.145 > 0.05
+  [it002_4] FEA(piece) ok  SEA=222.76 J/kg  stress=529.44 kPa  (prep 37s, FEA 423s)
+  [it002_5] print rejected: rejected: 4 disconnected bodies
+  hypervolume=7.874e+04  top_acq=1.152e+04  (514s)  -> stop=False 
+
+[run_loop] PAUSE file found -> stopped cleanly before iteration 3.
+           Delete runs\loop_2026-09-14\PAUSE and re-run with --resume to continue.

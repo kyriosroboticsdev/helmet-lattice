@@ -1,0 +1,70 @@
+[run_loop] RESUMED at iter 2, cap 40
+
+===== SEED: 1 of 30 LHS designs to run =====
+  [seed025] realize rejected: generation failed: Surface level must be within volume data range.
+
+===== ITERATION 3 =====
+  GP on 14 designs x 24 features; top expected HV improvement 7649; feasibility model on 41 attempts (42% reached FEA), mean P(feasible) shortlist 0.69 vs pool 0.58
+  [it003_0] FEA(piece) ok  SEA=85.38 J/kg  stress=329.6 kPa  (prep 22s, FEA 107s)
+  [it003_1] FEA(piece) ok  SEA=10.38 J/kg  stress=131.63 kPa  (prep 32s, FEA 900s)
+  hypervolume=8.045e+04  top_acq=7649  (1086s)  -> stop=False 
+
+===== ITERATION 4 =====
+  GP on 15 designs x 24 features; top expected HV improvement 6979; feasibility model on 43 attempts (44% reached FEA), mean P(feasible) shortlist 0.76 vs pool 0.56
+  [it004_0] FEA(piece) ok  SEA=79.47 J/kg  stress=116.35 kPa  (prep 32s, FEA 332s)
+  [it004_1] realize rejected: generation failed: Surface level must be within volume data range.
+  [it004_2] realize rejected: generation failed: Surface level must be within volume data range.
+  [it004_3] FEA(piece) ok  SEA=94.87 J/kg  stress=345.56 kPa  (prep 9s, FEA 117s)
+  hypervolume=8.155e+04  top_acq=6979  (515s)  -> stop=False 
+
+===== ITERATION 5 =====
+  GP on 17 designs x 24 features; top expected HV improvement 3906; feasibility model on 47 attempts (45% reached FEA), mean P(feasible) shortlist 0.81 vs pool 0.56
+  [it005_0] FEA(piece) ok  SEA=129.4 J/kg  stress=176.12 kPa  (prep 9s, FEA 53s)
+  [it005_1] FEA(piece) ok  SEA=21.13 J/kg  stress=75.79 kPa  (prep 35s, FEA 476s)
+  hypervolume=8.359e+04  top_acq=3906  (597s)  -> stop=False 
+
+===== ITERATION 6 =====
+  GP on 18 designs x 24 features; top expected HV improvement 3820; feasibility model on 49 attempts (47% reached FEA), mean P(feasible) shortlist 0.75 vs pool 0.56
+  [it006_0] realize rejected: generation failed: Surface level must be within volume data range.
+  [it006_1] FEA(piece) ok  SEA=41.93 J/kg  stress=572.94 kPa  (prep 21s, FEA 54s)
+  [it006_2] FEA(piece) ok  SEA=108.85 J/kg  stress=912.05 kPa  (prep 8s, FEA 116s)
+  hypervolume=8.359e+04  top_acq=3820  (218s)  -> stop=False 
+
+===== ITERATION 7 =====
+  GP on 19 designs x 24 features; top expected HV improvement 6907; feasibility model on 52 attempts (48% reached FEA), mean P(feasible) shortlist 0.78 vs pool 0.54
+  [it007_0] FEA(piece) ok  SEA=194.74 J/kg  stress=1461.5 kPa  (prep 18s, FEA 93s)
+  [it007_1] print rejected: rejected: 2 disconnected bodies
+  [it007_2] print rejected: rejected: 2 disconnected bodies
+  [it007_3] FEA(piece) ok  SEA=147.28 J/kg  stress=385.49 kPa  (prep 5s, FEA 28s)
+  hypervolume=8.359e+04  top_acq=6907  (190s)  -> stop=False 
+
+===== ITERATION 8 =====
+  GP on 21 designs x 24 features; top expected HV improvement 7205; feasibility model on 56 attempts (48% reached FEA), mean P(feasible) shortlist 0.71 vs pool 0.56
+  [it008_0] realize rejected: generation failed: Surface level must be within volume data range.
+  [it008_1] FEA(piece) ok  SEA=112.22 J/kg  stress=195.23 kPa  (prep 7s, FEA 32s)
+  [it008_2] print rejected: rejected: unsupported_frac=0.155 > 0.05
+  [it008_3] FEA(piece) ok  SEA=4.83 J/kg  stress=25.9 kPa  (prep 48s, FEA 553s)
+  hypervolume=8.372e+04  top_acq=7205  (664s)  -> stop=False 
+
+===== ITERATION 9 =====
+  GP on 22 designs x 24 features; top expected HV improvement 3690; feasibility model on 60 attempts (48% reached FEA), mean P(feasible) shortlist 0.59 vs pool 0.54
+  [it009_0] realize rejected: generation failed: Surface level must be within volume data range.
+  [it009_1] print rejected: rejected: 8 disconnected bodies
+  [it009_2] FEA(piece) ok  SEA=98.05 J/kg  stress=270.89 kPa  (prep 62s, FEA 901s)
+  [it009_3] print rejected: rejected: 3 disconnected bodies
+  [it009_4] print rejected: rejected: unsupported_frac=0.052 > 0.05
+  [it009_5] FEA(piece) failed  SEA=nan J/kg  stress=None kPa  (prep 58s, FEA 8s)
+  hypervolume=8.496e+04  top_acq=3690  (1063s)  -> stop=False 
+
+===== ITERATION 10 =====
+  GP on 23 designs x 24 features; top expected HV improvement 3027; feasibility model on 66 attempts (47% reached FEA), mean P(feasible) shortlist 0.60 vs pool 0.54
+  [it010_0] realize rejected: generation failed: Surface level must be within volume data range.
+  [it010_1] FEA(piece) ok  SEA=56.77 J/kg  stress=534.87 kPa  (prep 44s, FEA 901s)
+  [it010_2] print rejected: rejected: unsupported_frac=0.115 > 0.05
+  [it010_3] print rejected: rejected: 16 disconnected bodies
+  [it010_4] print rejected: rejected: 8 disconnected bodies
+  [it010_5] print rejected: rejected: unsupported_frac=0.067 > 0.05; 2 disconnected bodies
+  hypervolume=8.496e+04  top_acq=3027  (972s)  -> stop=False 
+
+[run_loop] PAUSE file found -> stopped cleanly before iteration 11.
+           Delete runs\loop_2026-09-14\PAUSE and re-run with --resume to continue.
