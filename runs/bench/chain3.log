@@ -1,0 +1,2 @@
+[dynamic] loop_it027_1_sym_static: reached 0.054 in 72s  s5=157.63936995956206 s10=None kPa  elems=54768 ['*ERROR: increment size smaller than minimum']
+[dynamic] loop_it027_1_sym_dyn_base: reached 0.042 in 1034s  s5=None s10=None kPa  elems=54768 ['*ERROR: increment size smaller than minimum']

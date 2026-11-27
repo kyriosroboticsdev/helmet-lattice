@@ -1,0 +1,3854 @@
+
+************************************************************
+
+CalculiX Version 2.22, Copyright(C) 1998-2024 Guido Dhondt
+CalculiX comes with ABSOLUTELY NO WARRANTY. This is free
+software, and you are welcome to redistribute it under
+certain conditions, see gpl.htm
+
+************************************************************
+
+You are using an executable made on Mon Aug  5 19:15:25 CEST 2024
+
+  The numbers below are estimated upper bounds
+
+  number of:
+
+   nodes:           64
+   elements:          162
+   one-dimensional elements:            0
+   two-dimensional elements:            0
+   integration points per element:           27
+   degrees of freedom per node:            3
+   layers per element:            1
+
+   distributed facial loads:            0
+   distributed volumetric loads:            0
+   concentrated loads:            0
+   single point constraints:           35
+   multiple point constraints:            1
+   terms in all multiple point constraints:            1
+   tie constraints:            0
+   dependent nodes tied by cyclic constraints:            0
+   dependent nodes in pre-tension constraints:            0
+
+   sets:            6
+   terms in all sets:          422
+
+   materials:            1
+   constants per material and temperature:            2
+   temperature points per material:            1
+   plastic data points per material:            0
+
+   orientations:            0
+   amplitudes:            3
+   data points in all amplitudes:          166
+   print requests:            3
+   transformations:            0
+   property cards:            0
+
+ *INFO reading *HYPERELASTIC: nonlinear geometric
+       effects are turned on
+
+
+ STEP            1
+
+ *INFO reading *STEP: nonlinear geometric
+       effects are turned on
+
+ *INFO reading *DYNAMIC: for implicit calculations
+       the calculation of the internal energy
+       is activated.
+
+ Dynamic analysis was selected
+
+ Nonlinear material laws are taken into account
+
+ Newton-Raphson iterative procedure is active
+
+ Nonlinear geometric effects are taken into account
+
+ Decascading the MPC's
+
+ Determining the structure of the matrix:
+ Using up to 2 cpu(s) for setting up the structure of the matrix.
+ number of equations
+ 157
+ number of nonzero lower triangular matrix elements
+ 1949
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ increment 1 attempt 1 
+ increment size= 5.000000e-05
+ sum of previous increments=0.000000e+00
+ actual step time=5.000000e-05
+ actual total time=5.000000e-05
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000045
+ time avg. forc= 0.000045
+ largest residual force= 0.000000 in node 27 and dof 3
+ largest increment of disp= 1.573382e-05
+ largest correction to disp= 1.573382e-05 in node 3 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000045
+ time avg. forc= 0.000045
+ largest residual force= 0.000000 in node 22 and dof 2
+ largest increment of disp= 1.573382e-05
+ largest correction to disp= 1.315063e-10 in node 52 and dof 2
+
+ convergence
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.543638e-07
+ kinetic energy = 2.236363e-07
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 3.780000e-07
+
+ energy increase = 3.780000e-07
+
+ energy balance (absolute) = 3.780000e-07 
+ energy balance (relative) = 169.024483 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 2 attempt 1 
+ increment size= 5.000000e-05
+ sum of previous increments=5.000000e-05
+ actual step time=1.000000e-04
+ actual total time=1.000000e-04
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000064
+ time avg. forc= 0.000055
+ largest residual force= 0.000000 in node 27 and dof 3
+ largest increment of disp= 4.420445e-05
+ largest correction to disp= 1.957373e-05 in node 12 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000064
+ time avg. forc= 0.000055
+ largest residual force= 0.000000 in node 10 and dof 2
+ largest increment of disp= 4.420445e-05
+ largest correction to disp= 2.744274e-10 in node 52 and dof 1
+
+ convergence; the increment size is increased to 7.500000e-05
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 5.251728e-07
+ kinetic energy = 8.317859e-08
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 6.083514e-07
+
+ energy increase = 6.083514e-07
+
+ energy balance (absolute) = 6.083514e-07 
+ energy balance (relative) = 162.485050 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 3 attempt 1 
+ increment size= 7.500000e-05
+ sum of previous increments=1.000000e-04
+ actual step time=1.750000e-04
+ actual total time=1.750000e-04
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000113
+ time avg. forc= 0.000074
+ largest residual force= 0.000000 in node 35 and dof 3
+ largest increment of disp= 5.471516e-05
+ largest correction to disp= 5.471516e-05 in node 36 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000113
+ time avg. forc= 0.000074
+ largest residual force= 0.000000 in node 26 and dof 1
+ largest increment of disp= 5.471516e-05
+ largest correction to disp= 1.523020e-09 in node 3 and dof 3
+
+ convergence; the increment size is increased to 1.125000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.571398e-06
+ kinetic energy = 1.206269e-07
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.692025e-06
+
+ energy increase = 1.692025e-06
+
+ energy balance (absolute) = 1.692025e-06 
+ energy balance (relative) = 218.776809 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 4 attempt 1 
+ increment size= 1.125000e-04
+ sum of previous increments=1.750000e-04
+ actual step time=2.875000e-04
+ actual total time=2.875000e-04
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000293
+ time avg. forc= 0.000129
+ largest residual force= 0.000000 in node 22 and dof 3
+ largest increment of disp= 1.359653e-04
+ largest correction to disp= 1.186203e-04 in node 2 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000293
+ time avg. forc= 0.000129
+ largest residual force= 0.000000 in node 42 and dof 1
+ largest increment of disp= 1.359653e-04
+ largest correction to disp= 2.701448e-09 in node 3 and dof 3
+
+ convergence; the increment size is increased to 1.687500e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.285082e-05
+ kinetic energy = 1.574349e-06
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.442517e-05
+
+ energy increase = 1.442517e-05
+
+ energy balance (absolute) = 1.442517e-05 
+ energy balance (relative) = 380.334660 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 5 attempt 1 
+ increment size= 1.687500e-04
+ sum of previous increments=2.875000e-04
+ actual step time=4.562500e-04
+ actual total time=4.562500e-04
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000887
+ time avg. forc= 0.000281
+ largest residual force= 0.000002 in node 11 and dof 3
+ largest increment of disp= 4.942945e-04
+ largest correction to disp= 2.095585e-04 in node 52 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.000887
+ time avg. forc= 0.000281
+ largest residual force= 0.000000 in node 38 and dof 2
+ largest increment of disp= 4.942945e-04
+ largest correction to disp= 2.531135e-08 in node 3 and dof 3
+
+ convergence; the increment size is increased to 2.531250e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.351697e-04
+ kinetic energy = 6.777991e-06
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.419477e-04
+
+ energy increase = 1.419477e-04
+
+ energy balance (absolute) = 1.419477e-04 
+ energy balance (relative) = 472.086629 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 6 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=4.562500e-04
+ actual step time=6.562500e-04
+ actual total time=6.562500e-04
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.002512
+ time avg. forc= 0.000652
+ largest residual force= 0.000010 in node 23 and dof 3
+ largest increment of disp= 8.085290e-04
+ largest correction to disp= 5.486352e-04 in node 15 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.002512
+ time avg. forc= 0.000652
+ largest residual force= 0.000000 in node 39 and dof 3
+ largest increment of disp= 8.085290e-04
+ largest correction to disp= 2.131128e-07 in node 64 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.085978e-03
+ kinetic energy = 3.452878e-05
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.120507e-03
+
+ energy increase = 1.120507e-03
+
+ energy balance (absolute) = 1.120507e-03 
+ energy balance (relative) = 543.795088 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 7 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=6.562500e-04
+ actual step time=8.562500e-04
+ actual total time=8.562500e-04
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.005150
+ time avg. forc= 0.001295
+ largest residual force= 0.000002 in node 22 and dof 3
+ largest increment of disp= 2.142567e-03
+ largest correction to disp= 2.695822e-04 in node 32 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.005150
+ time avg. forc= 0.001295
+ largest residual force= 0.000000 in node 26 and dof 2
+ largest increment of disp= 2.142567e-03
+ largest correction to disp= 3.364076e-08 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 4.712792e-03
+ kinetic energy = 7.477960e-05
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 4.787572e-03
+
+ energy increase = 4.787572e-03
+
+ energy balance (absolute) = 4.787572e-03 
+ energy balance (relative) = 563.327912 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 8 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=8.562500e-04
+ actual step time=1.056250e-03
+ actual total time=1.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.009068
+ time avg. forc= 0.002267
+ largest residual force= 0.000035 in node 23 and dof 3
+ largest increment of disp= 2.471805e-03
+ largest correction to disp= 6.876156e-04 in node 15 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.009069
+ time avg. forc= 0.002267
+ largest residual force= 0.000000 in node 31 and dof 2
+ largest increment of disp= 2.471805e-03
+ largest correction to disp= 6.451122e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.471233e-02
+ kinetic energy = 1.647813e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.487711e-02
+
+ energy increase = 1.487711e-02
+
+ energy balance (absolute) = 1.487711e-02 
+ energy balance (relative) = 576.033815 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 9 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=1.056250e-03
+ actual step time=1.256250e-03
+ actual total time=1.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.014326
+ time avg. forc= 0.003607
+ largest residual force= 0.000003 in node 22 and dof 3
+ largest increment of disp= 4.098952e-03
+ largest correction to disp= 3.752050e-04 in node 32 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.014326
+ time avg. forc= 0.003607
+ largest residual force= 0.000000 in node 23 and dof 1
+ largest increment of disp= 4.098952e-03
+ largest correction to disp= 8.101572e-08 in node 56 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 3.732051e-02
+ kinetic energy = 2.843740e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 3.760488e-02
+
+ energy increase = 3.760488e-02
+
+ energy balance (absolute) = 3.760488e-02 
+ energy balance (relative) = 583.705692 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 10 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=1.256250e-03
+ actual step time=1.456250e-03
+ actual total time=1.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.021719
+ time avg. forc= 0.005418
+ largest residual force= 0.000096 in node 23 and dof 3
+ largest increment of disp= 4.749236e-03
+ largest correction to disp= 1.062078e-03 in node 15 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.021722
+ time avg. forc= 0.005418
+ largest residual force= 0.000000 in node 31 and dof 2
+ largest increment of disp= 4.749236e-03
+ largest correction to disp= 1.715555e-06 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 8.601727e-02
+ kinetic energy = 5.952705e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 8.661254e-02
+
+ energy increase = 8.661254e-02
+
+ energy balance (absolute) = 8.661254e-02 
+ energy balance (relative) = 601.479245 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 11 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=1.456250e-03
+ actual step time=1.656250e-03
+ actual total time=1.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.030835
+ time avg. forc= 0.007729
+ largest residual force= 0.000036 in node 23 and dof 3
+ largest increment of disp= 7.508098e-03
+ largest correction to disp= 6.526016e-04 in node 16 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.030834
+ time avg. forc= 0.007729
+ largest residual force= 0.000000 in node 35 and dof 2
+ largest increment of disp= 7.508098e-03
+ largest correction to disp= 6.522508e-07 in node 16 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.748868e-01
+ kinetic energy = 7.649247e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.756518e-01
+
+ energy increase = 1.756518e-01
+
+ energy balance (absolute) = 1.756518e-01 
+ energy balance (relative) = 605.912166 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 12 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=1.656250e-03
+ actual step time=1.856250e-03
+ actual total time=1.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.041852
+ time avg. forc= 0.010572
+ largest residual force= 0.000156 in node 23 and dof 3
+ largest increment of disp= 7.245067e-03
+ largest correction to disp= 1.283485e-03 in node 3 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.041857
+ time avg. forc= 0.010573
+ largest residual force= 0.000000 in node 23 and dof 3
+ largest increment of disp= 7.245067e-03
+ largest correction to disp= 1.953012e-06 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 3.224535e-01
+ kinetic energy = 1.197050e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 3.236506e-01
+
+ energy increase = 3.236506e-01
+
+ energy balance (absolute) = 3.236506e-01 
+ energy balance (relative) = 605.577315 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 13 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=1.856250e-03
+ actual step time=2.056250e-03
+ actual total time=2.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.054646
+ time avg. forc= 0.013963
+ largest residual force= 0.000052 in node 23 and dof 3
+ largest increment of disp= 1.032607e-02
+ largest correction to disp= 7.693580e-04 in node 16 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.054646
+ time avg. forc= 0.013963
+ largest residual force= 0.000000 in node 36 and dof 2
+ largest increment of disp= 1.032607e-02
+ largest correction to disp= 7.847982e-07 in node 16 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 5.518927e-01
+ kinetic energy = 1.472446e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 5.533651e-01
+
+ energy increase = 5.533651e-01
+
+ energy balance (absolute) = 5.533651e-01 
+ energy balance (relative) = 602.878980 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 14 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=2.056250e-03
+ actual step time=2.256250e-03
+ actual total time=2.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.069500
+ time avg. forc= 0.017930
+ largest residual force= 0.000171 in node 39 and dof 3
+ largest increment of disp= 1.015356e-02
+ largest correction to disp= 1.210463e-03 in node 63 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.069505
+ time avg. forc= 0.017930
+ largest residual force= 0.000000 in node 23 and dof 3
+ largest increment of disp= 1.015356e-02
+ largest correction to disp= 2.062167e-06 in node 16 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 8.907074e-01
+ kinetic energy = 2.006884e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 8.927143e-01
+
+ energy increase = 8.927143e-01
+
+ energy balance (absolute) = 8.927143e-01 
+ energy balance (relative) = 599.729471 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 15 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=2.256250e-03
+ actual step time=2.456250e-03
+ actual total time=2.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.086815
+ time avg. forc= 0.022523
+ largest residual force= 0.000016 in node 11 and dof 3
+ largest increment of disp= 1.304191e-02
+ largest correction to disp= 8.508105e-04 in node 12 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.086815
+ time avg. forc= 0.022523
+ largest residual force= 0.000000 in node 22 and dof 3
+ largest increment of disp= 1.304191e-02
+ largest correction to disp= 2.361557e-07 in node 48 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.387794e+00
+ kinetic energy = 2.693160e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.390487e+00
+
+ energy increase = 1.390487e+00
+
+ energy balance (absolute) = 1.390487e+00 
+ energy balance (relative) = 600.774854 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 16 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=2.456250e-03
+ actual step time=2.656250e-03
+ actual total time=2.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.106183
+ time avg. forc= 0.027751
+ largest residual force= 0.000053 in node 35 and dof 3
+ largest increment of disp= 1.437979e-02
+ largest correction to disp= 9.031007e-04 in node 36 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.106184
+ time avg. forc= 0.027751
+ largest residual force= 0.000000 in node 12 and dof 1
+ largest increment of disp= 1.437979e-02
+ largest correction to disp= 7.254617e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 2.070190e+00
+ kinetic energy = 3.104118e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 2.073294e+00
+
+ energy increase = 2.073294e+00
+
+ energy balance (absolute) = 2.073294e+00 
+ energy balance (relative) = 598.577556 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 17 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=2.656250e-03
+ actual step time=2.856250e-03
+ actual total time=2.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.127468
+ time avg. forc= 0.033617
+ largest residual force= 0.000036 in node 42 and dof 3
+ largest increment of disp= 1.532943e-02
+ largest correction to disp= 1.012336e-03 in node 2 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.127467
+ time avg. forc= 0.033617
+ largest residual force= 0.000000 in node 35 and dof 2
+ largest increment of disp= 1.532943e-02
+ largest correction to disp= 3.900432e-07 in node 56 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 2.973554e+00
+ kinetic energy = 3.831552e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 2.977385e+00
+
+ energy increase = 2.977385e+00
+
+ energy balance (absolute) = 2.977385e+00 
+ energy balance (relative) = 594.394767 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 18 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=2.856250e-03
+ actual step time=3.056250e-03
+ actual total time=3.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.150564
+ time avg. forc= 0.040114
+ largest residual force= 0.000016 in node 22 and dof 3
+ largest increment of disp= 1.759662e-02
+ largest correction to disp= 7.428982e-04 in node 52 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.150564
+ time avg. forc= 0.040114
+ largest residual force= 0.000000 in node 28 and dof 1
+ largest increment of disp= 1.759662e-02
+ largest correction to disp= 2.213299e-07 in node 56 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 4.137292e+00
+ kinetic energy = 4.327820e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 4.141620e+00
+
+ energy increase = 4.141620e+00
+
+ energy balance (absolute) = 4.141620e+00 
+ energy balance (relative) = 589.192455 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 19 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=3.056250e-03
+ actual step time=3.256250e-03
+ actual total time=3.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.175538
+ time avg. forc= 0.047242
+ largest residual force= 0.000030 in node 7 and dof 1
+ largest increment of disp= 1.781134e-02
+ largest correction to disp= 1.090067e-03 in node 15 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.175538
+ time avg. forc= 0.047242
+ largest residual force= 0.000000 in node 31 and dof 2
+ largest increment of disp= 1.781134e-02
+ largest correction to disp= 7.314546e-07 in node 64 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 5.601761e+00
+ kinetic energy = 5.059653e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 5.606821e+00
+
+ energy increase = 5.606821e+00
+
+ energy balance (absolute) = 5.606821e+00 
+ energy balance (relative) = 583.578925 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 20 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=3.256250e-03
+ actual step time=3.456250e-03
+ actual total time=3.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.202590
+ time avg. forc= 0.055009
+ largest residual force= 0.000011 in node 22 and dof 3
+ largest increment of disp= 2.020389e-02
+ largest correction to disp= 4.383550e-04 in node 32 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.202591
+ time avg. forc= 0.055009
+ largest residual force= 0.000000 in node 28 and dof 1
+ largest increment of disp= 2.020389e-02
+ largest correction to disp= 1.058501e-07 in node 16 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 7.436719e+00
+ kinetic energy = 5.967558e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 7.442687e+00
+
+ energy increase = 7.442687e+00
+
+ energy balance (absolute) = 7.442687e+00 
+ energy balance (relative) = 579.394681 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 21 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=3.456250e-03
+ actual step time=3.656250e-03
+ actual total time=3.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.231303
+ time avg. forc= 0.063404
+ largest residual force= 0.000011 in node 22 and dof 3
+ largest increment of disp= 2.114761e-02
+ largest correction to disp= 4.825468e-04 in node 64 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.231303
+ time avg. forc= 0.063404
+ largest residual force= 0.000000 in node 55 and dof 1
+ largest increment of disp= 2.114761e-02
+ largest correction to disp= 2.313437e-07 in node 16 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 9.655371e+00
+ kinetic energy = 6.291064e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 9.661662e+00
+
+ energy increase = 9.661662e+00
+
+ energy balance (absolute) = 9.661662e+00 
+ energy balance (relative) = 574.014992 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 22 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=3.656250e-03
+ actual step time=3.856250e-03
+ actual total time=3.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.261498
+ time avg. forc= 0.072408
+ largest residual force= 0.000027 in node 23 and dof 3
+ largest increment of disp= 2.174638e-02
+ largest correction to disp= 7.663568e-04 in node 39 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.261498
+ time avg. forc= 0.072408
+ largest residual force= 0.000000 in node 43 and dof 3
+ largest increment of disp= 2.174638e-02
+ largest correction to disp= 2.250244e-07 in node 16 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.228590e+01
+ kinetic energy = 7.058484e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.229295e+01
+
+ energy increase = 1.229295e+01
+
+ energy balance (absolute) = 1.229295e+01 
+ energy balance (relative) = 567.773880 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 23 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=3.856250e-03
+ actual step time=4.056250e-03
+ actual total time=4.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.293046
+ time avg. forc= 0.082001
+ largest residual force= 0.000014 in node 43 and dof 3
+ largest increment of disp= 2.328798e-02
+ largest correction to disp= 4.577475e-04 in node 39 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.293046
+ time avg. forc= 0.082001
+ largest residual force= 0.000000 in node 23 and dof 3
+ largest increment of disp= 2.328798e-02
+ largest correction to disp= 5.294161e-08 in node 16 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.535667e+01
+ kinetic energy = 7.290498e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.536396e+01
+
+ energy increase = 1.536396e+01
+
+ energy balance (absolute) = 1.536396e+01 
+ energy balance (relative) = 561.002786 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 24 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=4.056250e-03
+ actual step time=4.256250e-03
+ actual total time=4.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.325896
+ time avg. forc= 0.092164
+ largest residual force= 0.000023 in node 11 and dof 1
+ largest increment of disp= 2.301722e-02
+ largest correction to disp= 8.355299e-04 in node 39 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.325896
+ time avg. forc= 0.092164
+ largest residual force= 0.000000 in node 39 and dof 3
+ largest increment of disp= 2.301722e-02
+ largest correction to disp= 3.057237e-07 in node 16 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.889124e+01
+ kinetic energy = 7.919860e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.889916e+01
+
+ energy increase = 1.889916e+01
+
+ energy balance (absolute) = 1.889916e+01 
+ energy balance (relative) = 553.953880 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 25 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=4.256250e-03
+ actual step time=4.456250e-03
+ actual total time=4.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.359939
+ time avg. forc= 0.102875
+ largest residual force= 0.000007 in node 23 and dof 3
+ largest increment of disp= 2.460549e-02
+ largest correction to disp= 3.992813e-04 in node 13 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.359939
+ time avg. forc= 0.102875
+ largest residual force= 0.000000 in node 42 and dof 2
+ largest increment of disp= 2.460549e-02
+ largest correction to disp= 7.860484e-08 in node 52 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 2.292613e+01
+ kinetic energy = 8.284918e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 2.293442e+01
+
+ energy increase = 2.293442e+01
+
+ energy balance (absolute) = 2.293442e+01 
+ energy balance (relative) = 547.065455 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 26 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=4.456250e-03
+ actual step time=4.656250e-03
+ actual total time=4.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.394858
+ time avg. forc= 0.114105
+ largest residual force= 0.000006 in node 11 and dof 1
+ largest increment of disp= 2.438611e-02
+ largest correction to disp= 3.632412e-04 in node 31 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.394858
+ time avg. forc= 0.114105
+ largest residual force= 0.000000 in node 15 and dof 2
+ largest increment of disp= 2.438611e-02
+ largest correction to disp= 1.677536e-07 in node 16 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 2.743781e+01
+ kinetic energy = 8.440371e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 2.744625e+01
+
+ energy increase = 2.744625e+01
+
+ energy balance (absolute) = 2.744625e+01 
+ energy balance (relative) = 539.609007 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 27 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=4.656250e-03
+ actual step time=4.856250e-03
+ actual total time=4.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.430401
+ time avg. forc= 0.125819
+ largest residual force= 0.000002 in node 26 and dof 3
+ largest increment of disp= 2.495259e-02
+ largest correction to disp= 2.656663e-04 in node 16 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.430401
+ time avg. forc= 0.125819
+ largest residual force= 0.000000 in node 42 and dof 2
+ largest increment of disp= 2.495259e-02
+ largest correction to disp= 3.050416e-08 in node 16 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 3.241888e+01
+ kinetic energy = 8.647201e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 3.242753e+01
+
+ energy increase = 3.242753e+01
+
+ energy balance (absolute) = 3.242753e+01 
+ energy balance (relative) = 531.717453 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 28 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=4.856250e-03
+ actual step time=5.056250e-03
+ actual total time=5.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.466397
+ time avg. forc= 0.137983
+ largest residual force= 0.000005 in node 26 and dof 3
+ largest increment of disp= 2.524348e-02
+ largest correction to disp= 3.645158e-04 in node 16 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.466397
+ time avg. forc= 0.137983
+ largest residual force= 0.000000 in node 39 and dof 1
+ largest increment of disp= 2.524348e-02
+ largest correction to disp= 3.837856e-08 in node 16 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 3.785737e+01
+ kinetic energy = 8.642993e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 3.786601e+01
+
+ energy increase = 3.786601e+01
+
+ energy balance (absolute) = 3.786601e+01 
+ energy balance (relative) = 523.526096 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 29 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=5.056250e-03
+ actual step time=5.256250e-03
+ actual total time=5.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.502694
+ time avg. forc= 0.150559
+ largest residual force= 0.000007 in node 26 and dof 3
+ largest increment of disp= 2.498859e-02
+ largest correction to disp= 3.596942e-04 in node 43 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.502694
+ time avg. forc= 0.150559
+ largest residual force= 0.000000 in node 38 and dof 2
+ largest increment of disp= 2.498859e-02
+ largest correction to disp= 1.654416e-08 in node 48 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 4.373269e+01
+ kinetic energy = 8.711603e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 4.374140e+01
+
+ energy increase = 4.374140e+01
+
+ energy balance (absolute) = 4.374140e+01 
+ energy balance (relative) = 515.120215 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 30 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=5.256250e-03
+ actual step time=5.456250e-03
+ actual total time=5.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.538981
+ time avg. forc= 0.163507
+ largest residual force= 0.000012 in node 22 and dof 3
+ largest increment of disp= 2.535525e-02
+ largest correction to disp= 6.122686e-04 in node 43 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.538981
+ time avg. forc= 0.163507
+ largest residual force= 0.000000 in node 23 and dof 3
+ largest increment of disp= 2.535525e-02
+ largest correction to disp= 4.402872e-08 in node 3 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 4.998701e+01
+ kinetic energy = 8.419543e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 4.999543e+01
+
+ energy increase = 4.999543e+01
+
+ energy balance (absolute) = 4.999543e+01 
+ energy balance (relative) = 506.299344 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 31 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=5.456250e-03
+ actual step time=5.656250e-03
+ actual total time=5.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.575035
+ time avg. forc= 0.176782
+ largest residual force= 0.000006 in node 22 and dof 3
+ largest increment of disp= 2.429898e-02
+ largest correction to disp= 4.079287e-04 in node 13 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.575035
+ time avg. forc= 0.176782
+ largest residual force= 0.000000 in node 22 and dof 3
+ largest increment of disp= 2.429898e-02
+ largest correction to disp= 3.232475e-08 in node 60 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 5.657076e+01
+ kinetic energy = 8.152193e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 5.657891e+01
+
+ energy increase = 5.657891e+01
+
+ energy balance (absolute) = 5.657891e+01 
+ energy balance (relative) = 497.134713 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 32 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=5.656250e-03
+ actual step time=5.856250e-03
+ actual total time=5.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.610609
+ time avg. forc= 0.190339
+ largest residual force= 0.000010 in node 55 and dof 1
+ largest increment of disp= 2.445849e-02
+ largest correction to disp= 6.089041e-04 in node 43 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.610609
+ time avg. forc= 0.190339
+ largest residual force= 0.000000 in node 31 and dof 2
+ largest increment of disp= 2.445849e-02
+ largest correction to disp= 2.228704e-07 in node 64 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 6.343435e+01
+ kinetic energy = 7.735185e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 6.344209e+01
+
+ energy increase = 6.344209e+01
+
+ energy balance (absolute) = 6.344209e+01 
+ energy balance (relative) = 487.728330 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 33 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=5.856250e-03
+ actual step time=6.056250e-03
+ actual total time=6.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.645549
+ time avg. forc= 0.204133
+ largest residual force= 0.000000 in node 27 and dof 1
+ largest increment of disp= 2.325567e-02
+ largest correction to disp= 2.772589e-04 in node 52 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.645549
+ time avg. forc= 0.204133
+ largest residual force= 0.000000 in node 42 and dof 2
+ largest increment of disp= 2.325567e-02
+ largest correction to disp= 1.343990e-08 in node 56 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 7.051911e+01
+ kinetic energy = 7.310561e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 7.052642e+01
+
+ energy increase = 7.052642e+01
+
+ energy balance (absolute) = 7.052642e+01 
+ energy balance (relative) = 478.130936 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 34 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=6.056250e-03
+ actual step time=6.256250e-03
+ actual total time=6.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.679659
+ time avg. forc= 0.218119
+ largest residual force= 0.000017 in node 27 and dof 3
+ largest increment of disp= 2.295717e-02
+ largest correction to disp= 4.570726e-04 in node 43 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.679659
+ time avg. forc= 0.218119
+ largest residual force= 0.000000 in node 31 and dof 2
+ largest increment of disp= 2.295717e-02
+ largest correction to disp= 3.708993e-07 in node 64 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 7.775974e+01
+ kinetic energy = 6.850340e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 7.776660e+01
+
+ energy increase = 7.776660e+01
+
+ energy balance (absolute) = 7.776660e+01 
+ energy balance (relative) = 468.370330 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 35 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=6.256250e-03
+ actual step time=6.456250e-03
+ actual total time=6.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.712357
+ time avg. forc= 0.232240
+ largest residual force= 0.000007 in node 42 and dof 3
+ largest increment of disp= 2.185417e-02
+ largest correction to disp= 4.826005e-04 in node 63 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.712357
+ time avg. forc= 0.232240
+ largest residual force= 0.000000 in node 11 and dof 1
+ largest increment of disp= 2.185417e-02
+ largest correction to disp= 2.046566e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 8.498207e+01
+ kinetic energy = 5.973719e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 8.498805e+01
+
+ energy increase = 8.498805e+01
+
+ energy balance (absolute) = 8.498805e+01 
+ energy balance (relative) = 457.975749 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 36 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=6.456250e-03
+ actual step time=6.656250e-03
+ actual total time=6.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.743602
+ time avg. forc= 0.246445
+ largest residual force= 0.000003 in node 22 and dof 3
+ largest increment of disp= 2.031358e-02
+ largest correction to disp= 3.514606e-04 in node 13 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.743602
+ time avg. forc= 0.246445
+ largest residual force= 0.000000 in node 26 and dof 1
+ largest increment of disp= 2.031358e-02
+ largest correction to disp= 4.570463e-08 in node 64 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 9.215917e+01
+ kinetic energy = 5.571645e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 9.216474e+01
+
+ energy increase = 9.216474e+01
+
+ energy balance (absolute) = 9.216474e+01 
+ energy balance (relative) = 447.362136 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 37 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=6.656250e-03
+ actual step time=6.856250e-03
+ actual total time=6.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.773352
+ time avg. forc= 0.260685
+ largest residual force= 0.000025 in node 59 and dof 1
+ largest increment of disp= 2.001994e-02
+ largest correction to disp= 8.112341e-04 in node 43 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.773352
+ time avg. forc= 0.260685
+ largest residual force= 0.000000 in node 35 and dof 3
+ largest increment of disp= 2.001994e-02
+ largest correction to disp= 5.652661e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 9.922689e+01
+ kinetic energy = 4.795328e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 9.923169e+01
+
+ energy increase = 9.923169e+01
+
+ energy balance (absolute) = 9.923169e+01 
+ energy balance (relative) = 436.628085 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 38 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=6.856250e-03
+ actual step time=7.056250e-03
+ actual total time=7.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.801468
+ time avg. forc= 0.274917
+ largest residual force= 0.000003 in node 42 and dof 3
+ largest increment of disp= 1.784640e-02
+ largest correction to disp= 3.148936e-04 in node 13 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.801468
+ time avg. forc= 0.274917
+ largest residual force= 0.000000 in node 47 and dof 2
+ largest increment of disp= 1.784640e-02
+ largest correction to disp= 7.653116e-08 in node 64 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.061087e+02
+ kinetic energy = 4.340431e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.061130e+02
+
+ energy increase = 1.061130e+02
+
+ energy balance (absolute) = 1.061130e+02 
+ energy balance (relative) = 425.796125 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 39 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=7.056250e-03
+ actual step time=7.256250e-03
+ actual total time=7.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.827815
+ time avg. forc= 0.289093
+ largest residual force= 0.000039 in node 20 and dof 2
+ largest increment of disp= 1.765865e-02
+ largest correction to disp= 9.013023e-04 in node 63 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.827815
+ time avg. forc= 0.289093
+ largest residual force= 0.000000 in node 15 and dof 2
+ largest increment of disp= 1.765865e-02
+ largest correction to disp= 1.061344e-06 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.127287e+02
+ kinetic energy = 3.637308e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.127323e+02
+
+ energy increase = 1.127323e+02
+
+ energy balance (absolute) = 1.127323e+02 
+ energy balance (relative) = 414.875722 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 40 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=7.256250e-03
+ actual step time=7.456250e-03
+ actual total time=7.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.851570
+ time avg. forc= 0.303155
+ largest residual force= 0.000006 in node 35 and dof 2
+ largest increment of disp= 1.536235e-02
+ largest correction to disp= 5.152718e-04 in node 61 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.851570
+ time avg. forc= 0.303155
+ largest residual force= 0.000000 in node 31 and dof 2
+ largest increment of disp= 1.536235e-02
+ largest correction to disp= 2.747626e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.188436e+02
+ kinetic energy = 2.787943e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.188464e+02
+
+ energy increase = 1.188464e+02
+
+ energy balance (absolute) = 1.188464e+02 
+ energy balance (relative) = 403.356832 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 41 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=7.456250e-03
+ actual step time=7.656250e-03
+ actual total time=7.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.873059
+ time avg. forc= 0.317055
+ largest residual force= 0.000006 in node 23 and dof 3
+ largest increment of disp= 1.374618e-02
+ largest correction to disp= 5.046362e-04 in node 64 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.873059
+ time avg. forc= 0.317055
+ largest residual force= 0.000000 in node 11 and dof 1
+ largest increment of disp= 1.374618e-02
+ largest correction to disp= 2.827897e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.245105e+02
+ kinetic energy = 2.390666e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.245129e+02
+
+ energy increase = 1.245129e+02
+
+ energy balance (absolute) = 1.245129e+02 
+ energy balance (relative) = 391.765271 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 42 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=7.656250e-03
+ actual step time=7.856250e-03
+ actual total time=7.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.892364
+ time avg. forc= 0.330753
+ largest residual force= 0.000033 in node 55 and dof 1
+ largest increment of disp= 1.307776e-02
+ largest correction to disp= 9.492268e-04 in node 23 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.892364
+ time avg. forc= 0.330753
+ largest residual force= 0.000000 in node 59 and dof 1
+ largest increment of disp= 1.307776e-02
+ largest correction to disp= 9.771544e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.296998e+02
+ kinetic energy = 1.760428e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.297015e+02
+
+ energy increase = 1.297015e+02
+
+ energy balance (absolute) = 1.297015e+02 
+ energy balance (relative) = 380.201480 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 43 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=7.856250e-03
+ actual step time=8.056250e-03
+ actual total time=8.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.909443
+ time avg. forc= 0.344211
+ largest residual force= 0.000004 in node 22 and dof 3
+ largest increment of disp= 1.050437e-02
+ largest correction to disp= 4.925129e-04 in node 13 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.909443
+ time avg. forc= 0.344211
+ largest residual force= 0.000000 in node 46 and dof 2
+ largest increment of disp= 1.050437e-02
+ largest correction to disp= 1.068092e-07 in node 64 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.343673e+02
+ kinetic energy = 1.441089e-03
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.343687e+02
+
+ energy increase = 1.343687e+02
+
+ energy balance (absolute) = 1.343687e+02 
+ energy balance (relative) = 368.685326 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 44 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=8.056250e-03
+ actual step time=8.256250e-03
+ actual total time=8.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.924300
+ time avg. forc= 0.357395
+ largest residual force= 0.000053 in node 48 and dof 2
+ largest increment of disp= 1.036173e-02
+ largest correction to disp= 1.098460e-03 in node 31 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.924300
+ time avg. forc= 0.357395
+ largest residual force= 0.000000 in node 35 and dof 3
+ largest increment of disp= 1.036173e-02
+ largest correction to disp= 1.212429e-06 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.384779e+02
+ kinetic energy = 9.876762e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.384789e+02
+
+ energy increase = 1.384789e+02
+
+ energy balance (absolute) = 1.384789e+02 
+ energy balance (relative) = 357.233131 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 45 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=8.256250e-03
+ actual step time=8.456250e-03
+ actual total time=8.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.936240
+ time avg. forc= 0.370258
+ largest residual force= 0.000001 in node 31 and dof 2
+ largest increment of disp= 7.548272e-03
+ largest correction to disp= 3.395565e-04 in node 29 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.936240
+ time avg. forc= 0.370258
+ largest residual force= 0.000000 in node 11 and dof 1
+ largest increment of disp= 7.548272e-03
+ largest correction to disp= 8.929143e-08 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.418284e+02
+ kinetic energy = 5.829886e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.418290e+02
+
+ energy increase = 1.418290e+02
+
+ energy balance (absolute) = 1.418290e+02 
+ energy balance (relative) = 345.464313 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 46 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=8.456250e-03
+ actual step time=8.656250e-03
+ actual total time=8.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.945941
+ time avg. forc= 0.382773
+ largest residual force= 0.000011 in node 23 and dof 3
+ largest increment of disp= 6.382932e-03
+ largest correction to disp= 4.082122e-04 in node 16 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.945941
+ time avg. forc= 0.382773
+ largest residual force= 0.000000 in node 11 and dof 1
+ largest increment of disp= 6.382932e-03
+ largest correction to disp= 2.937892e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.445820e+02
+ kinetic energy = 4.394637e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.445825e+02
+
+ energy increase = 1.445825e+02
+
+ energy balance (absolute) = 1.445825e+02 
+ energy balance (relative) = 333.868599 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 47 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=8.656250e-03
+ actual step time=8.856250e-03
+ actual total time=8.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.953681
+ time avg. forc= 0.394920
+ largest residual force= 0.000018 in node 31 and dof 2
+ largest increment of disp= 5.494593e-03
+ largest correction to disp= 7.182597e-04 in node 43 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.953681
+ time avg. forc= 0.394920
+ largest residual force= 0.000000 in node 22 and dof 3
+ largest increment of disp= 5.494593e-03
+ largest correction to disp= 4.366638e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.467803e+02
+ kinetic energy = 2.255134e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.467805e+02
+
+ energy increase = 1.467805e+02
+
+ energy balance (absolute) = 1.467805e+02 
+ energy balance (relative) = 322.546258 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 48 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=8.856250e-03
+ actual step time=9.056250e-03
+ actual total time=9.056250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.959544
+ time avg. forc= 0.406683
+ largest residual force= 0.000006 in node 22 and dof 3
+ largest increment of disp= 3.785625e-03
+ largest correction to disp= 4.568673e-04 in node 13 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.959544
+ time avg. forc= 0.406683
+ largest residual force= 0.000000 in node 39 and dof 1
+ largest increment of disp= 3.785625e-03
+ largest correction to disp= 6.636084e-08 in node 15 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.484501e+02
+ kinetic energy = 1.510194e-04
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.484502e+02
+
+ energy increase = 1.484502e+02
+
+ energy balance (absolute) = 1.484502e+02 
+ energy balance (relative) = 311.533473 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 49 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=9.056250e-03
+ actual step time=9.256250e-03
+ actual total time=9.256250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.963678
+ time avg. forc= 0.418050
+ largest residual force= 0.000032 in node 31 and dof 2
+ largest increment of disp= 3.469419e-03
+ largest correction to disp= 9.094183e-04 in node 43 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.963678
+ time avg. forc= 0.418050
+ largest residual force= 0.000000 in node 22 and dof 3
+ largest increment of disp= 3.469419e-03
+ largest correction to disp= 7.449348e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.496296e+02
+ kinetic energy = 4.899158e-05
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.496297e+02
+
+ energy increase = 1.496297e+02
+
+ energy balance (absolute) = 1.496297e+02 
+ energy balance (relative) = 300.868106 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 50 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=9.256250e-03
+ actual step time=9.456250e-03
+ actual total time=9.456250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.965889
+ time avg. forc= 0.429007
+ largest residual force= 0.000002 in node 22 and dof 3
+ largest increment of disp= 1.238108e-03
+ largest correction to disp= 4.496641e-04 in node 13 and dof 1
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.965890
+ time avg. forc= 0.429007
+ largest residual force= 0.000000 in node 59 and dof 1
+ largest increment of disp= 1.238108e-03
+ largest correction to disp= 9.970208e-08 in node 64 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.502797e+02
+ kinetic energy = 1.028982e-05
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.502797e+02
+
+ energy increase = 1.502797e+02
+
+ energy balance (absolute) = 1.502797e+02 
+ energy balance (relative) = 290.431548 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 51 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=9.456250e-03
+ actual step time=9.656250e-03
+ actual total time=9.656250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.967025
+ time avg. forc= 0.439556
+ largest residual force= 0.000006 in node 23 and dof 3
+ largest increment of disp= 1.034509e-03
+ largest correction to disp= 3.030183e-04 in node 15 and dof 3
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.967025
+ time avg. forc= 0.439556
+ largest residual force= 0.000000 in node 31 and dof 2
+ largest increment of disp= 1.034509e-03
+ largest correction to disp= 1.820408e-07 in node 52 and dof 2
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.506194e+02
+ kinetic energy = 4.474662e-06
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.506194e+02
+
+ energy increase = 1.506194e+02
+
+ energy balance (absolute) = 1.506194e+02 
+ energy balance (relative) = 280.575382 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 52 attempt 1 
+ increment size= 2.000000e-04
+ sum of previous increments=9.656250e-03
+ actual step time=9.856250e-03
+ actual total time=9.856250e-03
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.967453
+ time avg. forc= 0.449708
+ largest residual force= 0.000001 in node 27 and dof 3
+ largest increment of disp= 4.464401e-04
+ largest correction to disp= 2.373873e-04 in node 16 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.967453
+ time avg. forc= 0.449708
+ largest residual force= 0.000000 in node 42 and dof 2
+ largest increment of disp= 4.464401e-04
+ largest correction to disp= 1.264503e-08 in node 13 and dof 1
+
+ convergence; the increment size is increased to 3.000000e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ the increment size exceeds the remainder of the step and is decreased to 1.437500e-04
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.507578e+02
+ kinetic energy = 1.790984e-06
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.507578e+02
+
+ energy increase = 1.507578e+02
+
+ energy balance (absolute) = 1.507578e+02 
+ energy balance (relative) = 271.395296 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ increment 53 attempt 1 
+ increment size= 1.437500e-04
+ sum of previous increments=9.856250e-03
+ actual step time=1.000000e-02
+ actual total time=1.000000e-02
+
+ iteration 1
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.967550
+ time avg. forc= 0.459479
+ largest residual force= 0.000001 in node 22 and dof 3
+ largest increment of disp= 5.195378e-04
+ largest correction to disp= 1.696685e-04 in node 49 and dof 2
+
+ no convergence
+
+ iteration 2
+
+ Using up to 2 cpu(s) for the symmetric stiffness/mass contributions.
+
+ Factoring the system of equations using the symmetric spooles solver
+ Using 1 cpu for spooles.
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+ Using up to 2 cpu(s) for the energy calculation.
+
+ average force= 0.967550
+ time avg. forc= 0.459479
+ largest residual force= 0.000000 in node 55 and dof 2
+ largest increment of disp= 5.195378e-04
+ largest correction to disp= 3.848015e-09 in node 9 and dof 1
+
+ convergence; the increment size is increased to 2.156250e-04
+
+ the increment size exceeds the maximum allowed and is decreased to 2.000000e-04
+
+ the increment size exceeds the remainder of the step and is decreased to 0.000000e+00
+
+ initial energy (at start of step) = 0.000000e+00
+
+ since start of the step: 
+ external work = 0.000000e+00
+ work performed by the damping forces = 0.000000e+00
+ netto work = 0.000000e+00
+
+ actual energy: 
+ internal energy = 1.507848e+02
+ kinetic energy = 2.154339e-06
+ elastic contact energy = 0.000000e+00
+ energy lost due to friction = 0.000000e+00
+ total energy  = 1.507848e+02
+
+ energy increase = 1.507848e+02
+
+ energy balance (absolute) = 1.507848e+02 
+ energy balance (relative) = 262.938454 % 
+
+ Using up to 2 cpu(s) for the stress calculation.
+
+
+ Job finished
+

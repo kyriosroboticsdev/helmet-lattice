@@ -77,7 +77,13 @@ TPU_DENSITY_G_PER_MM3 = 1.22e-3                 # 1.22 g/cm^3
 # 5.3%. At 10% the plateau band and densification are NOT reached, so those two
 # targets are left NaN rather than faked; SEA is the energy to fea_max_strain.
 COMPRESS_FRACTION = 0.10
-PLATEAU_BAND = (0.20, 0.40)                     # strain band averaged for plateau stress
+# Plateau band as FRACTIONS OF THE APPLIED CRUSH: the upper half of the crush, the
+# same definition the loop's objective uses (fea_optimize.PLATEAU_BAND). It used to be
+# absolute strain 0.20-0.40, which no screening (20%) or confirm (10%) solve ever
+# covers, so plateau_stress_kPa was NaN in every row. The band travels with the value
+# (plateau_band_lo/hi columns): a plateau over 0.10-0.20 and one over 0.05-0.10 are
+# different quantities, exactly as SEA to two depths is.
+PLATEAU_BAND = (0.5, 1.0)
 FEA_TIMEOUT_S = 5400                            # ~45 min per 10% solve at 330k tets, 12 threads
 
 # ----------------------------------------------------------------------------
@@ -180,6 +186,20 @@ def _largest_face_component(tets):
     g = coo_matrix((np.ones(int(same.sum())), (o[:-1][same], o[1:][same])), shape=(n, n))
     _, lab = connected_components(g, directed=False)
     return lab == np.argmax(np.bincount(lab))
+
+
+def band_mean(strain, stress, lo, hi):
+    """Strain-weighted mean stress over [lo, hi]; NaN unless the curve covers hi.
+
+    Weighted by strain, not by sample: the solver's increments are uneven (cutbacks
+    crowd points where the curve bends), so a plain mean of samples over-weights them.
+    """
+    if len(strain) < 2 or strain[-1] < hi - 1e-9 or hi <= lo:
+        return float("nan")
+    inner = (strain > lo) & (strain < hi)
+    e = np.r_[lo, strain[inner], hi]
+    s = np.r_[np.interp(lo, strain, stress), stress[inner], np.interp(hi, strain, stress)]
+    return float(np.trapezoid(s, e) / (hi - lo))
 
 
 def _mesh_volume(coords, nid, tets):
@@ -297,10 +317,8 @@ def evaluate_stl(stl_path: str, *, footprint_area_mm2: float | None = None,
         # plateau stress: mean nominal stress over PLATEAU_BAND -- only if the solve
         # actually covered the band. (The old fallback reported the stress at the last
         # strain under the plateau label, which is a different quantity.)
-        lo, hi = PLATEAU_BAND
-        band = (strain >= lo) & (strain <= hi)
-        plateau_stress_kPa = float(np.mean(stress[band])) * 1000.0 \
-            if (reached >= hi and band.sum() >= 2) else float("nan")
+        lo, hi = PLATEAU_BAND[0] * crush, PLATEAU_BAND[1] * crush
+        plateau_stress_kPa = band_mean(strain, stress, lo, hi) * 1000.0
         # densification strain: efficiency-curve peak (eta = integral/current stress).
         # A peak at the last point means it lies beyond the crush applied -> unknown.
         cum = np.concatenate([[0], np.cumsum((stress[1:]+stress[:-1])/2 * np.diff(strain))])
@@ -312,6 +330,7 @@ def evaluate_stl(stl_path: str, *, footprint_area_mm2: float | None = None,
             rel_density_measured=round(rel_density, 4),
             SEA_J_per_kg=round(SEA_J_per_kg, 2),
             plateau_stress_kPa=round(plateau_stress_kPa, 2),
+            plateau_band=(round(lo, 4), round(hi, 4)),
             densification_strain=round(dens_strain, 4),
             fea_reached_strain=round(reached, 3),
             stress_at_max_strain_kPa=round(float(stress[-1]) * 1000.0, 2),
@@ -329,6 +348,50 @@ def evaluate_stl(stl_path: str, *, footprint_area_mm2: float | None = None,
         )
     finally:
         if not keep_files: shutil.rmtree(workdir, ignore_errors=True)
+
+# ----------------------------------------------------------------------------
+SHEAR_GAMMA = 0.10        # nominal shear strain applied (top displacement / height)
+SHEAR_EVAL = 0.10         # shear objective read at this strain
+
+
+def evaluate_shear(stl_path: str, *, mesh=None, gamma: float = SHEAR_GAMMA,
+                   timeout: int = FEA_TIMEOUT_S, material: str | None = None) -> dict:
+    """Quasi-static SHEAR of the piece: the rotational-impact load case.
+
+    Bonded platens (bottom fully fixed; top driven tangentially in x, held in y and z,
+    so thickness is constant), free sides. Reports nominal shear stress tau = RFx / A
+    vs gamma = ux / H, the secant shear modulus at SHEAR_EVAL and the initial tangent.
+    Independent of the compression result on purpose: compression ranking does not
+    predict shear ranking. UNVALIDATED -- there is no physical shear rig yet, so these
+    numbers carry no measured error bar (shear_validated=False on every row).
+    """
+    import fea_variants as V
+    coords, nid, tets, _ = mesh if mesh is not None else mesh_for_fea(stl_path)
+    Lx, Ly, H = (float(np.ptp(coords[:, i])) for i in range(3))
+    workdir = tempfile.mkdtemp(prefix="fea_shear_")
+    if (material or MATERIAL) != "neo_hooke":
+        raise ValueError("the shear deck writes the Neo-Hooke card only")
+    try:
+        V.write_deck(os.path.join(workdir, "job.inp"), coords, nid, tets, disp=gamma * H,
+                     bc="shear", elem="C3D4")
+        r = V.run_deck(workdir, timeout=timeout)
+        if len(r["RF"]) < 2:
+            raise RuntimeError("shear solve did not converge past first increment"
+                               + (f"; ccx: {r['errors']}" if r["errors"] else ""))
+        g = np.r_[0, gamma * r["time"]]
+        tau = np.r_[0, r["RF"][:, 0] / (Lx * Ly)] * 1000.0          # kPa
+        reached = float(g[-1])
+        tau_eval = float(np.interp(SHEAR_EVAL, g, tau)) if reached >= SHEAR_EVAL - 1e-9 else float("nan")
+        k0 = float(tau[1] / g[1]) if g[1] > 0 else float("nan")
+        return dict(shear_stress_at_eval_kPa=round(tau_eval, 3),
+                    shear_modulus_secant_kPa=round(tau_eval / SHEAR_EVAL, 2) if tau_eval == tau_eval else float("nan"),
+                    shear_modulus_initial_kPa=round(k0, 2),
+                    shear_reached=round(reached, 4), shear_eval=SHEAR_EVAL,
+                    shear_curve=[(round(float(a), 5), round(float(b), 3)) for a, b in zip(g, tau)],
+                    shear_sec=r["sec"], shear_validated=False)
+    finally:
+        shutil.rmtree(workdir, ignore_errors=True)
+
 
 # ----------------------------------------------------------------------------
 def schema_row(stl_path: str, design_id: str, *, replicate_id: int = 1,
@@ -369,6 +432,7 @@ def schema_row(stl_path: str, design_id: str, *, replicate_id: int = 1,
     row["stress_at_10pct_kPa"] = res["stress_at_10pct_kPa"]
     row["SEA_to_10pct_J_per_kg"] = res["SEA_to_10pct_J_per_kg"]
     row["fea_crush"] = res["fea_crush"]
+    row["plateau_band_lo"], row["plateau_band_hi"] = res["plateau_band"]
     row["_stress_strain"] = res["stress_strain"]   # popped by the loop into its own file
     if design_meta:
         for k, v in design_meta.items():

@@ -1,0 +1,367 @@
+
+                        S T E P       1
+
+
+                                INCREMENT     1
+
+
+ total force (fx,fy,fz) for set TOP and time  0.1000000E-01
+
+        1.767048E-28 -1.788527E-18 -2.787100E+00
+
+                                INCREMENT     2
+
+
+ total force (fx,fy,fz) for set TOP and time  0.2000000E-01
+
+        3.534097E-28 -2.108474E-17 -5.564572E+00
+
+                                INCREMENT     3
+
+
+ total force (fx,fy,fz) for set TOP and time  0.3500000E-01
+
+       -3.029226E-28 -7.630844E-17 -9.734300E+00
+
+                                INCREMENT     4
+
+
+ total force (fx,fy,fz) for set TOP and time  0.5500000E-01
+
+       -4.291403E-28 -1.670700E-18 -1.530228E+01
+
+                                INCREMENT     5
+
+
+ total force (fx,fy,fz) for set TOP and time  0.7500000E-01
+
+       -1.413639E-27 -5.613987E-17 -2.086393E+01
+
+                                INCREMENT     6
+
+
+ total force (fx,fy,fz) for set TOP and time  0.9500000E-01
+
+        5.048710E-28  9.065212E-17 -2.641990E+01
+
+                                INCREMENT     7
+
+
+ total force (fx,fy,fz) for set TOP and time  0.1150000E+00
+
+       -7.068194E-28  1.274820E-16 -3.197089E+01
+
+                                INCREMENT     8
+
+
+ total force (fx,fy,fz) for set TOP and time  0.1350000E+00
+
+       -2.019484E-28  3.446294E-16 -3.751763E+01
+
+                                INCREMENT     9
+
+
+ total force (fx,fy,fz) for set TOP and time  0.1550000E+00
+
+        0.000000E+00  2.261753E-16 -4.306091E+01
+
+                                INCREMENT    10
+
+
+ total force (fx,fy,fz) for set TOP and time  0.1750000E+00
+
+        2.019484E-28 -4.990627E-16 -4.860154E+01
+
+                                INCREMENT    11
+
+
+ total force (fx,fy,fz) for set TOP and time  0.1950000E+00
+
+       -8.077936E-28 -3.792649E-17 -5.414039E+01
+
+                                INCREMENT    12
+
+
+ total force (fx,fy,fz) for set TOP and time  0.2150000E+00
+
+       -1.615587E-27  3.389711E-17 -5.967838E+01
+
+                                INCREMENT    13
+
+
+ total force (fx,fy,fz) for set TOP and time  0.2350000E+00
+
+       -2.019484E-27 -5.323720E-16 -6.521649E+01
+
+                                INCREMENT    14
+
+
+ total force (fx,fy,fz) for set TOP and time  0.2550000E+00
+
+       -8.077936E-28 -5.783337E-16 -7.075575E+01
+
+                                INCREMENT    15
+
+
+ total force (fx,fy,fz) for set TOP and time  0.2750000E+00
+
+        6.058452E-28 -5.846099E-17 -7.629728E+01
+
+                                INCREMENT    16
+
+
+ total force (fx,fy,fz) for set TOP and time  0.2950000E+00
+
+        8.077936E-28  3.539686E-17 -8.184223E+01
+
+                                INCREMENT    17
+
+
+ total force (fx,fy,fz) for set TOP and time  0.3150000E+00
+
+        8.077936E-28 -4.183433E-17 -8.739186E+01
+
+                                INCREMENT    18
+
+
+ total force (fx,fy,fz) for set TOP and time  0.3350000E+00
+
+        0.000000E+00  1.900924E-16 -9.294750E+01
+
+                                INCREMENT    19
+
+
+ total force (fx,fy,fz) for set TOP and time  0.3550000E+00
+
+       -4.038968E-28 -7.448245E-16 -9.851058E+01
+
+                                INCREMENT    20
+
+
+ total force (fx,fy,fz) for set TOP and time  0.3750000E+00
+
+        1.171301E-26  6.370618E-17 -1.040826E+02
+
+                                INCREMENT    21
+
+
+ total force (fx,fy,fz) for set TOP and time  0.3950000E+00
+
+        4.038968E-28 -5.411066E-16 -1.096653E+02
+
+                                INCREMENT    22
+
+
+ total force (fx,fy,fz) for set TOP and time  0.4150000E+00
+
+        6.664297E-27 -6.246118E-16 -1.152603E+02
+
+                                INCREMENT    23
+
+
+ total force (fx,fy,fz) for set TOP and time  0.4350000E+00
+
+       -3.231174E-27  2.526659E-16 -1.208696E+02
+
+                                INCREMENT    24
+
+
+ total force (fx,fy,fz) for set TOP and time  0.4550000E+00
+
+       -1.615587E-27 -4.348027E-16 -1.264952E+02
+
+                                INCREMENT    25
+
+
+ total force (fx,fy,fz) for set TOP and time  0.4750000E+00
+
+        8.077936E-27 -1.953491E-16 -1.321392E+02
+
+                                INCREMENT    26
+
+
+ total force (fx,fy,fz) for set TOP and time  0.4950000E+00
+
+        2.423381E-27  9.955837E-17 -1.378042E+02
+
+                                INCREMENT    27
+
+
+ total force (fx,fy,fz) for set TOP and time  0.5150000E+00
+
+       -8.077936E-28 -8.683062E-16 -1.434926E+02
+
+                                INCREMENT    28
+
+
+ total force (fx,fy,fz) for set TOP and time  0.5350000E+00
+
+       -3.635071E-27 -4.056228E-16 -1.492074E+02
+
+                                INCREMENT    29
+
+
+ total force (fx,fy,fz) for set TOP and time  0.5550000E+00
+
+       -2.019484E-27 -1.689208E-15 -1.549516E+02
+
+                                INCREMENT    30
+
+
+ total force (fx,fy,fz) for set TOP and time  0.5750000E+00
+
+       -6.866245E-27  2.205215E-16 -1.607287E+02
+
+                                INCREMENT    31
+
+
+ total force (fx,fy,fz) for set TOP and time  0.5950000E+00
+
+        7.270142E-27  6.473199E-16 -1.665424E+02
+
+                                INCREMENT    32
+
+
+ total force (fx,fy,fz) for set TOP and time  0.6150000E+00
+
+        4.846761E-27  4.751282E-16 -1.723968E+02
+
+                                INCREMENT    33
+
+
+ total force (fx,fy,fz) for set TOP and time  0.6350000E+00
+
+       -6.462349E-27 -2.281147E-16 -1.782965E+02
+
+                                INCREMENT    34
+
+
+ total force (fx,fy,fz) for set TOP and time  0.6550000E+00
+
+        3.231174E-27  8.260866E-16 -1.842468E+02
+
+                                INCREMENT    35
+
+
+ total force (fx,fy,fz) for set TOP and time  0.6750000E+00
+
+        9.693523E-27 -1.306751E-15 -1.902533E+02
+
+                                INCREMENT    36
+
+
+ total force (fx,fy,fz) for set TOP and time  0.6950000E+00
+
+       -3.231174E-27 -1.388884E-15 -1.963227E+02
+
+                                INCREMENT    37
+
+
+ total force (fx,fy,fz) for set TOP and time  0.7150000E+00
+
+        8.077936E-28  9.410616E-16 -2.024625E+02
+
+                                INCREMENT    38
+
+
+ total force (fx,fy,fz) for set TOP and time  0.7350000E+00
+
+       -1.211690E-27 -5.550627E-16 -2.086811E+02
+
+                                INCREMENT    39
+
+
+ total force (fx,fy,fz) for set TOP and time  0.7550000E+00
+
+       -1.615587E-27 -9.656732E-16 -2.149885E+02
+
+                                INCREMENT    40
+
+
+ total force (fx,fy,fz) for set TOP and time  0.7750000E+00
+
+       -6.462349E-27 -4.204423E-16 -2.213963E+02
+
+                                INCREMENT    41
+
+
+ total force (fx,fy,fz) for set TOP and time  0.7950000E+00
+
+       -1.292470E-26 -1.268846E-15 -2.279184E+02
+
+                                INCREMENT    42
+
+
+ total force (fx,fy,fz) for set TOP and time  0.8150000E+00
+
+       -4.846761E-27 -2.587575E-16 -2.345712E+02
+
+                                INCREMENT    43
+
+
+ total force (fx,fy,fz) for set TOP and time  0.8350000E+00
+
+        1.615587E-26 -1.755015E-15 -2.413752E+02
+
+                                INCREMENT    44
+
+
+ total force (fx,fy,fz) for set TOP and time  0.8550000E+00
+
+       -8.077936E-27 -1.355003E-17 -2.483557E+02
+
+                                INCREMENT    45
+
+
+ total force (fx,fy,fz) for set TOP and time  0.8750000E+00
+
+       -1.615587E-26 -1.872424E-15 -2.555453E+02
+
+                                INCREMENT    46
+
+
+ total force (fx,fy,fz) for set TOP and time  0.8950000E+00
+
+       -3.231174E-27 -3.050553E-16 -2.629873E+02
+
+                                INCREMENT    47
+
+
+ total force (fx,fy,fz) for set TOP and time  0.9150000E+00
+
+        2.423381E-27  7.550727E-16 -2.707420E+02
+
+                                INCREMENT    48
+
+
+ total force (fx,fy,fz) for set TOP and time  0.9350000E+00
+
+        5.250658E-27  2.119199E-15 -2.788985E+02
+
+                                INCREMENT    49
+
+
+ total force (fx,fy,fz) for set TOP and time  0.9550000E+00
+
+        0.000000E+00 -1.280021E-15 -2.876014E+02
+
+                                INCREMENT    50
+
+
+ total force (fx,fy,fz) for set TOP and time  0.9750000E+00
+
+        4.038968E-27 -2.456046E-15 -2.971255E+02
+
+                                INCREMENT    51
+
+
+ total force (fx,fy,fz) for set TOP and time  0.9950000E+00
+
+       -5.654555E-27 -1.569966E-15 -3.081885E+02
+
+                                INCREMENT    52
+
+
+ total force (fx,fy,fz) for set TOP and time  0.1000000E+01
+
+       -8.077936E-27  5.436909E-16 -3.114519E+02

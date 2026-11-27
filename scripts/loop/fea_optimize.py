@@ -42,6 +42,7 @@ import torch
 import features as F
 import optimize as O
 import surrogate_gp as G
+from fea_evaluator import band_mean, PLATEAU_BAND
 
 torch.set_default_dtype(torch.float64)
 
@@ -52,19 +53,28 @@ torch.set_default_dtype(torch.float64)
 # reach 20%, 23 reach 10% -- designs either make 20% or buckle well before it.
 E_EVAL = 0.20
 # Stress objective: "plateau" = mean stress over the upper half of the crush
-# (PLATEAU_BAND x E_EVAL), the load a liner would transmit while crushing;
-# "peak" = the highest stress up to E_EVAL.
+# (PLATEAU_BAND x E_EVAL, imported from fea_evaluator), the load a liner would
+# transmit while crushing; "peak" = the highest stress up to E_EVAL.
 STRESS_METRIC = "plateau"
-PLATEAU_BAND = (0.5, 1.0)
 # Energy objective. "SEA" = energy absorbed per mass (the decided default).
-# "efficiency" = energy absorbed / (peak stress x E_EVAL): 1.0 is a perfectly flat
-# plateau, and it is the metric that actually trades off against stress. MEASURED on
+# "efficiency" = energy absorbed / (PEAK stress up to E_EVAL x E_EVAL): 1.0 is a
+# perfectly flat plateau and is a true upper bound. Dividing by sigma(E_EVAL) instead
+# (rescore_curves.py) agrees on monotonic curves, but 12 of the first run's 27 usable
+# curves soften after a peak, and there it can exceed the ideal rectangle and rewards
+# a load spike the head would feel (it005_0: 0.874 by sigma(e) vs 0.819 by peak).
+# It is the metric that actually trades off against stress. MEASURED on
 # the first run's 11 designs at 20%: corr(SEA, plateau) = +0.96 with 7 of 11 designs
 # "Pareto-optimal" -- SEA is the same stress integral divided by density, so that pair
 # is nearly one objective and the search drifts to low density. corr(efficiency,
 # plateau) = -0.52 with 2 of 11 on the front: a real trade-off.
 ENERGY_METRIC = "SEA"
 TPU_DENSITY_G_PER_MM3 = 1.22e-3    # must match fea_evaluator
+
+# Third, INDEPENDENT objective (run_loop --shear): shear stress of the piece at
+# fea_evaluator.SHEAR_EVAL, minimized -- a softer shear path transmits less of a
+# tangential (rotational) impact. Read from the master row, not a curve file.
+# Unvalidated: no physical shear rig yet.
+SHEAR = False
 
 MIN_TRAIN = 5          # fewer finished designs than this -> no GP fit, keep seeding
 CURVES_DIR: Path | None = None     # set by run_loop to <out>/curves
@@ -77,7 +87,10 @@ def objectives() -> list[tuple[str, float]]:
     objective is MINIMIZED (less force transmitted to the head is better).
     """
     energy = "SEA_to_eval" if ENERGY_METRIC == "SEA" else "efficiency_to_eval"
-    return [(energy, +1.0), (f"{STRESS_METRIC}_stress_to_eval", -1.0)]
+    objs = [(energy, +1.0), (f"{STRESS_METRIC}_stress_to_eval", -1.0)]
+    if SHEAR:
+        objs.append(("shear_stress_at_eval_kPa", -1.0))
+    return objs
 
 
 # Back-compat for callers that read the module constant.
@@ -101,12 +114,9 @@ def curve_objectives(curve: pd.DataFrame, rho: float, e: float | None = None) ->
     keep = s <= e + 1e-12
     se = np.r_[s[keep], e]; pe = np.r_[p[keep], np.interp(e, s, p)]
     W_mJ_per_mm3 = float(np.trapezoid(pe, se)) / 1000.0          # kPa -> MPa = mJ/mm^3
-    lo, hi = PLATEAU_BAND[0] * e, PLATEAU_BAND[1] * e
-    band = (se >= lo - 1e-12) & (se <= hi + 1e-12)
-    if band.sum() >= 2:
-        plateau = float(np.trapezoid(pe[band], se[band]) / (se[band].max() - se[band].min()))
-    else:
-        plateau = float(np.interp((lo + hi) / 2, se, pe))
+    # Same function the evaluator uses for plateau_stress_kPa, so the master table and
+    # the loop objective are one number.
+    plateau = band_mean(se, pe, PLATEAU_BAND[0] * e, PLATEAU_BAND[1] * e)
     peak = float(pe.max())
     return dict(SEA_to_eval=W_mJ_per_mm3 / (rho * TPU_DENSITY_G_PER_MM3),   # mJ/g == J/kg
                 peak_stress_to_eval=peak,
@@ -137,6 +147,9 @@ def training_rows(df: pd.DataFrame, crush: float = None, fea_model: str = "piece
               "efficiency_to_eval", "eval_strain"):
         rows[k] = [m[k] for m in metrics]
     cols = [c for c, _ in objectives()]
+    for c in cols:                      # e.g. no row has been run with --shear yet
+        if c not in rows:
+            rows[c] = np.nan
     return rows[rows[cols].notna().all(axis=1)].reset_index(drop=True)
 
 
@@ -152,14 +165,15 @@ def reference_point(rows: pd.DataFrame, path: Path) -> np.ndarray:
     10% worse than the worst seed on each objective (in maximization space).
     """
     spec = dict(objectives=objectives(), eval_strain=E_EVAL, stress_metric=STRESS_METRIC,
-                energy_metric=ENERGY_METRIC)
+                energy_metric=ENERGY_METRIC, shear=SHEAR)
     if path.exists():
         saved = json.loads(path.read_text())
         # The reference anchors every hypervolume in the run. If the objective
         # DEFINITION changed (depth or stress metric), old and new hypervolumes are
         # different quantities and must not be compared.
         if (saved.get("eval_strain") != E_EVAL or saved.get("stress_metric") != STRESS_METRIC
-                or saved.get("energy_metric", "SEA") != ENERGY_METRIC):
+                or saved.get("energy_metric", "SEA") != ENERGY_METRIC
+                or saved.get("shear", False) != SHEAR):
             raise ValueError(
                 f"{path.name} was fixed for eval_strain={saved.get('eval_strain')} / "
                 f"{saved.get('stress_metric')} stress, but this run uses {E_EVAL} / "
@@ -294,7 +308,7 @@ def propose(df: pd.DataFrame, crush: float, ref: np.ndarray, n_propose: int,
         d["blend"] = {b: round(float(v), 3) for b, v in F.normalize_blend(d["blend"]).items()}
         d["acq"] = float(scores[i])
         d["p_feasible"] = float(p_feas[i])
-        for j, (col, s) in enumerate(OBJECTIVES):
+        for j, (col, s) in enumerate(objectives()):
             d[f"pred_{col}"] = float(s * mu[rank, j])
         props.append(d)
     info = dict(n_train=len(rows), n_features=len(names), top_acq=top,

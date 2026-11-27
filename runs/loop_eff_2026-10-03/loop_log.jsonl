@@ -1,0 +1,233 @@
+{"t": "2026-09-14 23:00:43", "iter": 0, "design": "seed000", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.076 > 0.05; 5 disconnected bodies"}
+{"t": "2026-09-14 23:04:50", "iter": 0, "design": "seed001", "stage": "fea", "model": "piece", "status": "ok", "SEA": 311.18, "stress": 581.59, "reached": 0.186, "sec_prep": 42, "sec_fea": 205}
+{"t": "2026-09-14 23:05:12", "iter": 0, "design": "seed002", "stage": "print", "status": "rejected", "reason": "rejected: 13 disconnected bodies"}
+{"t": "2026-09-14 23:05:52", "iter": 0, "design": "seed003", "stage": "print", "status": "rejected", "reason": "rejected: 4 disconnected bodies"}
+{"t": "2026-09-14 23:05:58", "iter": 0, "design": "seed004", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-14 23:08:56", "iter": 0, "design": "seed005", "stage": "fea", "model": "piece", "status": "ok", "SEA": 132.32, "stress": 405.74, "reached": 0.2, "sec_prep": 66, "sec_fea": 111}
+{"t": "2026-09-14 23:08:56", "event": "paused", "where": "before seed006"}
+{"t": "2026-09-14 23:13:23", "iter": 0, "design": "seed006", "stage": "print", "status": "rejected", "reason": "rejected: 3 disconnected bodies"}
+{"t": "2026-09-14 23:17:49", "iter": 0, "design": "seed007", "stage": "fea", "model": "piece", "status": "ok", "SEA": 144.01, "stress": 1130.06, "reached": 0.127, "sec_prep": 64, "sec_fea": 202}
+{"t": "2026-09-14 23:18:38", "iter": 0, "design": "seed008", "stage": "print", "status": "rejected", "reason": "rejected: 6 disconnected bodies"}
+{"t": "2026-09-14 23:19:13", "iter": 0, "design": "seed009", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.147 > 0.05; 5 disconnected bodies"}
+{"t": "2026-09-14 23:19:43", "iter": 0, "design": "seed010", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-14 23:20:30", "iter": 0, "design": "seed011", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.065 > 0.05"}
+{"t": "2026-09-14 23:21:30", "iter": 0, "design": "seed012", "stage": "print", "status": "rejected", "reason": "rejected: 3 disconnected bodies"}
+{"t": "2026-09-14 23:27:25", "iter": 0, "design": "seed013", "stage": "fea", "model": "piece", "status": "ok", "SEA": 254.54, "stress": 1670.05, "reached": 0.144, "sec_prep": 75, "sec_fea": 280}
+{"t": "2026-09-14 23:42:36", "iter": 0, "design": "seed014", "stage": "fea", "model": "piece", "status": "ok", "SEA": 12.61, "stress": 156.12, "reached": 0.038, "sec_prep": 164, "sec_fea": 746}
+{"t": "2026-09-15 00:47:18", "iter": 0, "design": "seed015", "stage": "fea", "model": "piece", "status": "failed", "SEA": NaN, "stress": null, "reached": null, "sec_prep": 118, "sec_fea": 3764}
+{"t": "2026-09-15 00:47:18", "event": "paused", "where": "before seed016"}
+{"t": "2026-09-15 16:05:27", "iter": 0, "design": "seed016", "stage": "fea", "model": "piece", "status": "ok", "SEA": 349.32, "stress": 1376.25, "reached": 0.2, "sec_prep": 43, "sec_fea": 63}
+{"t": "2026-09-15 16:05:47", "iter": 0, "design": "seed017", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.087 > 0.05"}
+{"t": "2026-09-15 16:06:36", "iter": 0, "design": "seed018", "stage": "fea", "model": "piece", "status": "ok", "SEA": 433.22, "stress": 1238.24, "reached": 0.2, "sec_prep": 29, "sec_fea": 20}
+{"t": "2026-09-15 16:07:09", "iter": 0, "design": "seed019", "stage": "fea", "model": "piece", "status": "ok", "SEA": 298.54, "stress": 1409.82, "reached": 0.2, "sec_prep": 17, "sec_fea": 16}
+{"t": "2026-09-15 16:08:36", "iter": 0, "design": "seed020", "stage": "fea", "model": "piece", "status": "ok", "SEA": 226.1, "stress": 734.98, "reached": 0.2, "sec_prep": 10, "sec_fea": 76}
+{"t": "2026-09-15 16:08:36", "iter": 0, "design": "seed021", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.059 > 0.05"}
+{"t": "2026-09-15 16:19:26", "iter": 0, "design": "seed022", "stage": "fea", "model": "piece", "status": "ok", "SEA": 258.34, "stress": 601.08, "reached": 0.2, "sec_prep": 89, "sec_fea": 560}
+{"t": "2026-09-15 16:25:32", "iter": 0, "design": "seed023", "stage": "fea", "model": "piece", "status": "ok", "SEA": 163.68, "stress": 1132.2, "reached": 0.118, "sec_prep": 59, "sec_fea": 307}
+{"t": "2026-09-15 16:25:39", "iter": 0, "design": "seed024", "stage": "print", "status": "rejected", "reason": "rejected: 4 disconnected bodies"}
+{"t": "2026-09-15 16:25:41", "iter": 0, "design": "seed025", "stage": "realize", "status": "failed", "err": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 16:27:49", "iter": 0, "design": "seed026", "stage": "fea", "model": "piece", "status": "ok", "SEA": 93.63, "stress": 460.57, "reached": 0.128, "sec_prep": 15, "sec_fea": 113}
+{"t": "2026-09-15 16:32:27", "iter": 0, "design": "seed027", "stage": "fea", "model": "piece", "status": "ok", "SEA": 79.14, "stress": 597.49, "reached": 0.105, "sec_prep": 44, "sec_fea": 234}
+{"t": "2026-09-15 16:32:27", "iter": 0, "design": "seed028", "stage": "print", "status": "rejected", "reason": "rejected: 7 disconnected bodies"}
+{"t": "2026-09-15 16:37:02", "iter": 0, "design": "seed029", "stage": "fea", "model": "piece", "status": "ok", "SEA": 30.05, "stress": 165.14, "reached": 0.094, "sec_prep": 34, "sec_fea": 240}
+{"t": "2026-09-15 16:37:37", "iter": 1, "event": "proposed", "n": 6, "n_train": 12, "n_features": 24, "top_acq": 18392.360335761674}
+{"t": "2026-09-15 16:37:43", "iter": 1, "design": "it001_0", "stage": "realize", "status": "failed", "err": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 16:37:45", "iter": 1, "design": "it001_1", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 16:37:47", "iter": 1, "design": "it001_2", "stage": "print", "status": "rejected", "reason": "rejected: 3 disconnected bodies"}
+{"t": "2026-09-15 16:38:31", "iter": 1, "design": "it001_3", "stage": "print", "status": "rejected", "reason": "rejected: 17 disconnected bodies"}
+{"t": "2026-09-15 16:38:40", "iter": 1, "design": "it001_4", "stage": "print", "status": "rejected", "reason": "rejected: 12 disconnected bodies"}
+{"t": "2026-09-15 16:38:55", "iter": 1, "design": "it001_5", "stage": "fea", "model": "piece", "status": "ok", "SEA": 89.45, "stress": 220.29, "reached": 0.2, "sec_prep": 4, "sec_fea": 11}
+{"t": "2026-09-15 16:38:55", "iter": 1, "event": "iteration_done", "hv": 76691.41060396234, "top_acq": 18392.360335761674, "stop": false, "reason": null, "sec": 113}
+{"t": "2026-09-15 16:39:27", "iter": 2, "event": "proposed", "n": 6, "n_train": 13, "n_features": 24, "top_acq": 11515.333657128802}
+{"t": "2026-09-15 16:39:38", "iter": 2, "design": "it002_0", "stage": "print", "status": "rejected", "reason": "rejected: 10 disconnected bodies"}
+{"t": "2026-09-15 16:39:42", "iter": 2, "design": "it002_1", "stage": "print", "status": "rejected", "reason": "rejected: 18 disconnected bodies"}
+{"t": "2026-09-15 16:39:43", "iter": 2, "design": "it002_2", "stage": "print", "status": "rejected", "reason": "rejected: 13 disconnected bodies"}
+{"t": "2026-09-15 16:39:46", "iter": 2, "design": "it002_3", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.145 > 0.05"}
+{"t": "2026-09-15 16:47:26", "iter": 2, "design": "it002_4", "stage": "fea", "model": "piece", "status": "ok", "SEA": 222.76, "stress": 529.44, "reached": 0.176, "sec_prep": 37, "sec_fea": 423}
+{"t": "2026-09-15 16:47:29", "iter": 2, "design": "it002_5", "stage": "print", "status": "rejected", "reason": "rejected: 4 disconnected bodies"}
+{"t": "2026-09-15 16:47:29", "iter": 2, "event": "iteration_done", "hv": 78736.67212277405, "top_acq": 11515.333657128802, "stop": false, "reason": null, "sec": 514}
+{"t": "2026-09-15 16:47:29", "event": "paused", "where": "before iteration 3"}
+{"t": "2026-09-15 16:48:46", "iter": 0, "design": "seed025", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 16:49:11", "iter": 3, "event": "proposed", "n": 6, "n_train": 14, "n_features": 24, "top_acq": 7648.617966693956, "feas_labels": 41, "feas_rate": 0.415, "p_feasible_chosen": 0.69, "p_feasible_pool": 0.582}
+{"t": "2026-09-15 16:51:20", "iter": 3, "design": "it003_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 85.38, "stress": 329.6, "reached": 0.122, "sec_prep": 22, "sec_fea": 107}
+{"t": "2026-09-15 17:06:52", "iter": 3, "design": "it003_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 10.38, "stress": 131.63, "reached": 0.037, "sec_prep": 32, "sec_fea": 900}
+{"t": "2026-09-15 17:06:52", "iter": 3, "event": "iteration_done", "hv": 80447.04079300583, "top_acq": 7648.617966693956, "stop": false, "reason": null, "sec": 1086}
+{"t": "2026-09-15 17:07:13", "iter": 4, "event": "proposed", "n": 6, "n_train": 15, "n_features": 24, "top_acq": 6978.580423233883, "feas_labels": 43, "feas_rate": 0.442, "p_feasible_chosen": 0.756, "p_feasible_pool": 0.565}
+{"t": "2026-09-15 17:13:17", "iter": 4, "design": "it004_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 79.47, "stress": 116.35, "reached": 0.2, "sec_prep": 32, "sec_fea": 332}
+{"t": "2026-09-15 17:13:19", "iter": 4, "design": "it004_1", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 17:13:20", "iter": 4, "design": "it004_2", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 17:15:27", "iter": 4, "design": "it004_3", "stage": "fea", "model": "piece", "status": "ok", "SEA": 94.87, "stress": 345.56, "reached": 0.138, "sec_prep": 9, "sec_fea": 117}
+{"t": "2026-09-15 17:15:27", "iter": 4, "event": "iteration_done", "hv": 81545.23109951292, "top_acq": 6978.580423233883, "stop": false, "reason": null, "sec": 515}
+{"t": "2026-09-15 17:15:52", "iter": 5, "event": "proposed", "n": 6, "n_train": 17, "n_features": 24, "top_acq": 3905.648642812986, "feas_labels": 47, "feas_rate": 0.447, "p_feasible_chosen": 0.813, "p_feasible_pool": 0.559}
+{"t": "2026-09-15 17:16:54", "iter": 5, "design": "it005_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 129.4, "stress": 176.12, "reached": 0.2, "sec_prep": 9, "sec_fea": 53}
+{"t": "2026-09-15 17:25:24", "iter": 5, "design": "it005_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 21.13, "stress": 75.79, "reached": 0.097, "sec_prep": 35, "sec_fea": 476}
+{"t": "2026-09-15 17:25:24", "iter": 5, "event": "iteration_done", "hv": 83590.88557077774, "top_acq": 3905.648642812986, "stop": false, "reason": null, "sec": 597}
+{"t": "2026-09-15 17:25:42", "iter": 6, "event": "proposed", "n": 6, "n_train": 18, "n_features": 24, "top_acq": 3819.9222776826678, "feas_labels": 49, "feas_rate": 0.469, "p_feasible_chosen": 0.749, "p_feasible_pool": 0.565}
+{"t": "2026-09-15 17:25:43", "iter": 6, "design": "it006_0", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 17:26:58", "iter": 6, "design": "it006_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 41.93, "stress": 572.94, "reached": 0.058, "sec_prep": 21, "sec_fea": 54}
+{"t": "2026-09-15 17:29:02", "iter": 6, "design": "it006_2", "stage": "fea", "model": "piece", "status": "ok", "SEA": 108.85, "stress": 912.05, "reached": 0.103, "sec_prep": 8, "sec_fea": 116}
+{"t": "2026-09-15 17:29:02", "iter": 6, "event": "iteration_done", "hv": 83590.88557077774, "top_acq": 3819.9222776826678, "stop": false, "reason": null, "sec": 218}
+{"t": "2026-09-15 17:29:22", "iter": 7, "event": "proposed", "n": 6, "n_train": 19, "n_features": 24, "top_acq": 6907.38015270433, "feas_labels": 52, "feas_rate": 0.481, "p_feasible_chosen": 0.781, "p_feasible_pool": 0.54}
+{"t": "2026-09-15 17:31:13", "iter": 7, "design": "it007_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 194.74, "stress": 1461.5, "reached": 0.131, "sec_prep": 18, "sec_fea": 93}
+{"t": "2026-09-15 17:31:13", "iter": 7, "design": "it007_1", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 17:31:39", "iter": 7, "design": "it007_2", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 17:32:12", "iter": 7, "design": "it007_3", "stage": "fea", "model": "piece", "status": "ok", "SEA": 147.28, "stress": 385.49, "reached": 0.2, "sec_prep": 5, "sec_fea": 28}
+{"t": "2026-09-15 17:32:12", "iter": 7, "event": "iteration_done", "hv": 83590.88557077774, "top_acq": 6907.38015270433, "stop": false, "reason": null, "sec": 190}
+{"t": "2026-09-15 17:32:33", "iter": 8, "event": "proposed", "n": 6, "n_train": 21, "n_features": 24, "top_acq": 7204.613513016994, "feas_labels": 56, "feas_rate": 0.482, "p_feasible_chosen": 0.713, "p_feasible_pool": 0.559}
+{"t": "2026-09-15 17:32:34", "iter": 8, "design": "it008_0", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 17:33:12", "iter": 8, "design": "it008_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 112.22, "stress": 195.23, "reached": 0.2, "sec_prep": 7, "sec_fea": 32}
+{"t": "2026-09-15 17:33:15", "iter": 8, "design": "it008_2", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.155 > 0.05"}
+{"t": "2026-09-15 17:43:16", "iter": 8, "design": "it008_3", "stage": "fea", "model": "piece", "status": "ok", "SEA": 4.83, "stress": 25.9, "reached": 0.065, "sec_prep": 48, "sec_fea": 553}
+{"t": "2026-09-15 17:43:17", "iter": 8, "event": "iteration_done", "hv": 83715.53197722245, "top_acq": 7204.613513016994, "stop": false, "reason": null, "sec": 664}
+{"t": "2026-09-15 17:43:38", "iter": 9, "event": "proposed", "n": 6, "n_train": 22, "n_features": 24, "top_acq": 3689.6280847177864, "feas_labels": 60, "feas_rate": 0.483, "p_feasible_chosen": 0.589, "p_feasible_pool": 0.536}
+{"t": "2026-09-15 17:43:39", "iter": 9, "design": "it009_0", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 17:43:49", "iter": 9, "design": "it009_1", "stage": "print", "status": "rejected", "reason": "rejected: 8 disconnected bodies"}
+{"t": "2026-09-15 17:59:52", "iter": 9, "design": "it009_2", "stage": "fea", "model": "piece", "status": "ok", "SEA": 98.05, "stress": 270.89, "reached": 0.131, "sec_prep": 62, "sec_fea": 901}
+{"t": "2026-09-15 17:59:52", "iter": 9, "design": "it009_3", "stage": "print", "status": "rejected", "reason": "rejected: 3 disconnected bodies"}
+{"t": "2026-09-15 17:59:53", "iter": 9, "design": "it009_4", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.052 > 0.05"}
+{"t": "2026-09-15 18:01:00", "iter": 9, "design": "it009_5", "stage": "fea", "model": "piece", "status": "failed", "SEA": NaN, "stress": null, "reached": null, "sec_prep": 58, "sec_fea": 8}
+{"t": "2026-09-15 18:01:00", "iter": 9, "event": "iteration_done", "hv": 84963.4426801336, "top_acq": 3689.6280847177864, "stop": false, "reason": null, "sec": 1063}
+{"t": "2026-09-15 18:01:21", "iter": 10, "event": "proposed", "n": 6, "n_train": 23, "n_features": 24, "top_acq": 3026.5877182837357, "feas_labels": 66, "feas_rate": 0.47, "p_feasible_chosen": 0.598, "p_feasible_pool": 0.544}
+{"t": "2026-09-15 18:01:22", "iter": 10, "design": "it010_0", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 18:17:07", "iter": 10, "design": "it010_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 56.77, "stress": 534.87, "reached": 0.068, "sec_prep": 44, "sec_fea": 901}
+{"t": "2026-09-15 18:17:08", "iter": 10, "design": "it010_2", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.115 > 0.05"}
+{"t": "2026-09-15 18:17:10", "iter": 10, "design": "it010_3", "stage": "print", "status": "rejected", "reason": "rejected: 16 disconnected bodies"}
+{"t": "2026-09-15 18:17:12", "iter": 10, "design": "it010_4", "stage": "print", "status": "rejected", "reason": "rejected: 8 disconnected bodies"}
+{"t": "2026-09-15 18:17:12", "iter": 10, "design": "it010_5", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.067 > 0.05; 2 disconnected bodies"}
+{"t": "2026-09-15 18:17:12", "iter": 10, "event": "iteration_done", "hv": 84963.4426801336, "top_acq": 3026.5877182837357, "stop": false, "reason": null, "sec": 972}
+{"t": "2026-09-15 18:17:12", "event": "paused", "where": "before iteration 11"}
+{"t": "2026-09-15 18:18:30", "iter": 11, "event": "proposed", "n": 6, "n_train": 11, "n_features": 24, "top_acq": 38001.797761232534, "feas_labels": 72, "feas_rate": 0.153, "p_feasible_chosen": 0.806, "p_feasible_pool": 0.499}
+{"t": "2026-09-15 18:23:03", "iter": 11, "design": "it011_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 371.01, "stress": 1792.26, "reached": 0.167, "sec_prep": 9, "sec_fea": 264}
+{"t": "2026-09-15 18:27:50", "iter": 11, "design": "it011_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 409.33, "stress": 1183.59, "reached": 0.2, "sec_prep": 18, "sec_fea": 269}
+{"t": "2026-09-15 18:27:50", "iter": 11, "event": "iteration_done", "hv": 258190.26222508782, "top_acq": 38001.797761232534, "stop": false, "reason": null, "sec": 606}
+{"t": "2026-09-15 18:28:27", "iter": 12, "event": "proposed", "n": 6, "n_train": 12, "n_features": 24, "top_acq": 35196.756857173474, "feas_labels": 74, "feas_rate": 0.162, "p_feasible_chosen": 0.824, "p_feasible_pool": 0.428}
+{"t": "2026-09-15 18:35:55", "iter": 12, "design": "it012_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 316.49, "stress": 896.64, "reached": 0.2, "sec_prep": 32, "sec_fea": 415}
+{"t": "2026-09-15 18:36:23", "iter": 12, "design": "it012_1", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.152 > 0.05; 2 disconnected bodies"}
+{"t": "2026-09-15 18:38:09", "iter": 12, "design": "it012_2", "stage": "fea", "model": "piece", "status": "ok", "SEA": 111.96, "stress": 731.23, "reached": 0.135, "sec_prep": 41, "sec_fea": 66}
+{"t": "2026-09-15 18:38:10", "iter": 12, "event": "iteration_done", "hv": 275177.5802429392, "top_acq": 35196.756857173474, "stop": false, "reason": null, "sec": 619}
+{"t": "2026-09-15 18:38:46", "iter": 13, "event": "proposed", "n": 6, "n_train": 13, "n_features": 24, "top_acq": 21918.35506838306, "feas_labels": 77, "feas_rate": 0.169, "p_feasible_chosen": 0.8, "p_feasible_pool": 0.432}
+{"t": "2026-09-15 18:50:29", "iter": 13, "design": "it013_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 144.15, "stress": 905.32, "reached": 0.106, "sec_prep": 43, "sec_fea": 660}
+{"t": "2026-09-15 18:51:28", "iter": 13, "design": "it013_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 438.81, "stress": 1394.88, "reached": 0.2, "sec_prep": 21, "sec_fea": 37}
+{"t": "2026-09-15 18:51:28", "iter": 13, "event": "iteration_done", "hv": 275202.9561587372, "top_acq": 21918.35506838306, "stop": false, "reason": null, "sec": 798}
+{"t": "2026-09-15 18:52:00", "iter": 14, "event": "proposed", "n": 6, "n_train": 14, "n_features": 24, "top_acq": 22346.81399318816, "feas_labels": 79, "feas_rate": 0.177, "p_feasible_chosen": 0.828, "p_feasible_pool": 0.436}
+{"t": "2026-09-15 18:53:13", "iter": 14, "design": "it014_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 439.64, "stress": 1134.65, "reached": 0.2, "sec_prep": 15, "sec_fea": 59}
+{"t": "2026-09-15 18:54:57", "iter": 14, "design": "it014_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 267.08, "stress": 589.24, "reached": 0.2, "sec_prep": 12, "sec_fea": 91}
+{"t": "2026-09-15 18:54:57", "iter": 14, "event": "iteration_done", "hv": 288345.59159656975, "top_acq": 22346.81399318816, "stop": false, "reason": null, "sec": 209}
+{"t": "2026-09-15 18:55:27", "iter": 15, "event": "proposed", "n": 6, "n_train": 16, "n_features": 24, "top_acq": 24268.75276690534, "feas_labels": 81, "feas_rate": 0.198, "p_feasible_chosen": 0.781, "p_feasible_pool": 0.424}
+{"t": "2026-09-15 18:57:15", "iter": 15, "design": "it015_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 17.65, "stress": 50.98, "reached": 0.2, "sec_prep": 16, "sec_fea": 92}
+{"t": "2026-09-15 18:58:22", "iter": 15, "design": "it015_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 378.6, "stress": 958.18, "reached": 0.2, "sec_prep": 15, "sec_fea": 53}
+{"t": "2026-09-15 18:58:22", "iter": 15, "event": "iteration_done", "hv": 295446.9130903248, "top_acq": 24268.75276690534, "stop": false, "reason": null, "sec": 205}
+{"t": "2026-09-15 18:59:04", "iter": 16, "event": "proposed", "n": 6, "n_train": 18, "n_features": 24, "top_acq": 32186.932396632204, "feas_labels": 83, "feas_rate": 0.217, "p_feasible_chosen": 0.614, "p_feasible_pool": 0.412}
+{"t": "2026-09-15 19:09:01", "iter": 16, "design": "it016_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 199.7, "stress": 406.86, "reached": 0.2, "sec_prep": 60, "sec_fea": 538}
+{"t": "2026-09-15 19:11:26", "iter": 16, "design": "it016_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 118.14, "stress": 327.76, "reached": 0.2, "sec_prep": 37, "sec_fea": 107}
+{"t": "2026-09-15 19:11:26", "iter": 16, "event": "iteration_done", "hv": 300374.83981443784, "top_acq": 32186.932396632204, "stop": false, "reason": null, "sec": 784}
+{"t": "2026-09-15 19:12:01", "iter": 17, "event": "proposed", "n": 6, "n_train": 20, "n_features": 24, "top_acq": 35121.19318017612, "feas_labels": 85, "feas_rate": 0.235, "p_feasible_chosen": 0.517, "p_feasible_pool": 0.415}
+{"t": "2026-09-15 19:23:17", "iter": 17, "design": "it017_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 201.13, "stress": 302.91, "reached": 0.2, "sec_prep": 48, "sec_fea": 627}
+{"t": "2026-09-15 19:23:19", "iter": 17, "design": "it017_1", "stage": "print", "status": "rejected", "reason": "rejected: 6 disconnected bodies"}
+{"t": "2026-09-15 19:23:20", "iter": 17, "design": "it017_2", "stage": "print", "status": "rejected", "reason": "rejected: 3 disconnected bodies"}
+{"t": "2026-09-15 19:23:44", "iter": 17, "design": "it017_3", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 19:23:44", "iter": 17, "design": "it017_4", "stage": "print", "status": "rejected", "reason": "rejected: 3 disconnected bodies"}
+{"t": "2026-09-15 19:23:45", "iter": 17, "design": "it017_5", "stage": "print", "status": "rejected", "reason": "rejected: 6 disconnected bodies"}
+{"t": "2026-09-15 19:23:45", "iter": 17, "event": "iteration_done", "hv": 309230.0090377664, "top_acq": 35121.19318017612, "stop": false, "reason": null, "sec": 740}
+{"t": "2026-09-15 19:24:14", "iter": 18, "event": "proposed", "n": 6, "n_train": 21, "n_features": 24, "top_acq": 44603.41886808633, "feas_labels": 91, "feas_rate": 0.231, "p_feasible_chosen": 0.542, "p_feasible_pool": 0.405}
+{"t": "2026-09-15 19:24:15", "iter": 18, "design": "it018_0", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 19:27:46", "iter": 18, "design": "it018_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 493.36, "stress": 1773.2, "reached": 0.2, "sec_prep": 41, "sec_fea": 170}
+{"t": "2026-09-15 19:27:46", "iter": 18, "design": "it018_2", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 19:28:11", "iter": 18, "design": "it018_3", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 19:30:50", "iter": 18, "design": "it018_4", "stage": "fea", "model": "piece", "status": "ok", "SEA": 392.99, "stress": 1282.16, "reached": 0.2, "sec_prep": 12, "sec_fea": 147}
+{"t": "2026-09-15 19:30:50", "iter": 18, "event": "iteration_done", "hv": 309230.0090377664, "top_acq": 44603.41886808633, "stop": false, "reason": null, "sec": 425}
+{"t": "2026-09-15 19:31:42", "iter": 19, "event": "proposed", "n": 6, "n_train": 23, "n_features": 24, "top_acq": 45014.21776588493, "feas_labels": 96, "feas_rate": 0.24, "p_feasible_chosen": 0.65, "p_feasible_pool": 0.378}
+{"t": "2026-09-15 19:31:43", "iter": 19, "design": "it019_0", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.106 > 0.05; 2 disconnected bodies"}
+{"t": "2026-09-15 19:31:43", "iter": 19, "design": "it019_1", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.163 > 0.05"}
+{"t": "2026-09-15 19:31:45", "iter": 19, "design": "it019_2", "stage": "print", "status": "rejected", "reason": "rejected: 8 disconnected bodies"}
+{"t": "2026-09-15 19:35:54", "iter": 19, "design": "it019_3", "stage": "fea", "model": "piece", "status": "ok", "SEA": 331.59, "stress": 739.16, "reached": 0.2, "sec_prep": 15, "sec_fea": 235}
+{"t": "2026-09-15 19:36:22", "iter": 19, "design": "it019_4", "stage": "print", "status": "rejected", "reason": "rejected: 9 disconnected bodies"}
+{"t": "2026-09-15 19:36:22", "iter": 19, "design": "it019_5", "stage": "print", "status": "rejected", "reason": "rejected: 4 disconnected bodies"}
+{"t": "2026-09-15 19:36:22", "iter": 19, "event": "iteration_done", "hv": 317530.68993795355, "top_acq": 45014.21776588493, "stop": false, "reason": null, "sec": 333}
+{"t": "2026-09-15 19:37:03", "iter": 20, "event": "proposed", "n": 6, "n_train": 24, "n_features": 24, "top_acq": 46507.43653914578, "feas_labels": 102, "feas_rate": 0.235, "p_feasible_chosen": 0.717, "p_feasible_pool": 0.4}
+{"t": "2026-09-15 19:38:04", "iter": 20, "design": "it020_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 378.65, "stress": 825.95, "reached": 0.2, "sec_prep": 8, "sec_fea": 53}
+{"t": "2026-09-15 19:39:14", "iter": 20, "design": "it020_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 479.27, "stress": 1208.21, "reached": 0.2, "sec_prep": 7, "sec_fea": 63}
+{"t": "2026-09-15 19:39:14", "iter": 20, "event": "iteration_done", "hv": 330582.83322944463, "top_acq": 46507.43653914578, "stop": false, "reason": null, "sec": 172}
+{"t": "2026-09-15 19:40:01", "iter": 21, "event": "proposed", "n": 6, "n_train": 26, "n_features": 24, "top_acq": 81929.39375076185, "feas_labels": 104, "feas_rate": 0.25, "p_feasible_chosen": 0.457, "p_feasible_pool": 0.369}
+{"t": "2026-09-15 19:40:01", "iter": 21, "design": "it021_0", "stage": "print", "status": "rejected", "reason": "rejected: 5 disconnected bodies"}
+{"t": "2026-09-15 19:40:02", "iter": 21, "design": "it021_1", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.172 > 0.05; 2 disconnected bodies"}
+{"t": "2026-09-15 19:56:28", "iter": 21, "design": "it021_2", "stage": "fea", "model": "piece", "status": "ok", "SEA": 3.08, "stress": 92.92, "reached": 0.017, "sec_prep": 84, "sec_fea": 903}
+{"t": "2026-09-15 19:56:31", "iter": 21, "design": "it021_3", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 20:01:47", "iter": 21, "design": "it021_4", "stage": "fea", "model": "piece", "status": "ok", "SEA": 48.02, "stress": 475.56, "reached": 0.072, "sec_prep": 21, "sec_fea": 295}
+{"t": "2026-09-15 20:01:47", "iter": 21, "event": "iteration_done", "hv": 330582.83322944463, "top_acq": 81929.39375076185, "stop": false, "reason": null, "sec": 1353}
+{"t": "2026-09-15 20:02:45", "iter": 22, "event": "proposed", "n": 6, "n_train": 26, "n_features": 24, "top_acq": 56292.06129795844, "feas_labels": 109, "feas_rate": 0.239, "p_feasible_chosen": 0.593, "p_feasible_pool": 0.405}
+{"t": "2026-09-15 20:02:45", "iter": 22, "design": "it022_0", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.058 > 0.05"}
+{"t": "2026-09-15 20:02:48", "iter": 22, "design": "it022_1", "stage": "print", "status": "rejected", "reason": "rejected: 10 disconnected bodies"}
+{"t": "2026-09-15 20:02:50", "iter": 22, "design": "it022_2", "stage": "print", "status": "rejected", "reason": "rejected: 3 disconnected bodies"}
+{"t": "2026-09-15 20:10:24", "iter": 22, "design": "it022_3", "stage": "fea", "model": "piece", "status": "ok", "SEA": 359.67, "stress": 819.38, "reached": 0.2, "sec_prep": 27, "sec_fea": 427}
+{"t": "2026-09-15 20:10:25", "iter": 22, "design": "it022_4", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.136 > 0.05; 12 disconnected bodies"}
+{"t": "2026-09-15 20:10:26", "iter": 22, "design": "it022_5", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 20:10:26", "iter": 22, "event": "iteration_done", "hv": 332337.30902080843, "top_acq": 56292.06129795844, "stop": false, "reason": null, "sec": 518}
+{"t": "2026-09-15 20:11:26", "iter": 23, "event": "proposed", "n": 6, "n_train": 27, "n_features": 24, "top_acq": 79686.84663659662, "feas_labels": 115, "feas_rate": 0.235, "p_feasible_chosen": 0.452, "p_feasible_pool": 0.385}
+{"t": "2026-09-15 20:11:27", "iter": 23, "design": "it023_0", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.129 > 0.05; 5 disconnected bodies"}
+{"t": "2026-09-15 20:11:31", "iter": 23, "design": "it023_1", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-09-15 20:14:50", "iter": 23, "design": "it023_2", "stage": "fea", "model": "piece", "status": "ok", "SEA": 196.0, "stress": 1134.8, "reached": 0.142, "sec_prep": 14, "sec_fea": 184}
+{"t": "2026-09-15 20:14:51", "iter": 23, "design": "it023_3", "stage": "print", "status": "rejected", "reason": "rejected: 20 disconnected bodies"}
+{"t": "2026-09-15 20:22:25", "iter": 23, "design": "it023_4", "stage": "fea", "model": "piece", "status": "ok", "SEA": 397.28, "stress": 1468.87, "reached": 0.179, "sec_prep": 20, "sec_fea": 434}
+{"t": "2026-09-15 20:22:25", "iter": 23, "event": "iteration_done", "hv": 332337.30902080843, "top_acq": 79686.84663659662, "stop": false, "reason": null, "sec": 720}
+{"t": "2026-09-15 20:23:19", "iter": 24, "event": "proposed", "n": 6, "n_train": 27, "n_features": 24, "top_acq": 97602.25148793239, "feas_labels": 120, "feas_rate": 0.225, "p_feasible_chosen": 0.449, "p_feasible_pool": 0.342}
+{"t": "2026-09-15 20:33:57", "iter": 24, "design": "it024_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 80.54, "stress": 242.49, "reached": 0.105, "sec_prep": 34, "sec_fea": 603}
+{"t": "2026-09-15 20:33:59", "iter": 24, "design": "it024_1", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-09-15 20:34:05", "iter": 24, "design": "it024_2", "stage": "print", "status": "rejected", "reason": "rejected: 16 disconnected bodies"}
+{"t": "2026-09-15 20:34:08", "iter": 24, "design": "it024_3", "stage": "print", "status": "rejected", "reason": "rejected: 4 disconnected bodies"}
+{"t": "2026-09-15 20:50:28", "iter": 24, "design": "it024_4", "stage": "fea", "model": "piece", "status": "ok", "SEA": 47.3, "stress": 348.61, "reached": 0.076, "sec_prep": 78, "sec_fea": 902}
+{"t": "2026-09-15 20:50:28", "iter": 24, "event": "iteration_done", "hv": 332337.30902080843, "top_acq": 97602.25148793239, "stop": false, "reason": null, "sec": 1683}
+{"t": "2026-09-15 20:51:25", "iter": 25, "event": "proposed", "n": 6, "n_train": 27, "n_features": 24, "top_acq": 84042.37006887027, "feas_labels": 125, "feas_rate": 0.216, "p_feasible_chosen": 0.378, "p_feasible_pool": 0.351}
+{"t": "2026-09-15 21:01:31", "iter": 25, "design": "it025_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 139.58, "stress": 590.69, "reached": 0.112, "sec_prep": 30, "sec_fea": 577}
+{"t": "2026-09-15 21:01:32", "iter": 25, "design": "it025_1", "stage": "print", "status": "rejected", "reason": "rejected: 10 disconnected bodies"}
+{"t": "2026-09-15 21:03:59", "iter": 25, "design": "it025_2", "stage": "fea", "model": "piece", "status": "ok", "SEA": 141.85, "stress": 899.61, "reached": 0.13, "sec_prep": 10, "sec_fea": 138}
+{"t": "2026-09-15 21:04:00", "iter": 25, "event": "iteration_done", "hv": 332337.30902080843, "top_acq": 84042.37006887027, "stop": true, "reason": "NO_IMPROVEMENT: best metric improved < 1% for 5 rounds", "sec": 811}
+{"t": "2026-09-15 21:30:40", "iter": "confirm", "design": "it018_1_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 122.44, "stress": 1054.11, "reached": 0.1, "sec_prep": 84, "sec_fea": 1517}
+{"t": "2026-09-15 21:59:52", "iter": "confirm", "design": "it020_1_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 125.84, "stress": 842.67, "reached": 0.1, "sec_prep": 94, "sec_fea": 1658}
+{"t": "2026-09-15 22:20:44", "iter": "confirm", "design": "it014_0_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 119.63, "stress": 810.18, "reached": 0.1, "sec_prep": 79, "sec_fea": 1173}
+{"t": "2026-09-16 00:03:01", "iter": "confirm", "design": "it020_0_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 104.05, "stress": 742.42, "reached": 0.094, "sec_prep": 81, "sec_fea": 6056}
+{"t": "2026-09-16 01:02:34", "iter": "confirm", "design": "it022_3_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 127.68, "stress": 852.6, "reached": 0.1, "sec_prep": 158, "sec_fea": 3415}
+{"t": "2026-10-03 11:07:32", "iter": 26, "event": "proposed", "n": 6, "n_train": 27, "n_features": 24, "top_acq": 222.6246187331129, "feas_labels": 128, "feas_rate": 0.211, "p_feasible_chosen": 0.31, "p_feasible_pool": 0.356}
+{"t": "2026-10-03 11:07:43", "iter": 26, "design": "it026_0", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-10-03 11:11:54", "iter": 26, "design": "it026_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 71.53, "stress": 322.2, "reached": 0.106, "sec_prep": 25, "sec_fea": 226}
+{"t": "2026-10-03 11:11:56", "iter": 26, "design": "it026_2", "stage": "print", "status": "rejected", "reason": "rejected: 10 disconnected bodies"}
+{"t": "2026-10-03 11:12:01", "iter": 26, "design": "it026_3", "stage": "print", "status": "rejected", "reason": "rejected: 9 disconnected bodies"}
+{"t": "2026-10-03 11:12:02", "iter": 26, "design": "it026_4", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.136 > 0.05"}
+{"t": "2026-10-03 11:14:57", "iter": 26, "design": "it026_5", "stage": "fea", "model": "piece", "status": "ok", "SEA": 31.45, "stress": 77.3, "reached": 0.2, "sec_prep": 25, "sec_fea": 150}
+{"t": "2026-10-03 11:14:57", "iter": 26, "event": "iteration_done", "hv": 629.1068992415494, "top_acq": 222.6246187331129, "stop": false, "reason": null, "sec": 513}
+{"t": "2026-10-03 11:16:09", "iter": 27, "event": "proposed", "n": 6, "n_train": 28, "n_features": 24, "top_acq": 93.7595494995999, "feas_labels": 134, "feas_rate": 0.209, "p_feasible_chosen": 0.377, "p_feasible_pool": 0.329}
+{"t": "2026-10-03 11:32:54", "iter": 27, "design": "it027_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 13.84, "stress": 58.85, "reached": 0.08, "sec_prep": 103, "sec_fea": 902}
+{"t": "2026-10-03 11:35:39", "iter": 27, "design": "it027_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 18.6, "stress": 166.94, "reached": 0.054, "sec_prep": 19, "sec_fea": 145}
+{"t": "2026-10-03 11:35:40", "iter": 27, "event": "iteration_done", "hv": 629.1068992415494, "top_acq": 93.7595494995999, "stop": false, "reason": null, "sec": 1243}
+{"t": "2026-10-03 11:36:18", "iter": 28, "event": "proposed", "n": 6, "n_train": 28, "n_features": 24, "top_acq": 69.27181350413555, "feas_labels": 136, "feas_rate": 0.206, "p_feasible_chosen": 0.572, "p_feasible_pool": 0.324}
+{"t": "2026-10-03 11:36:21", "iter": 28, "design": "it028_0", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.066 > 0.05"}
+{"t": "2026-10-03 11:36:21", "iter": 28, "design": "it028_1", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.085 > 0.05"}
+{"t": "2026-10-03 11:36:21", "iter": 28, "design": "it028_2", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.170 > 0.05"}
+{"t": "2026-10-03 11:37:00", "iter": 28, "design": "it028_3", "stage": "fea", "model": "piece", "status": "ok", "SEA": 99.81, "stress": 239.3, "reached": 0.2, "sec_prep": 5, "sec_fea": 33}
+{"t": "2026-10-03 11:37:17", "iter": 28, "design": "it028_4", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.089 > 0.05"}
+{"t": "2026-10-03 11:37:18", "iter": 28, "design": "it028_5", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.170 > 0.05; 2 disconnected bodies"}
+{"t": "2026-10-03 11:37:18", "iter": 28, "event": "iteration_done", "hv": 629.1068992415494, "top_acq": 69.27181350413555, "stop": false, "reason": null, "sec": 98}
+{"t": "2026-10-03 11:38:05", "iter": 29, "event": "proposed", "n": 6, "n_train": 29, "n_features": 24, "top_acq": 62.355181909264786, "feas_labels": 142, "feas_rate": 0.204, "p_feasible_chosen": 0.468, "p_feasible_pool": 0.381}
+{"t": "2026-10-03 11:38:08", "iter": 29, "design": "it029_0", "stage": "print", "status": "rejected", "reason": "rejected: 4 disconnected bodies"}
+{"t": "2026-10-03 11:54:22", "iter": 29, "design": "it029_1", "stage": "fea", "model": "piece", "status": "ok", "SEA": 28.38, "stress": 98.43, "reached": 0.095, "sec_prep": 73, "sec_fea": 902}
+{"t": "2026-10-03 12:04:27", "iter": 29, "design": "it029_2", "stage": "fea", "model": "piece", "status": "ok", "SEA": 190.31, "stress": 426.61, "reached": 0.2, "sec_prep": 53, "sec_fea": 552}
+{"t": "2026-10-03 12:04:27", "iter": 29, "event": "iteration_done", "hv": 629.1068992415494, "top_acq": 62.355181909264786, "stop": false, "reason": null, "sec": 1629}
+{"t": "2026-10-03 12:05:33", "iter": 30, "event": "proposed", "n": 6, "n_train": 30, "n_features": 24, "top_acq": 43.54644118329031, "feas_labels": 145, "feas_rate": 0.207, "p_feasible_chosen": 0.274, "p_feasible_pool": 0.346}
+{"t": "2026-10-03 12:05:34", "iter": 30, "design": "it030_0", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.090 > 0.05"}
+{"t": "2026-10-03 12:05:45", "iter": 30, "design": "it030_1", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-10-03 12:05:53", "iter": 30, "design": "it030_2", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.072 > 0.05"}
+{"t": "2026-10-03 12:06:04", "iter": 30, "design": "it030_3", "stage": "realize", "status": "rejected", "reason": "generation failed: Surface level must be within volume data range."}
+{"t": "2026-10-03 12:15:31", "iter": 30, "design": "it030_4", "stage": "fea", "model": "piece", "status": "ok", "SEA": 31.22, "stress": 226.38, "reached": 0.066, "sec_prep": 48, "sec_fea": 520}
+{"t": "2026-10-03 12:18:27", "iter": 30, "design": "it030_5", "stage": "fea", "model": "piece", "status": "ok", "SEA": 88.04, "stress": 199.1, "reached": 0.2, "sec_prep": 24, "sec_fea": 152}
+{"t": "2026-10-03 12:18:27", "iter": 30, "event": "iteration_done", "hv": 629.1068992415494, "top_acq": 43.54644118329031, "stop": false, "reason": null, "sec": 840}
+{"t": "2026-10-03 12:19:30", "iter": 31, "event": "proposed", "n": 6, "n_train": 31, "n_features": 24, "top_acq": 60.358642112449076, "feas_labels": 151, "feas_rate": 0.205, "p_feasible_chosen": 0.435, "p_feasible_pool": 0.389}
+{"t": "2026-10-03 12:22:15", "iter": 31, "design": "it031_0", "stage": "fea", "model": "piece", "status": "ok", "SEA": 61.26, "stress": 133.33, "reached": 0.2, "sec_prep": 24, "sec_fea": 141}
+{"t": "2026-10-03 12:22:16", "iter": 31, "design": "it031_1", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.089 > 0.05"}
+{"t": "2026-10-03 12:22:18", "iter": 31, "design": "it031_2", "stage": "print", "status": "rejected", "reason": "rejected: 2 disconnected bodies"}
+{"t": "2026-10-03 12:22:18", "iter": 31, "design": "it031_3", "stage": "print", "status": "rejected", "reason": "rejected: unsupported_frac=0.118 > 0.05"}
+{"t": "2026-10-03 12:32:11", "iter": 31, "design": "it031_4", "stage": "fea", "model": "piece", "status": "ok", "SEA": 11.7, "stress": 44.51, "reached": 0.115, "sec_prep": 45, "sec_fea": 548}
+{"t": "2026-10-03 12:32:11", "iter": 31, "event": "iteration_done", "hv": 629.1068992415494, "top_acq": 60.358642112449076, "stop": true, "reason": "NO_IMPROVEMENT: best metric improved < 1% for 5 rounds", "sec": 824}
+{"t": "2026-10-03 12:41:01", "iter": "confirm", "design": "it005_0_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 49.28, "stress": 170.27, "reached": 0.1, "sec_prep": 58, "sec_fea": 472}
+{"t": "2026-10-03 12:46:10", "iter": "confirm", "design": "it004_0_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 39.99, "stress": 143.42, "reached": 0.1, "sec_prep": 28, "sec_fea": 281}
+{"t": "2026-10-03 12:53:54", "iter": "confirm", "design": "it026_5_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 9.14, "stress": 50.45, "reached": 0.1, "sec_prep": 65, "sec_fea": 398}
+{"t": "2026-10-03 13:01:55", "iter": "confirm", "design": "it015_0_full", "stage": "fea", "model": "full", "status": "ok", "SEA": 5.73, "stress": 35.68, "reached": 0.1, "sec_prep": 62, "sec_fea": 419}

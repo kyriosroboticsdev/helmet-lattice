@@ -1,0 +1,20 @@
+{
+  "ref_max_space": [
+    44.097919645862056,
+    -1364.7880421057935
+  ],
+  "objectives": [
+    [
+      "SEA_to_eval",
+      1.0
+    ],
+    [
+      "plateau_stress_to_eval",
+      -1.0
+    ]
+  ],
+  "eval_strain": 0.2,
+  "stress_metric": "plateau",
+  "energy_metric": "SEA",
+  "n_rows_when_fixed": 11
+}

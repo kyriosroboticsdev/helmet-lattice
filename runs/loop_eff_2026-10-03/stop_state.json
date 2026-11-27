@@ -1,0 +1,302 @@
+{
+  "iteration": 31,
+  "best_metric": 629.1068992415494,
+  "first_ei": 222.6246187331129,
+  "stale_rounds": 5,
+  "history": [
+    {
+      "iteration": 1,
+      "best_metric": 76691.410604,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 18392.360336,
+      "ei_frac": 1.0,
+      "note": "designs_to_fea=1"
+    },
+    {
+      "iteration": 2,
+      "best_metric": 78736.672123,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 11515.333657,
+      "ei_frac": 0.6261,
+      "note": "designs_to_fea=1"
+    },
+    {
+      "iteration": 3,
+      "best_metric": 80447.040793,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 7648.617967,
+      "ei_frac": 0.4159,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 4,
+      "best_metric": 81545.2311,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 6978.580423,
+      "ei_frac": 0.3794,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 5,
+      "best_metric": 83590.885571,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 3905.648643,
+      "ei_frac": 0.2124,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 6,
+      "best_metric": 83590.885571,
+      "improved": false,
+      "stale_rounds": 1,
+      "top_ei": 3819.922278,
+      "ei_frac": 0.2077,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 7,
+      "best_metric": 83590.885571,
+      "improved": false,
+      "stale_rounds": 2,
+      "top_ei": 6907.380153,
+      "ei_frac": 0.3756,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 8,
+      "best_metric": 83715.531977,
+      "improved": false,
+      "stale_rounds": 3,
+      "top_ei": 7204.613513,
+      "ei_frac": 0.3917,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 9,
+      "best_metric": 84963.44268,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 3689.628085,
+      "ei_frac": 0.2006,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 10,
+      "best_metric": 84963.44268,
+      "improved": false,
+      "stale_rounds": 1,
+      "top_ei": 3026.587718,
+      "ei_frac": 0.1646,
+      "note": "designs_to_fea=1"
+    },
+    {
+      "event": "hv_reference_rebuilt",
+      "eval_strain": 0.2,
+      "stress_metric": "plateau"
+    },
+    {
+      "iteration": 11,
+      "best_metric": 258190.262225,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 38001.797761,
+      "ei_frac": 2.0662,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 12,
+      "best_metric": 275177.580243,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 35196.756857,
+      "ei_frac": 1.9137,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 13,
+      "best_metric": 275202.956159,
+      "improved": false,
+      "stale_rounds": 1,
+      "top_ei": 21918.355068,
+      "ei_frac": 1.1917,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 14,
+      "best_metric": 288345.591597,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 22346.813993,
+      "ei_frac": 1.215,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 15,
+      "best_metric": 295446.91309,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 24268.752767,
+      "ei_frac": 1.3195,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 16,
+      "best_metric": 300374.839814,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 32186.932397,
+      "ei_frac": 1.75,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 17,
+      "best_metric": 309230.009038,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 35121.19318,
+      "ei_frac": 1.9096,
+      "note": "designs_to_fea=1"
+    },
+    {
+      "iteration": 18,
+      "best_metric": 309230.009038,
+      "improved": false,
+      "stale_rounds": 1,
+      "top_ei": 44603.418868,
+      "ei_frac": 2.4251,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 19,
+      "best_metric": 317530.689938,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 45014.217766,
+      "ei_frac": 2.4474,
+      "note": "designs_to_fea=1"
+    },
+    {
+      "iteration": 20,
+      "best_metric": 330582.833229,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 46507.436539,
+      "ei_frac": 2.5286,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 21,
+      "best_metric": 330582.833229,
+      "improved": false,
+      "stale_rounds": 1,
+      "top_ei": 81929.393751,
+      "ei_frac": 4.4545,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 22,
+      "best_metric": 332337.309021,
+      "improved": false,
+      "stale_rounds": 2,
+      "top_ei": 56292.061298,
+      "ei_frac": 3.0606,
+      "note": "designs_to_fea=1"
+    },
+    {
+      "iteration": 23,
+      "best_metric": 332337.309021,
+      "improved": false,
+      "stale_rounds": 3,
+      "top_ei": 79686.846637,
+      "ei_frac": 4.3326,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 24,
+      "best_metric": 332337.309021,
+      "improved": false,
+      "stale_rounds": 4,
+      "top_ei": 97602.251488,
+      "ei_frac": 5.3067,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 25,
+      "best_metric": 332337.309021,
+      "improved": false,
+      "stale_rounds": 5,
+      "top_ei": 84042.370069,
+      "ei_frac": 4.5694,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "event": "hv_reference_rebuilt",
+      "eval_strain": 0.2,
+      "stress_metric": "plateau",
+      "energy_metric": "efficiency",
+      "at_iteration": 25,
+      "cap": 65
+    },
+    {
+      "iteration": 26,
+      "best_metric": 629.106899,
+      "improved": true,
+      "stale_rounds": 0,
+      "top_ei": 222.624619,
+      "ei_frac": 1.0,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 27,
+      "best_metric": 629.106899,
+      "improved": false,
+      "stale_rounds": 1,
+      "top_ei": 93.759549,
+      "ei_frac": 0.4212,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 28,
+      "best_metric": 629.106899,
+      "improved": false,
+      "stale_rounds": 2,
+      "top_ei": 69.271814,
+      "ei_frac": 0.3112,
+      "note": "designs_to_fea=1"
+    },
+    {
+      "iteration": 29,
+      "best_metric": 629.106899,
+      "improved": false,
+      "stale_rounds": 3,
+      "top_ei": 62.355182,
+      "ei_frac": 0.2801,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 30,
+      "best_metric": 629.106899,
+      "improved": false,
+      "stale_rounds": 4,
+      "top_ei": 43.546441,
+      "ei_frac": 0.1956,
+      "note": "designs_to_fea=2"
+    },
+    {
+      "iteration": 31,
+      "best_metric": 629.106899,
+      "improved": false,
+      "stale_rounds": 5,
+      "top_ei": 60.358642,
+      "ei_frac": 0.2711,
+      "note": "designs_to_fea=2"
+    }
+  ],
+  "stopped": true,
+  "stop_reason": "NO_IMPROVEMENT: best metric improved < 1% for 5 rounds"
+}

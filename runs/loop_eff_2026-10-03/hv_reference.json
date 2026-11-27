@@ -1,0 +1,20 @@
+{
+  "ref_max_space": [
+    0.42800558101974506,
+    -1697.111092469375
+  ],
+  "objectives": [
+    [
+      "efficiency_to_eval",
+      1.0
+    ],
+    [
+      "plateau_stress_to_eval",
+      -1.0
+    ]
+  ],
+  "eval_strain": 0.2,
+  "stress_metric": "plateau",
+  "energy_metric": "efficiency",
+  "n_rows_when_fixed": 27
+}

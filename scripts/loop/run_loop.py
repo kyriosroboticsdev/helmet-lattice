@@ -63,7 +63,7 @@ MODELS = {   # fea_model -> realize/evaluate settings
 
 
 def evaluate_design(params, design_id, out, gate_cfg, master_csv, log, realize, schema, it,
-                    fea_res=60, fea_model="piece"):
+                    fea_res=60, fea_model="piece", shear=False):
     """realize (coarse FEA mesh) -> printability screen -> FEA-readiness gate (meshes
     once) -> FEA on that same mesh -> master row. Every outcome is logged and appended.
     Returns the outcome: "ok", "failed", "print_rejected", "gate_rejected" or
@@ -117,6 +117,21 @@ def evaluate_design(params, design_id, out, gate_cfg, master_csv, log, realize, 
                           topology=params.get("topology", "blend"), design_meta=meta,
                           mesh=getattr(gate, "mesh", None), crush=cfg["crush"],
                           timeout=cfg["timeout"])
+    if shear and row.get("fea_status") == "ok":
+        # Independent load case on the same mesh. A shear failure is a pipeline failure
+        # for THAT objective only: logged, left NaN, never read as zero stiffness.
+        from fea_evaluator import evaluate_shear
+        try:
+            sh = evaluate_shear(str(stl_path), mesh=getattr(gate, "mesh", None),
+                                timeout=cfg["timeout"])
+            scurve = sh.pop("shear_curve")
+            (out / "curves").mkdir(exist_ok=True)
+            pd.DataFrame(scurve, columns=["gamma", "tau_kPa"]).to_csv(
+                out / "curves" / f"{design_id}_shear.csv", index=False)
+            row.update(sh); row["shear_status"] = "ok"
+        except Exception as e:
+            row["shear_status"] = f"failed: {type(e).__name__}: {str(e)[:120]}"
+            row["shear_validated"] = False
     curve = row.pop("_stress_strain", None)
     if curve:
         (out / "curves").mkdir(exist_ok=True)
@@ -192,7 +207,8 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
         seed_n: int = 30, seed_only: bool = False, fea_res: int = 60, shortlist: int = 3,
         confirm_top: int = 5, confirm_only: bool = False, n_candidates: int = 300,
         eval_strain: float | None = None, stress_metric: str | None = None,
-        energy_metric: str | None = None, rebuild_hv_reference: bool = False):
+        energy_metric: str | None = None, rebuild_hv_reference: bool = False,
+        solver_budget_h: float | None = None, shear: bool = False):
     import realize, schema
     import fea_optimize as FO
     out = Path(out_dir); out.mkdir(parents=True, exist_ok=True)
@@ -208,6 +224,7 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
         FO.STRESS_METRIC = stress_metric
     if energy_metric:
         FO.ENERGY_METRIC = energy_metric
+    FO.SHEAR = shear
     FO.OBJECTIVES = FO.objectives()
     print(f"[run_loop] objectives: maximize {FO.ENERGY_METRIC}, minimize {FO.STRESS_METRIC} stress, "
           f"both at {FO.E_EVAL:.0%} strain (screening model crushes {crush:.0%})")
@@ -262,7 +279,7 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
             if paused(f"before seed{j:03d}"):
                 return
             evaluate_design(params, f"seed{j:03d}", out, gate_cfg, master_csv, log,
-                            realize, schema, it=0, fea_res=fea_res)
+                            realize, schema, it=0, fea_res=fea_res, shear=shear)
     if seed_only:
         print(f"\n--seed-only: stopping after the seed phase. Results: {master_csv}")
         return
@@ -274,13 +291,33 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
         log(dict(event="stopped", reason="too_few_seed_results", n=len(rows)))
         return
     if rebuild_hv_reference and ref_json.exists():
-        ref_json.rename(ref_json.with_suffix(".json.superseded"))
-        ctrl.state.best_metric = -float("inf"); ctrl.state.stale_rounds = 0
-        ctrl.state.history.append(dict(event="hv_reference_rebuilt", eval_strain=FO.E_EVAL,
-                                       stress_metric=FO.STRESS_METRIC))
-        print("[run_loop] hypervolume reference rebuilt for the new objectives; "
-              "no-improvement history reset")
+        old = ref_json.with_suffix(".json.superseded")
+        if old.exists():                  # keep every earlier reference, never overwrite
+            old = ref_json.with_suffix(f".json.superseded{time.strftime('%Y%m%d%H%M%S')}")
+        ref_json.rename(old)
+        s = ctrl.state
+        s.best_metric = -float("inf"); s.stale_rounds = 0
+        # The low-EI rule compares to the FIRST iteration's EI; under new objectives
+        # that baseline is in other units, so it restarts too.
+        s.first_ei = None
+        # A run that stopped itself on the OLD objectives has not converged on the new
+        # ones: clear the stop and give it a fresh cap (resume() only clears HARD_CAP).
+        if s.stopped:
+            s.stopped, s.stop_reason = False, None
+            ctrl.cfg.max_iterations = s.iteration + (extra or 20)
+        s.history.append(dict(event="hv_reference_rebuilt", eval_strain=FO.E_EVAL,
+                              stress_metric=FO.STRESS_METRIC, energy_metric=FO.ENERGY_METRIC,
+                              at_iteration=s.iteration, cap=ctrl.cfg.max_iterations))
+        print(f"[run_loop] hypervolume reference rebuilt for the new objectives; "
+              f"no-improvement and EI history reset; cap now {ctrl.cfg.max_iterations}")
     ref = FO.reference_point(rows, ref_json)
+    budget_start = ctrl.state.iteration   # solver budget counts iterations after this one
+
+    def solver_hours():
+        d = load()
+        it_ = pd.to_numeric(d.get("iteration"), errors="coerce")
+        return float(pd.to_numeric(d.loc[it_ > budget_start, "sec_fea"],
+                                   errors="coerce").sum()) / 3600
 
     # ---- 1) optimize until diminishing returns ---------------------------------
     stop = bool(ctrl.state.stopped)
@@ -312,7 +349,7 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
             if reached_fea >= batch:
                 break
             status = evaluate_design(params, f"{prefix}{j}", out, gate_cfg, master_csv, log,
-                                     realize, schema, it, fea_res=fea_res)
+                                     realize, schema, it, fea_res=fea_res, shear=shear)
             reached_fea += status in ("ok", "failed")
         if reached_fea == 0:
             print(f"  !! no proposal of iteration {it} reached FEA (all rejected by the screens)")
@@ -332,6 +369,11 @@ def run(out_dir: str, max_iters: int, batch: int, resume: bool, extra: int,
             stop = s.iteration >= ctrl.cfg.max_iterations
             reason = f"HARD_CAP: reached max_iterations={ctrl.cfg.max_iterations}" if stop else None
             s.stopped, s.stop_reason = stop, reason
+        if not stop and solver_budget_h and solver_hours() >= solver_budget_h:
+            stop = True
+            reason = (f"SOLVER_BUDGET: {solver_hours():.2f} h of FEA since iteration "
+                      f"{budget_start} >= {solver_budget_h} h")
+            ctrl.state.stopped, ctrl.state.stop_reason = stop, reason
         ctrl.state.save(state_json)
         log(dict(iter=it, event="iteration_done", hv=hv, top_acq=top_acq, stop=stop,
                  reason=reason, sec=round(time.time() - t_it)))
@@ -374,7 +416,16 @@ if __name__ == "__main__":
     ap.add_argument("--rebuild-hv-reference", action="store_true",
                     help="objectives changed: re-fix the hypervolume reference and reset the "
                          "no-improvement history (old and new hypervolumes are not comparable)")
+    ap.add_argument("--solver-budget-h", type=float, default=None,
+                    help="stop the optimization after this many hours of FEA solver time "
+                         "(counted from this invocation's first iteration); confirm still runs")
+    ap.add_argument("--shear", action="store_true",
+                    help="add the piece SHEAR load case as a third, independent objective "
+                         "(minimize shear stress at fea_evaluator.SHEAR_EVAL); UNVALIDATED "
+                         "until the physical shear rig exists. Needs a fresh --out or "
+                         "--rebuild-hv-reference, and only rows run with --shear train it")
     a = ap.parse_args()
     run(a.out, a.max_iters, a.batch, a.resume, a.extra, a.seed_n, a.seed_only, a.fea_res,
         a.shortlist, a.confirm_top, a.confirm_only, a.candidates,
-        a.eval_strain, a.stress_metric, a.energy_metric, a.rebuild_hv_reference)
+        a.eval_strain, a.stress_metric, a.energy_metric, a.rebuild_hv_reference,
+        a.solver_budget_h, a.shear)

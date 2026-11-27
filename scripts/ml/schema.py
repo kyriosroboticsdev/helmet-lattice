@@ -149,6 +149,33 @@ def check_sea_depths(df: pd.DataFrame, sea_col: str = "SEA_J_per_kg",
     return depths
 
 
+# Plateau stress is a mean over a strain BAND, so it is only meaningful with its band.
+# FEA rows carry it (plateau_band_lo/hi): upper half of the applied crush, so the 20%
+# piece reports 0.10-0.20 and the 10% full tile 0.05-0.10. Same rule as SEA depth.
+PLATEAU_BAND_COLS = ("plateau_band_lo", "plateau_band_hi")
+
+
+def check_plateau_bands(df: pd.DataFrame, col: str = "plateau_stress_kPa",
+                        strict: bool = True) -> set:
+    """Raise (or warn) if `df` mixes plateau stresses averaged over different bands."""
+    if col not in df.columns:
+        return set()
+    have = df[pd.to_numeric(df[col], errors="coerce").notna()]
+    if not all(c in have.columns for c in PLATEAU_BAND_COLS):
+        bands = {None} if len(have) else set()
+    else:
+        lo, hi = (pd.to_numeric(have[c], errors="coerce") for c in PLATEAU_BAND_COLS)
+        bands = {None if pd.isna(a) else (round(float(a), 6), round(float(b), 6))
+                 for a, b in zip(lo, hi)}
+    if len(bands) > 1:
+        msg = (f"{col} mixes {len(bands)} strain bands: {sorted(bands, key=str)}. "
+               f"A plateau is a mean over a band -- comparing across bands is invalid.")
+        if strict:
+            raise ValueError(msg)
+        warnings.warn(msg)
+    return bands
+
+
 def empty_frame() -> pd.DataFrame:
     """An empty DataFrame with every contract column, correctly ordered."""
     return pd.DataFrame(columns=ALL_COLUMNS)
