@@ -1,0 +1,19 @@
+HELMET LATTICE — FEA + LOOP BUNDLE   (everything in one place)
+=============================================================
+
+READ FIRST:
+  README_helmet_loop.pdf          <- full docs: what each file does, how to run, honest status
+  Generator_Fixes_For_Friend.pdf  <- 2 fixes for the generator (density bug + watertight export)
+
+THE CODE (drop into your friend's repo at the same paths):
+  scripts/fea/fea_evaluator.py        <- validated CalculiX FEA engine (Ogden TPU, ~21% validated)
+  scripts/fea/fea_readiness_gate.py   <- rejects un-simulatable geometry before FEA (4 checks)
+  scripts/loop/stopping.py            <- STOPPING controller = the anti-infinite-loop logic
+                                         (hard cap + no-improvement + low-expected-improvement + resume)
+  scripts/loop/run_loop.py            <- top-level loop that chains everything and USES stopping.py
+
+WHERE THE "NEVER INFINITE" PROTECTION LIVES:
+  stopping.py  (the 3 stop criteria)  +  run_loop.py  (calls it every iteration).
+  Both are here. There are no missing files.
+
+NEXT STEPS:  see README section 8 (the to-do checklist) and section 5 (wiring for your friend).
